@@ -1,0 +1,27 @@
+.outer {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 10;
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+  justify-content: center;
+  align-self: center;
+
+  > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+
+    &.sm-inner {
+      max-width: 480px;
+    }
+
+    &.lg-inner {
+      max-width: 1200px;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 40px;
+  gap: 15px;
+  background-color: #fff;
+  
+  >div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .remindme {
+    flex-direction: row;
+    user-select: none;
+    gap: 5px;
+    align-items: center;
+
+    > input {
+      background-color: #fff;
+      border: 1px #ececed solid;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      padding: 0;
+
+      display: grid;
+      place-content: center;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:checked {
+        background-color: #2a9cd4;
+      }
+
+      &::before {
+        content: "";
+        width: 0.65em;
+        height: 0.65em;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em #fff;
+        transform-origin: bottom left;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      }
+
+      &:checked::before {
+        transform: scale(1);
+      }
+    }
+
+    >label {
+      vertical-align: top;
+      padding: 0;
+      margin: 0;
+    }
+  }
+  
+  label {
+    color: #000;
+    padding: 0px 0px 3px 0px;
+  }
+  
+  input {
+    padding: 15px 25px;
+    font-size: 13px;
+    border: 1px #ececed solid;
+    border-radius: 5px;
+
+    &:focus {
+      outline: #2a9cd4 1px solid;
+    }
+
+    &[type="submit"] {
+      background-color: #2a9cd4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 15px;
+    }
+  }
+}

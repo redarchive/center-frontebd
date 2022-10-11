@@ -1,0 +1,30 @@
+.logo-title {
+  background-color: #fff;
+  padding: 0px 40px;
+  display: flex;
+  flex-direction: column;
+
+  .logo {
+    width: 100%;
+    display: flex;
+    padding: 40px 0px 25px 0px;
+    justify-content: center;
+
+    > img {
+      max-width: 100px;
+      align-self: center;
+      animation: spin infinite 10s ease-in-out alternate;
+    }
+  }
+
+  > h1 {
+    border-bottom: #e6e6e8 1px solid;
+    padding: 0px 0px 10px 0px;
+    font-size: 17px;
+  }
+}
+
+@keyframes spin {
+  0% { rotate: -30deg; }
+  100% { rotate: 30deg; }
+}
