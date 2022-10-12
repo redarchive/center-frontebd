@@ -3,7 +3,7 @@ import type { HeadFC } from 'gatsby'
 import LoginHeader from '../components/login/header'
 import Container from '../components/commons/container'
 import LoginTypeSelector, { LoginSelectableTypes } from '../components/login/typeSelector'
-import LogoTitle from '../components/login/logoTitle'
+import LoginLogoTitle from '../components/login/logoTitle'
 import LoginForm, { LoginFormData } from '../components/login/form'
 import LoginLinks from '../components/login/links'
 import FadeIn from '../components/commons/fadeIn'
@@ -23,7 +23,7 @@ const LoginPage = (): JSX.Element => {
         <FadeIn>
           <LoginHeader />
           <LoginTypeSelector onSelect={(v) => setSelectedType(v)} />
-          <LogoTitle type={selectedType} />
+          <LoginLogoTitle type={selectedType} />
           <LoginForm onSubmit={onSubmit} disableSubmit={disableSubmit}/>
           <LoginLinks />
         </FadeIn>
@@ -35,4 +35,4 @@ const LoginPage = (): JSX.Element => {
 export default LoginPage
 
 export const Head: HeadFC = () =>
-  <title>GBSW Center - Login</title>
+  <title>GBSW Center - 로그인</title>

@@ -8,7 +8,7 @@ interface Props {
   type: LoginSelectableTypes
 }
 
-const LogoTitle = ({ type }: Props): JSX.Element => {
+const LoginLogoTitle = ({ type }: Props): JSX.Element => {
   return (
     <div className={style.logoTitle}>
       <div className={style.logo}>
@@ -28,4 +28,4 @@ const LogoTitle = ({ type }: Props): JSX.Element => {
   )
 }
 
-export default LogoTitle
+export default LoginLogoTitle

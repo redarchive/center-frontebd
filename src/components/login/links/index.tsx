@@ -7,7 +7,7 @@ const LoginLinks = (): JSX.Element => {
     <div className={style.loginLinks}>
       <ul>
         <li><Link to="/forgotpw">비밀번호 분실했어요</Link></li>
-        <li><Link to="/signin">회원가입</Link></li>
+        <li><Link to="/regist">회원가입</Link></li>
       </ul>
     </div>
   )
