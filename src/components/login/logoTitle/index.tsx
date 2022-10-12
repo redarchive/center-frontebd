@@ -1,14 +1,29 @@
 import React from 'react'
+import { LoginSelectableTypes } from '../typeSelector'
 import Logo from './assets/symbol-logo.svg'
 import * as style from './style.module.scss'
+import { motion } from 'framer-motion'
 
-const LogoTitle = (): JSX.Element => {
+interface Props {
+  type: LoginSelectableTypes
+}
+
+const LogoTitle = ({ type }: Props): JSX.Element => {
   return (
     <div className={style.logoTitle}>
       <div className={style.logo}>
-        <img src={Logo} />
+        <motion.img
+          draggable={false}
+          initial={{ rotate: '-60deg', scale: 2 }}
+          animate={{ rotate: '0deg', scale: 1 }}
+          src={Logo} />
       </div>
-      <h1>로그인</h1>
+      <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        {type === LoginSelectableTypes.CURRENT_STUDENT && '재학생'}
+        {type === LoginSelectableTypes.GRADUATED_STUDENT && '졸업생'}
+        {type === LoginSelectableTypes.TEACHER && '교사'}
+        &nbsp;로그인
+      </motion.h1>
     </div>
   )
 }

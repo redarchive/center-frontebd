@@ -30,6 +30,12 @@
       border-top-right-radius: 5px;
       transition: all 0.1s ease-in;
       user-select: none;
+      border: 3px transparent solid;
+      box-sizing: border-box;
+    }
+
+    label:hover {
+      border-top: 3px #2a9cd4 solid;
     }
 
     input:checked ~ label {
