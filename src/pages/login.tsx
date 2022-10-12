@@ -10,10 +10,10 @@ import FadeIn from '../components/commons/fadeIn'
 
 const LoginPage = (): JSX.Element => {
   const [selectedType, setSelectedType] = useState(LoginSelectableTypes.CURRENT_STUDENT)
-  const [disableSubmit, setDisableSubmit] = useState(false)
+  const [disabled, setDisabled] = useState(false)
 
   const onSubmit = async (data: LoginFormData): Promise<void> => {
-    setDisableSubmit(true)
+    setDisabled(true)
     console.log(data)
   }
 
@@ -22,9 +22,9 @@ const LoginPage = (): JSX.Element => {
       <Container size="sm">
         <FadeIn>
           <LoginHeader />
-          <LoginTypeSelector onSelect={(v) => setSelectedType(v)} />
+          <LoginTypeSelector disabled={disabled} onSelect={(v) => setSelectedType(v)} />
           <LoginLogoTitle type={selectedType} />
-          <LoginForm onSubmit={onSubmit} disableSubmit={disableSubmit}/>
+          <LoginForm onSubmit={onSubmit} disabled={disabled}/>
           <LoginLinks />
         </FadeIn>
       </Container>

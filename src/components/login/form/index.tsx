@@ -10,17 +10,17 @@ export interface LoginFormData {
 
 interface Props {
   onSubmit: (data: LoginFormData) => any
-  disableSubmit: boolean
+  disabled: boolean
 }
 
-const LoginForm = ({ onSubmit, disableSubmit }: Props): JSX.Element => {
+const LoginForm = ({ onSubmit, disabled }: Props): JSX.Element => {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState(false)
 
   const onFormSubmit = (e: FormEvent): void => {
     e.preventDefault()
-    if (disableSubmit) return
+    if (disabled) return
 
     onSubmit({
       id,
@@ -34,6 +34,7 @@ const LoginForm = ({ onSubmit, disableSubmit }: Props): JSX.Element => {
       <div>
         <label htmlFor="loginForm-login">아이디</label>
         <input
+          disabled={disabled}
           value={id} onChange={(e) => setId(e.target.value)}
           autoFocus id="loginForm-login"
           type="text" placeholder="아이디를 입력해주세요." />
@@ -42,6 +43,7 @@ const LoginForm = ({ onSubmit, disableSubmit }: Props): JSX.Element => {
       <div>
         <label htmlFor="loginForm-pw">비밀번호</label>
         <input
+          disabled={disabled}
           value={password} onChange={(e) => setPassword(e.target.value)}
           id="loginForm-pw" type="text"
           placeholder="비밀번호를 입력해주세요."/>
@@ -49,16 +51,17 @@ const LoginForm = ({ onSubmit, disableSubmit }: Props): JSX.Element => {
 
       <div className={style.remindme}>
         <input
+          disabled={disabled}
           checked={remember}
           onChange={(e) => setRemember(e.target.checked)}
-          type="checkbox" name="remindme" id="loginForm-remindme" />
+          type="checkbox" name="remember" id="loginForm-remember" />
 
-        <label htmlFor="loginForm-remindme">날 기억해줘!</label>
+        <label htmlFor="loginForm-remember">날 기억해줘!</label>
       </div>
 
-      <button disabled={disableSubmit} type="submit">
-        {!disableSubmit && '로그인'}
-        {disableSubmit && (
+      <button disabled={disabled} type="submit">
+        {!disabled && '로그인'}
+        {disabled && (
           <>
             <HashLoader size={20} />
             로그인 중...

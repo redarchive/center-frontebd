@@ -9,9 +9,10 @@ export enum LoginSelectableTypes {
 
 interface Props {
   onSelect: (type: LoginSelectableTypes) => any
+  disabled: boolean
 }
 
-const LoginTypeSelector = ({ onSelect }: Props): JSX.Element => {
+const LoginTypeSelector = ({ onSelect, disabled }: Props): JSX.Element => {
   const [selectedType, setSelectedType] = useState<LoginSelectableTypes>(LoginSelectableTypes.CURRENT_STUDENT)
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const LoginTypeSelector = ({ onSelect }: Props): JSX.Element => {
     <ul className={style.selector}>
       <li>
         <input
+          disabled={disabled}
           name="loginTypeSelector" type="radio" id="loginTypeSelector-current"
           checked={selectedType === LoginSelectableTypes.CURRENT_STUDENT}
           onChange={() => setSelectedType(LoginSelectableTypes.CURRENT_STUDENT)} />
@@ -30,6 +32,7 @@ const LoginTypeSelector = ({ onSelect }: Props): JSX.Element => {
       </li>
       <li>
         <input
+          disabled={disabled}
           name="loginTypeSelector" type="radio" id="loginTypeSelector-graduated"
           checked={selectedType === LoginSelectableTypes.GRADUATED_STUDENT}
           onChange={() => setSelectedType(LoginSelectableTypes.GRADUATED_STUDENT)} />
@@ -38,6 +41,7 @@ const LoginTypeSelector = ({ onSelect }: Props): JSX.Element => {
       </li>
       <li>
         <input
+          disabled={disabled}
           name="loginTypeSelector" type="radio" id="loginTypeSelector-teacher"
           checked={selectedType === LoginSelectableTypes.TEACHER}
           onChange={() => setSelectedType(LoginSelectableTypes.TEACHER)} />

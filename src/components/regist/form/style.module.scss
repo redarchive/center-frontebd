@@ -30,6 +30,8 @@
       cursor: pointer;
       outline: none;
       
+
+
       &:focus {
         outline: none;
       }
@@ -77,7 +79,10 @@
     &:focus {
       outline: #2a9cd4 1px solid;
     }
-    
+
+    &:disabled {
+      cursor: wait;
+    }
   }
 
   button[type="submit"] {

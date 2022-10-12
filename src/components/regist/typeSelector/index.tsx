@@ -7,10 +7,11 @@ export enum RegistSelectableTypes {
 }
 
 interface Props {
+  disabled: boolean
   onSelect: (type: RegistSelectableTypes) => any
 }
 
-const RegistTypeSelector = ({ onSelect }: Props): JSX.Element => {
+const RegistTypeSelector = ({ onSelect, disabled }: Props): JSX.Element => {
   const [selectedType, setSelectedType] = useState<RegistSelectableTypes>(RegistSelectableTypes.CURRENT_STUDENT)
 
   useEffect(() => {
@@ -21,6 +22,7 @@ const RegistTypeSelector = ({ onSelect }: Props): JSX.Element => {
     <ul className={style.selector}>
       <li>
         <input
+          disabled={disabled}
           name="registTypeSelector" type="radio" id="registTypeSelector-current"
           checked={selectedType === RegistSelectableTypes.CURRENT_STUDENT}
           onChange={() => setSelectedType(RegistSelectableTypes.CURRENT_STUDENT)} />
@@ -29,6 +31,7 @@ const RegistTypeSelector = ({ onSelect }: Props): JSX.Element => {
       </li>
       <li>
         <input
+          disabled={disabled}
           name="registTypeSelector" type="radio" id="registTypeSelector-teacher"
           checked={selectedType === RegistSelectableTypes.TEACHER}
           onChange={() => setSelectedType(RegistSelectableTypes.TEACHER)} />

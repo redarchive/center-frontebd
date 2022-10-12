@@ -78,6 +78,9 @@
       outline: #2a9cd4 1px solid;
     }
     
+    &:disabled {
+      cursor: wait;
+    }
   }
 
   button[type="submit"] {

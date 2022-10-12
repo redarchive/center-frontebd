@@ -10,10 +10,10 @@ import RegistLinks from '../components/regist/links'
 
 const RegistPage = (): JSX.Element => {
   const [selectedType, setSelectedType] = useState(RegistSelectableTypes.CURRENT_STUDENT)
-  const [disableSubmit, setDisableSubmit] = useState(false)
+  const [disabled, setDisabled] = useState(false)
 
   const onSubmit = async (data: RegistFormData): Promise<void> => {
-    setDisableSubmit(true)
+    setDisabled(true)
     console.log(data)
   }
 
@@ -22,9 +22,9 @@ const RegistPage = (): JSX.Element => {
       <Container size="sm">
         <FadeIn>
           <RegistHeader />
-          <RegistTypeSelector onSelect={(v) => setSelectedType(v)} />
+          <RegistTypeSelector disabled={disabled} onSelect={(v) => setSelectedType(v)} />
           <RegistLogoTitle type={selectedType} />
-          <RegistForm onSubmit={onSubmit} disableSubmit={disableSubmit}/>
+          <RegistForm onSubmit={onSubmit} disabled={disabled}/>
           <RegistLinks />
         </FadeIn>
       </Container>

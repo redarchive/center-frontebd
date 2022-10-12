@@ -34,8 +34,16 @@
       box-sizing: border-box;
     }
 
-    label:hover {
+    input:disabled ~ label {
+      cursor: wait;
+    }
+
+    input:not(:checked) ~ label:hover {
       border-top: 3px #2a9cd4 solid;
+    }
+
+    input:not(:checked):disabled ~ label:hover {
+      border-top: 3px gray solid;
     }
 
     input:checked ~ label {
