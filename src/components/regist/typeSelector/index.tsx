@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import * as style from './style.module.scss'
+import ReactTooltop from 'react-tooltip'
 
 export enum RegistSelectableTypes {
   CURRENT_STUDENT = 0, // 재학생
@@ -20,7 +21,7 @@ const RegistTypeSelector = ({ onSelect, disabled }: Props): JSX.Element => {
 
   return (
     <ul className={style.selector}>
-      <li>
+       <li>
         <input
           disabled={disabled}
           name="registTypeSelector" type="radio" id="registTypeSelector-current"
@@ -28,6 +29,11 @@ const RegistTypeSelector = ({ onSelect, disabled }: Props): JSX.Element => {
           onChange={() => setSelectedType(RegistSelectableTypes.CURRENT_STUDENT)} />
 
         <label htmlFor="registTypeSelector-current">재학생</label>
+      </li>
+      <li>
+        <input disabled id="registTypeSelector-graduated"/>
+        <label data-tip="졸업생은 회원가입이 불가능해요ㅠㅠ" htmlFor="registTypeSelector-graduated">졸업생</label>
+        <ReactTooltop place="bottom" />
       </li>
       <li>
         <input

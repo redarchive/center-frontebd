@@ -45,7 +45,7 @@ const LoginForm = ({ onSubmit, disabled }: Props): JSX.Element => {
         <input
           disabled={disabled}
           value={password} onChange={(e) => setPassword(e.target.value)}
-          id="loginForm-pw" type="text"
+          id="loginForm-pw" type="password"
           placeholder="비밀번호를 입력해주세요."/>
       </div>
 

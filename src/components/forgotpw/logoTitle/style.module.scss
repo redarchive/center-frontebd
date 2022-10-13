@@ -1,0 +1,18 @@
+.logo-title {
+  background-color: #fff;
+  padding: 0px 40px;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+
+  > h1 {
+    border-bottom: #e6e6e8 1px solid;
+    padding: 40px 0px 10px 0px;
+    font-size: 17px;
+  }
+}
+
+@keyframes spin {
+  0% { rotate: -30deg; }
+  100% { rotate: 30deg; }
+}

@@ -1,0 +1,54 @@
+.selector {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: stretch;
+  gap: 1px;
+  width: 100%;
+
+  li {
+    list-style: none outside;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+    input {
+      display: none;
+    }
+
+    label {
+      background-color: #fff;
+      color: #000;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      width: 100%;
+      padding: 14px 0px;
+      display: inline-block;
+      text-align: center;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      transition: all 0.1s ease-in;
+      user-select: none;
+      border: 3px transparent solid;
+      box-sizing: border-box;
+    }
+
+    input:disabled ~ label {
+      cursor: wait;
+    }
+
+    input:not(:checked) ~ label:hover {
+      border-top: 3px #2a9cd4 solid;
+    }
+
+    input:not(:checked):disabled ~ label:hover {
+      border-top: 3px gray solid;
+    }
+
+    input:checked ~ label {
+      background-color: #2a9cd4;
+      color: #fff;
+    }
+  }
+}

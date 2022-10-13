@@ -58,7 +58,7 @@ const RegistForm = ({ onSubmit, disabled }: Props): JSX.Element => {
           disabled={disabled}
           value={password} onChange={(e) => setPassword(e.target.value)}
           autoFocus id="registForm-pw"
-          type="text" placeholder="비밀번호를 입력해주세요." />
+          type="password" placeholder="비밀번호를 입력해주세요." />
       </div>
 
       <div>
@@ -66,7 +66,7 @@ const RegistForm = ({ onSubmit, disabled }: Props): JSX.Element => {
         <input
           disabled={disabled}
           value={passwordCheck} onChange={(e) => setPasswordCheck(e.target.value)}
-          id="registForm-pwchk" type="text"
+          id="registForm-pwchk" type="password"
           placeholder="비밀번호를 다시 한번 입력해주세요."/>
       </div>
 
