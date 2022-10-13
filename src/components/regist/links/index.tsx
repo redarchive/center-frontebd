@@ -6,7 +6,7 @@ const RegistLinks = (): JSX.Element => {
   return (
     <div className={style.loginLinks}>
       <ul>
-        <li><Link to="/login">계정이 있으신가요? <u>로그인으로 이동</u></Link></li>
+        <li><Link to={'/login' + window.location.search}>계정이 있으신가요? <u>로그인으로 이동</u></Link></li>
       </ul>
     </div>
   )
