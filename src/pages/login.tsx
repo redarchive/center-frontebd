@@ -23,7 +23,7 @@ const LoginPage = (): JSX.Element => {
         <FadeIn>
           <LoginHeader />
           <LoginTypeSelector disabled={disabled} onSelect={(v) => setSelectedType(v)} />
-          <LoginLogoTitle type={selectedType} />
+          <LoginLogoTitle />
           <LoginForm onSubmit={onSubmit} disabled={disabled}/>
           <LoginLinks />
         </FadeIn>

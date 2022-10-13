@@ -23,7 +23,7 @@ const RegistPage = (): JSX.Element => {
         <FadeIn>
           <RegistHeader />
           <RegistTypeSelector disabled={disabled} onSelect={(v) => setSelectedType(v)} />
-          <RegistLogoTitle type={selectedType} />
+          <RegistLogoTitle />
           <RegistForm onSubmit={onSubmit} disabled={disabled}/>
           <RegistLinks />
         </FadeIn>
