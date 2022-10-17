@@ -7,11 +7,12 @@ interface Props {
 
 const FadeIn = ({ children }: Props): JSX.Element => {
   return (
-    <motion.div
+    <motion.span
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}>
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}>
       {children}
-    </motion.div>
+    </motion.span>
   )
 }
 

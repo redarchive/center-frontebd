@@ -11,10 +11,67 @@ import FadeIn from '../components/commons/fadeIn'
 const LoginPage = (): JSX.Element => {
   const [selectedType, setSelectedType] = useState(LoginSelectableTypes.CURRENT_STUDENT)
   const [disabled, setDisabled] = useState(false)
+  const [message, setMessage] = useState<{ [key: string]: string } | undefined>()
 
   const onSubmit = async (data: LoginFormData): Promise<void> => {
     setDisabled(true)
-    console.log(data)
+    setMessage(undefined)
+
+    if (!data.id) {
+      setDisabled(false)
+      setMessage({
+        id: '아이디를 입력해주세요.'
+      })
+
+      setTimeout(() => {
+        setMessage(undefined)
+      }, 3 * 1000)
+
+      return
+    }
+
+    if (data.remember) {
+      window.localStorage.setItem('saved_id', data.id)
+    } else {
+      window.localStorage.removeItem('saved_id')
+    }
+
+    if (!data.password) {
+      setDisabled(false)
+      setMessage({
+        password: '비밀번호를 입력해주세요.'
+      })
+
+      setTimeout(() => {
+        setMessage(undefined)
+      }, 3 * 1000)
+
+      return
+    }
+
+    const res = await fetch('/api/sessions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        login: data.id,
+        password: data.password,
+        type: LoginSelectableTypes[selectedType]
+      })
+    }).then(async (res) => await res.json())
+
+    if (!res.success) {
+      setDisabled(false)
+      setMessage({
+        id: '아이디 혹은 비밀번호가 잘못되었습니다.',
+        password: '아이디 혹은 비밀번호가 잘못되었습니다.'
+      })
+
+      setTimeout(() => {
+        setMessage(undefined)
+      }, 3 * 1000)
+    }
   }
 
   return (
@@ -24,7 +81,7 @@ const LoginPage = (): JSX.Element => {
           <LoginHeader />
           <LoginTypeSelector disabled={disabled} onSelect={(v) => setSelectedType(v)} />
           <LoginLogoTitle />
-          <LoginForm onSubmit={onSubmit} disabled={disabled}/>
+          <LoginForm message={message}onSubmit={onSubmit} disabled={disabled}/>
           <LoginLinks />
         </FadeIn>
       </Container>

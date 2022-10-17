@@ -1,18 +1,27 @@
-import type { GatsbyConfig } from "gatsby";
+import type { GatsbyConfig } from 'gatsby'
+import { createProxyMiddleware } from 'http-proxy-middleware'
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `gbswcenter`,
-    siteUrl: `https://gbsw.hs.kr`
+    title: 'gbswcenter',
+    siteUrl: 'https://gbsw.hs.kr'
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    "gatsby-plugin-sass",
+    'gatsby-plugin-sass',
     'gatsby-plugin-pnpm'
-  ]
-};
+  ],
+  developMiddleware: (app) => {
+    app.use('/api', createProxyMiddleware({
+      target: 'http://a9a5b112a366:3000',
+      pathRewrite: {
+        '/api': ''
+      }
+    }))
+  }
+}
 
-export default config;
+export default config

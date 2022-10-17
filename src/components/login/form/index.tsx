@@ -1,5 +1,7 @@
-import React, { FormEvent, useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import React, { FormEvent, useEffect, useState } from 'react'
 import { HashLoader } from 'react-spinners'
+import FadeIn from '../../commons/fadeIn'
 import * as style from './style.module.scss'
 
 export interface LoginFormData {
@@ -11,12 +13,21 @@ export interface LoginFormData {
 interface Props {
   onSubmit: (data: LoginFormData) => any
   disabled: boolean
+  message?: { [key: string]: string }
 }
 
-const LoginForm = ({ onSubmit, disabled }: Props): JSX.Element => {
+const LoginForm = ({ message, onSubmit, disabled }: Props): JSX.Element => {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState(false)
+
+  useEffect(() => {
+    const savedId = window.localStorage.getItem('saved_id')
+    if (savedId !== null) {
+      setId(savedId)
+      setRemember(true)
+    }
+  }, [])
 
   const onFormSubmit = (e: FormEvent): void => {
     e.preventDefault()
@@ -37,7 +48,12 @@ const LoginForm = ({ onSubmit, disabled }: Props): JSX.Element => {
           disabled={disabled}
           value={id} onChange={(e) => setId(e.target.value)}
           autoFocus id="loginForm-login"
+          className={message?.id ? style.invalid : ''}
           type="text" placeholder="아이디를 입력해주세요." />
+
+        <AnimatePresence>
+          {message && <FadeIn><p>{message.id}</p></FadeIn>}
+        </AnimatePresence>
       </div>
 
       <div>
@@ -46,7 +62,12 @@ const LoginForm = ({ onSubmit, disabled }: Props): JSX.Element => {
           disabled={disabled}
           value={password} onChange={(e) => setPassword(e.target.value)}
           id="loginForm-pw" type="password"
+          className={message?.password ? style.invalid : ''}
           placeholder="비밀번호를 입력해주세요."/>
+
+        <AnimatePresence>
+          {message && <FadeIn><p>{message.password}</p></FadeIn>}
+        </AnimatePresence>
       </div>
 
       <div className={style.remindme}>
