@@ -64,8 +64,8 @@ const LoginPage = (): JSX.Element => {
     if (!res.success) {
       setDisabled(false)
       setMessage({
-        id: '아이디 혹은 비밀번호가 잘못되었습니다.',
-        password: '아이디 혹은 비밀번호가 잘못되었습니다.'
+        id: '아이디 혹은 비밀번호가 잘못되었어요.',
+        password: '아이디 혹은 비밀번호가 잘못되었어요.'
       })
 
       setTimeout(() => {

@@ -2,6 +2,7 @@ import { AnimatePresence } from 'framer-motion'
 import React, { FormEvent, useState } from 'react'
 import { HashLoader } from 'react-spinners'
 import FadeIn from '../../commons/fadeIn'
+import { FaRocket } from 'react-icons/fa'
 import * as style from './style.module.scss'
 
 export interface RegistFormData {
@@ -10,6 +11,10 @@ export interface RegistFormData {
   passwordCheck: string
   phone: string
   phoneCheck: string
+  nickname: string
+  email: string
+  useEmail: boolean
+  useNickname: boolean
 }
 
 interface Props {
@@ -25,6 +30,10 @@ const RegistForm = ({ message, step, onSubmit, disabled }: Props): JSX.Element =
   const [phoneCheck, setPhoneCheck] = useState('')
   const [password, setPassword] = useState('')
   const [passwordCheck, setPasswordCheck] = useState('')
+  const [nickname, setNickname] = useState('')
+  const [email, setEmail] = useState('')
+  const [useNickname, setUseNickname] = useState(false)
+  const [useEmail, setUseEmail] = useState(false)
 
   const onFormSubmit = (e: FormEvent): void => {
     e.preventDefault()
@@ -35,7 +44,11 @@ const RegistForm = ({ message, step, onSubmit, disabled }: Props): JSX.Element =
       password,
       passwordCheck,
       phone,
-      phoneCheck
+      phoneCheck,
+      nickname,
+      email,
+      useEmail,
+      useNickname
     })
   }
 
@@ -48,7 +61,8 @@ const RegistForm = ({ message, step, onSubmit, disabled }: Props): JSX.Element =
             disabled={disabled || step === 1}
             maxLength={11}
             autoFocus
-            value={phone} onChange={(e) => setPhone(e.target.value.replace(/[^0-9]/g, ''))}
+            autoComplete="off"
+            value={phone} onChange={(e) => setPhone(e.target.value.replace(/[^\d]/g, ''))}
             id="registForm-phone" type="text"
             className={message?.phone ? style.invalid : ''}
             placeholder="전화번호를 입력해주세요. ( - 제외 )"/>
@@ -81,6 +95,7 @@ const RegistForm = ({ message, step, onSubmit, disabled }: Props): JSX.Element =
               value={phoneCheck} onChange={(e) => setPhoneCheck(e.target.value.toUpperCase())}
               id="registForm-phoneCheck" type="text"
               autoFocus
+              autoComplete="off"
               className={message?.phoneCheck ? style.invalid : ''}
               placeholder="인증번호를 입력해주세요. (6자리)"/>
 
@@ -108,8 +123,14 @@ const RegistForm = ({ message, step, onSubmit, disabled }: Props): JSX.Element =
             <input
               disabled={disabled}
               value={id} onChange={(e) => setId(e.target.value)}
+              className={message?.login ? style.invalid : ''}
               autoFocus id="registForm-login"
+              autoComplete="off"
               type="text" placeholder="아이디를 입력해주세요." />
+
+            <AnimatePresence>
+              {message && <FadeIn><p>{message.login}</p></FadeIn>}
+            </AnimatePresence>
           </div>
 
           <div>
@@ -118,7 +139,13 @@ const RegistForm = ({ message, step, onSubmit, disabled }: Props): JSX.Element =
               disabled={disabled}
               value={password} onChange={(e) => setPassword(e.target.value)}
               id="registForm-pw"
+              autoComplete="off"
+              className={message?.pw ? style.invalid : ''}
               type="password" placeholder="비밀번호를 입력해주세요." />
+
+            <AnimatePresence>
+              {message && <FadeIn><p>{message.pw}</p></FadeIn>}
+            </AnimatePresence>
           </div>
 
           <div>
@@ -127,7 +154,13 @@ const RegistForm = ({ message, step, onSubmit, disabled }: Props): JSX.Element =
               disabled={disabled}
               value={passwordCheck} onChange={(e) => setPasswordCheck(e.target.value)}
               id="registForm-pwchk" type="password"
+              autoComplete="off"
+              className={message?.pwchk ? style.invalid : ''}
               placeholder="비밀번호를 다시 한번 입력해주세요."/>
+
+            <AnimatePresence>
+              {message && <FadeIn><p>{message.pwchk}</p></FadeIn>}
+            </AnimatePresence>
           </div>
 
           <button disabled={disabled} type="submit">
@@ -142,6 +175,70 @@ const RegistForm = ({ message, step, onSubmit, disabled }: Props): JSX.Element =
         </>
       )}
 
+      {step === 3 && (
+        <>
+          <div>
+            <label htmlFor="registForm-nickname">닉네임 (선택)</label>
+            <div>
+              <input
+                disabled={disabled || !useNickname}
+                value={useNickname ? nickname : id} onChange={(e) => setNickname(e.target.value)}
+                className={message?.nickname ? style.invalid : ''}
+                autoFocus id="registForm-nickname"
+                autoComplete="off"
+                type="text" placeholder="실명 대신 당신을 누구라고 부를까요?" />
+
+              <AnimatePresence>
+                {message && <FadeIn><p>{message.nickname}</p></FadeIn>}
+              </AnimatePresence>
+            </div>
+            <div className={style.remindme}>
+              <input
+                disabled={disabled}
+                checked={!useNickname}
+                onChange={(e) => setUseNickname(!e.target.checked)}
+                type="checkbox" name="useNickname" id="registForm-useNickname" />
+
+              <label htmlFor="registForm-useNickname">아이디를 닉네임으로 쓸래요</label>
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="registForm-email">이메일 (선택)</label>
+            <input
+              disabled={disabled || !useEmail}
+              value={useEmail ? email : `${id}@gbsw.hs.kr`} onChange={(e) => setEmail(e.target.value)}
+              id="registForm-email"
+              autoComplete="off"
+              className={message?.email ? style.invalid : ''}
+              type="email" placeholder="이메일을 입력해주세요." />
+
+            <div className={style.remindme}>
+              <input
+                disabled={disabled}
+                checked={!useEmail}
+                onChange={(e) => setUseEmail(!e.target.checked)}
+                type="checkbox" name="useEmail" id="registForm-useEmail" />
+
+              <label htmlFor="registForm-useEmail">익명 이메일을 사용할래요</label>
+            </div>
+
+            <AnimatePresence>
+              {message && <FadeIn><p>{message.email}</p></FadeIn>}
+            </AnimatePresence>
+          </div>
+
+          <button disabled={disabled} type="submit">
+            {!disabled && <FaRocket size={15} />}
+            {disabled && (
+              <>
+                <HashLoader size={20} />
+                계정 생성중...
+              </>
+            )}
+          </button>
+        </>
+      )}
     </form>
   )
 }
