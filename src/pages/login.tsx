@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import type { HeadFC } from 'gatsby'
 import LoginHeader from '../components/login/header'
 import Container from '../components/commons/container'
@@ -10,8 +10,23 @@ import FadeIn from '../components/commons/fadeIn'
 
 const LoginPage = (): JSX.Element => {
   const [selectedType, setSelectedType] = useState(LoginSelectableTypes.CURRENT_STUDENT)
-  const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(true)
   const [message, setMessage] = useState<{ [key: string]: string } | undefined>()
+  const [me, setMe] = useState({})
+  const [step, setStep] = useState(0)
+
+  const fetchMe = async (): Promise<void> => {
+    const result = await fetch('/api/users/@me')
+      .then(async (res) => await res.json())
+
+    if (!result?.data?.me) {
+      setDisabled(false)
+      return
+    }
+
+    setMe(result.data.me)
+    setStep(1)
+  }
 
   const onSubmit = async (data: LoginFormData): Promise<void> => {
     setDisabled(true)
@@ -71,8 +86,15 @@ const LoginPage = (): JSX.Element => {
       setTimeout(() => {
         setMessage(undefined)
       }, 3 * 1000)
+      return
     }
+
+    void fetchMe()
   }
+
+  useEffect(() => {
+    void fetchMe()
+  }, [])
 
   return (
     <main>
@@ -81,7 +103,9 @@ const LoginPage = (): JSX.Element => {
           <LoginHeader />
           <LoginTypeSelector disabled={disabled} onSelect={(v) => setSelectedType(v)} />
           <LoginLogoTitle />
-          <LoginForm message={message}onSubmit={onSubmit} disabled={disabled}/>
+          {step === 0 && (
+            <LoginForm message={message} onSubmit={onSubmit} disabled={disabled}/>
+          )}
           <LoginLinks />
         </FadeIn>
       </Container>
