@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 10px 40px;
-  gap: 15px;
+  gap: 30px;
   background-color: #fff;
   user-select: none;
 
@@ -83,6 +83,12 @@
     }
   }
 
+  input.invalid {
+    border-bottom: #eb1923 1px solid;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
   button[type="submit"] {
     cursor: pointer;
     background-color: #2a9cd4;
@@ -104,5 +110,12 @@
     &:focus {
       outline: none;
     }
+  }
+
+  p {
+    position: absolute;
+    color: #eb1923;
+    transform: translate(10px, -10px);
+    font-size: 11px;
   }
 }

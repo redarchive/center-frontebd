@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { HeadFC, navigate } from 'gatsby'
 import Container from '../components/commons/container'
 import FadeIn from '../components/commons/fadeIn'
@@ -277,7 +277,7 @@ const RegistPage = (): JSX.Element => {
             color: '#fff'
           }
         })
-        await navigate('/login')
+        await navigate('/login' + window.location.search)
         return
       }
 
@@ -310,15 +310,16 @@ const RegistPage = (): JSX.Element => {
     }
   }
 
+  useEffect(() => {
+    setStep(0)
+  }, [selectedType])
+
   return (
     <main>
       <Container size="sm">
         <FadeIn>
           <RegistHeader />
-          <RegistTypeSelector disabled={disabled} onSelect={(v) => {
-            setStep(0)
-            setSelectedType(v)
-          }} />
+          <RegistTypeSelector disabled={disabled} onSelect={setSelectedType} />
           <RegistLogoTitle />
           <RegistForm message={message} step={step} onSubmit={onSubmit} disabled={disabled}/>
           <RegistLinks />
