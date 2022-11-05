@@ -1,0 +1,33 @@
+.school {
+  overflow: visible !important;
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #9E9EA7 !important;
+  }
+  ::after {
+    font-size: 18px !important;
+    font-weight: 900;
+    width: 14px !important;
+  }
+  .swiper-button-prev {
+    left: auto !important;
+    right: 24px !important;
+    top: -24px;
+  }
+  .swiper-button-next {
+    right: 0px !important;
+    top: -24px;
+  }
+}
+
+@media screen and (max-width:576px) {
+  .school {
+    .swiper-button-prev {
+      display: none !important;
+    }
+    
+    .swiper-button-next {
+      display: none !important;
+    }
+  }
+}

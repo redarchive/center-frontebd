@@ -1,12 +1,46 @@
 @import '@fontsource/noto-sans-kr/300.css';
 @import '@fontsource/noto-sans-kr/400.css';
+@import '@fontsource/noto-sans-kr/500.css';
 @import '@fontsource/noto-sans-kr/700.css';
+@import '@fontsource/noto-sans-kr/900.css';
 
-html, body {
+:root {
+  --main-bg: #fff;
+  --sub-bg: #f5f5f5;
+  --secondary-bg: #F1F1F5; 
+  --text-primary: #191919;
+  --text-secondary: #9E9EA7;;
+  --main-border: #F1F1F5;
+  --sub-border: #E4E8E8;
+  --accent: #2A9CD4;
+}
+
+[data-theme='dark'] {
+  --main-bg: #2A2725;
+  --sub-bg: #312E2C;
+  --secondary-bg: #373737; 
+  --text-primary: #fff;
+  --text-secondary: #9E9EA7;;
+  --main-border: #373737;
+  --sub-border: #474747;
+  --accent: #2A9CD4;
+}
+
+* {
   padding: 0;
   margin: 0;
-
+  font-size: 14px;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
   font-family: 'Noto Sans KR', Arial, Helvetica, sans-serif;
-  background-color: #f5f5f5;
-  font-size: 13px;
+  transition: all .35s;
 }
+html, body {
+  background-color: #f5f5f5;
+}
+
+.main {
+  background: var(--main-bg) !important;
+}
+

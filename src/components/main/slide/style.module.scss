@@ -1,0 +1,11 @@
+.slide {
+  margin-top: 80px;
+  .parts {
+    width: 100%;
+    height: 40em;
+    background: var(--sub-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

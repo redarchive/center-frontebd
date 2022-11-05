@@ -1,0 +1,19 @@
+.item__slide {
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: var(--text-secondary) !important;
+    &::after {
+      font-size: 36px !important;
+      font-weight: 900;
+      width: 14px !important;
+    }
+  }
+
+  .swiper-button-prev {
+    left: 24px !important;
+  }
+
+  .swiper-button-next {
+    right: 24px !important;
+  }
+}

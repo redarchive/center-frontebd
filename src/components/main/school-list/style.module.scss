@@ -1,0 +1,105 @@
+.school {
+  overflow: hidden;
+  margin-top: 48px;
+  padding: 0 120px;
+  padding-bottom: 40px;
+  .title {
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 14px;      
+  }
+  .card {
+    position: relative;
+    display: flex;
+    height: 21em;
+    border-radius: 5px;
+    background: var(--main-bg);
+    border: 1px solid var(--sub-border);
+    .main {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      >div {
+        border-radius: 5px;
+        background: var(--sub-bg);
+      }
+      .pc {
+        width: calc(100% - 40px);
+        height: 14em;
+      }
+      .mobile {
+        width: 140px;
+        height: 240px;
+      }
+    }
+    .sub {
+      position: absolute;
+      bottom: -30px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .profile {
+        display: flex;
+        align-items: center;
+        .profile__img {
+          color: #fff;
+          font-size: 11px;
+          width: 24px;
+          height: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: red;
+          border-radius: 50%;
+          border: 1px solid var(--sub-border);
+        }
+        .profile__name {
+          color: var(--text-primary);
+          margin-left: 6px;
+          font-weight: 500;
+        }
+      }
+      .day {
+        color: var(--text-secondary);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1456px) {
+  .school {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+// @media screen and (max-width: 1024px) {
+//   .school {
+//     padding-left: 48px;
+//     padding-right: 48px;
+//   }
+// }
+
+@media screen and (max-width: 768px) {
+  .school {
+    padding-left: 74px;
+    padding-right: 74px;
+  }
+}
+
+@media screen and (max-width: 586px) {
+  .school {
+    padding-left: 24px;
+    padding-right: 24px;
+    .card {
+      .main {
+        .pc {
+          height: 13em;
+        }
+      }
+    }
+  }
+}
