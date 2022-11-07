@@ -7,13 +7,22 @@ import LoginLogoTitle from '../components/login/logoTitle'
 import LoginForm, { LoginFormData } from '../components/login/form'
 import LoginLinks from '../components/login/links'
 import FadeIn from '../components/commons/fadeIn'
+import CriticalMessage from '../components/login/criticalMessage'
+import { useSearchParam } from 'react-use'
 
 const LoginPage = (): JSX.Element => {
+  const clientId = useSearchParam('client_id')
+  const redirectUri = useSearchParam('redirect_uri')
+  const scope = useSearchParam('scope')
+  const responseType = useSearchParam('response_type')
+  const state = useSearchParam('state')
+
   const [selectedType, setSelectedType] = useState(LoginSelectableTypes.CURRENT_STUDENT)
   const [disabled, setDisabled] = useState(true)
   const [message, setMessage] = useState<{ [key: string]: string } | undefined>()
-  const [me, setMe] = useState({})
-  const [step, setStep] = useState(0)
+  const [me, setMe] = useState(undefined)
+  const [client, setClient] = useState(undefined)
+  const [criticalMessage, setCriticalMessage] = useState<string | undefined>(undefined)
 
   const fetchMe = async (): Promise<void> => {
     const result = await fetch('/api/users/@me')
@@ -25,7 +34,71 @@ const LoginPage = (): JSX.Element => {
     }
 
     setMe(result.data.me)
-    setStep(1)
+  }
+
+  const fetchClient = async (): Promise<void> => {
+    if (clientId === null) {
+      setCriticalMessage('CRITICAL ERROR:\n`client_id` not provided.')
+      return
+    }
+
+    if (redirectUri === null) {
+      setCriticalMessage('CRITICAL ERROR:\n`redirect_uri` not provided.')
+      return
+    }
+
+    if (redirectUri === null) {
+      setCriticalMessage('CRITICAL ERROR:\n`redirect_uri` not provided.')
+      return
+    }
+
+    if (redirectUri === null) {
+      setCriticalMessage('CRITICAL ERROR:\n`redirect_uri` not provided.')
+      return
+    }
+
+    if (scope === null) {
+      setCriticalMessage('CRITICAL ERROR:\n`scope` not provided.')
+      return
+    }
+
+    if (responseType === null) {
+      setCriticalMessage('CRITICAL ERROR:\n`response_type` not provided.')
+      return
+    }
+
+    if (responseType !== 'code') {
+      setCriticalMessage('CRITICAL ERROR:\n`response_type` only supports `code`')
+      return
+    }
+
+    const scopes = scope.split(' ')
+    if (!scopes.includes('openid')) {
+      setCriticalMessage('CRITICAL ERROR:\n`scope` must have `openid` string')
+      return
+    }
+
+    const result = await fetch(`/api/clients/${clientId}`)
+      .then(async (res) => await res.json())
+
+    if (!result?.data?.client) {
+      setCriticalMessage('CRITICAL ERROR:\nClient not found. please check `client_id`')
+      return
+    }
+
+    if (!result.data.client.redirectUris.find((v: any) => v.uri === redirectUri)) {
+      setCriticalMessage('CRITICAL ERROR:\nProven `redirectUri` was not registed.')
+      return
+    }
+
+    for (const scope of scopes) {
+      if (!result.data.client.scopes.find((v: any) => v.type.toLowerCase() === scope)) {
+        setCriticalMessage(`CRITICAL_ERROR:\n\`${scope}\` scope is disabled on this client`)
+        return
+      }
+    }
+
+    setClient(result.data.client)
   }
 
   const onSubmit = async (data: LoginFormData): Promise<void> => {
@@ -94,19 +167,27 @@ const LoginPage = (): JSX.Element => {
 
   useEffect(() => {
     void fetchMe()
+    void fetchClient()
   }, [])
 
   return (
     <main>
       <Container size="sm">
         <FadeIn>
-          <LoginHeader />
+          {client && <LoginHeader client={client} />}
           <LoginTypeSelector disabled={disabled} onSelect={(v) => setSelectedType(v)} />
           <LoginLogoTitle />
-          {step === 0 && (
-            <LoginForm message={message} onSubmit={onSubmit} disabled={disabled}/>
+
+          {!criticalMessage && <>
+            {!me && (
+              <LoginForm message={message} onSubmit={onSubmit} disabled={disabled}/>
+            )}
+            <LoginLinks />
+          </>}
+
+          {criticalMessage && (
+            <CriticalMessage message={criticalMessage}/>
           )}
-          <LoginLinks />
         </FadeIn>
       </Container>
     </main>
