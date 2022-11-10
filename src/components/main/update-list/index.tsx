@@ -1,5 +1,6 @@
 import React from 'react'
 import * as style from './style.module.scss'
+import { Link } from 'gatsby'
 
 const Update = (): JSX.Element => {
   return (
@@ -13,9 +14,9 @@ const Update = (): JSX.Element => {
       </div>
       <div className={style.card__box}>
         <div className={style.card}>
-          <div className={style.main}>
+          <Link to='/' className={style.main}>
             <div className={style.mobile}></div>
-          </div>
+          </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>
@@ -25,9 +26,9 @@ const Update = (): JSX.Element => {
           </div>
         </div>
         <div className={style.card}>
-          <div className={style.main}>
+          <Link to='/' className={style.main}>
             <div className={style.mobile}></div>
-          </div>
+          </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>
@@ -37,9 +38,9 @@ const Update = (): JSX.Element => {
           </div>
         </div>
         <div className={style.card}>
-          <div className={style.main}>
+          <Link to='/' className={style.main}>
             <div className={style.mobile}></div>
-          </div>
+          </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>
@@ -49,9 +50,9 @@ const Update = (): JSX.Element => {
           </div>
         </div>
         <div className={style.card}>
-          <div className={style.main}>
+          <Link to='/' className={style.main}>
             <div className={style.pc}></div>
-          </div>
+          </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>
@@ -61,9 +62,9 @@ const Update = (): JSX.Element => {
           </div>
         </div>
         <div className={style.card}>
-          <div className={style.main}>
+          <Link to='/' className={style.main}>
             <div className={style.pc}></div>
-          </div>
+          </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>
@@ -73,9 +74,9 @@ const Update = (): JSX.Element => {
           </div>
         </div>
         <div className={style.card}>
-          <div className={style.main}>
+          <Link to='/' className={style.main}>
             <div className={style.mobile}></div>
-          </div>
+          </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>
@@ -85,9 +86,9 @@ const Update = (): JSX.Element => {
           </div>
         </div>
         <div className={style.card}>
-          <div className={style.main}>
+          <Link to='/' className={style.main}>
             <div className={style.pc}></div>
-          </div>
+          </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>
@@ -97,9 +98,9 @@ const Update = (): JSX.Element => {
           </div>
         </div>
         <div className={style.card}>
-          <div className={style.main}>
+          <Link to='/' className={style.main}>
             <div className={style.pc}></div>
-          </div>
+          </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>
@@ -109,9 +110,9 @@ const Update = (): JSX.Element => {
           </div>
         </div>
         <div className={style.card}>
-          <div className={style.main}>
+          <Link to='/' className={style.main}>
             <div className={style.pc}></div>
-          </div>
+          </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>

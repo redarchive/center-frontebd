@@ -1,45 +1,63 @@
-.update {
-  margin-top: 48px;
-  padding: 0 120px;
-  .title {
-    color: var(--text-primary);
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;      
-  }
+.item__list {
+  padding: 0 240px;
   .categorys {
     display: flex;
     margin-bottom: 14px;
     overflow-x: auto;
+    padding-bottom: 24px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--sub-border);
+    &::-webkit-scrollbar {
+      display: none;
+    }
     > div {
       cursor: pointer;
       font-size: 1;
       font-weight: 500;
       white-space: nowrap;
-      padding: 8px 14px;
       border-radius: 30px;
-      margin-left: 11px;
+      margin-left: 24px;
+      display: flex;
+      align-items: center;
+      &::after {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        margin-left: 6px;
+        border-radius: 50%;
+        background: var(--sub-bg);
+      }
     }
     >div:nth-child(1) {
       margin-left: 0;
     }
+    >div:nth-child(2) {
+      &::after {
+        content: '4';
+      }
+    }
+    >div:nth-child(3) {
+      &::after {
+        content: '4';
+      }
+    }
     .click {
       color: var(--accent);
-      background: rgba($color: #2A9CD4, $alpha: .4);
+      &::after {
+        content: '8';
+      }
     }
     .category {
       color: var(--text-secondary);
-      background: var(--sub-bg);
     }
-  }
-  ::-webkit-scrollbar {
-    display: none;
   }
   .card__box {
     display: grid;
     column-gap: 40px;
     row-gap: 20px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     .card {
       position: relative;
       display: flex;
@@ -66,55 +84,12 @@
           height: 240px;
         }
       }
-      .sub {
-        position: absolute;
-        bottom: -30px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .profile {
-          display: flex;
-          align-items: center;
-          .profile__img {
-            color: #fff;
-            font-size: 11px;
-            font-weight: 500;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: red;
-            border-radius: 50%;
-          }
-          .profile__name {
-            color: var(--text-primary);
-            margin-left: 6px;
-            font-weight: 500;
-          }
-        }
-        .day {
-          color: var(--text-secondary);
-        }
-      }
-    }
-  }
-  .update__btn {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    a {
-      color: var(--text-secondary);
-      padding: 15px 86px;
-      background: var(--sub-bg);
-      border-radius: 5px;
     }
   }
 }
 
 @media screen and (max-width: 1456px) {
-  .update {
+  .item__list {
     padding-left: 48px;
     padding-right: 48px;
     .card__box {
@@ -124,7 +99,7 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .update {
+  .item__list {
     .card__box {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -132,7 +107,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .update {
+  .item__list {
     padding-left: 74px;
     padding-right: 74px;
     .card__box {
@@ -142,7 +117,7 @@
 }
 
 @media screen and (max-width: 586px) {
-  .update {
+  .item__list {
     padding-left: 24px;
     padding-right: 24px;
     .card__box {
@@ -152,16 +127,6 @@
             height: 13em;
           }
         }
-      }
-    }
-    .update__btn {
-      a {
-        color: var(--text-secondary);
-        width: 100%;
-        padding: 15px 0;
-        background: var(--sub-bg);
-        text-align: center;
-        border-radius: 5px;
       }
     }
   }

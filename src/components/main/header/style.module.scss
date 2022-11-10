@@ -1,6 +1,7 @@
 html,
 body,
 main {
+  min-width: 280px;
   max-width: 1920px;
   margin: 0 auto;
   position: relative;
@@ -8,6 +9,10 @@ main {
 
 .none {
   display: none;
+}
+
+.back {
+  height: 80px;
 }
 
 .header {
@@ -29,8 +34,8 @@ main {
   }
   .toggle {
     position: fixed;
-    right: 120px;
-    bottom: 148px;
+    right: 48px;
+    bottom: 48px;
     cursor: pointer;
     display: block;
     width: 48px;
@@ -100,18 +105,18 @@ main {
       li.click {
         a {
           color: var(--accent);
-        }
-        ::after {
-          content: '';
-          position: absolute;
-          left: 50%;
-          bottom: 0;
-          transform: translateX(-50%);
-          width: 30px;
-          height: 3px;
-          display: block;
-          background: var(--accent);
-          border-radius: 30px;
+          &::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            display: block;
+            background: var(--accent);
+            border-radius: 30px;
+          }
         }
       }
     }
@@ -131,7 +136,7 @@ main {
         transition: all .15s;
       }
       :checked + .search__btn {
-        background: blue;
+        background: red;
         transition: all .15s;
       }
       :checked ~ .search__box {
@@ -160,9 +165,9 @@ main {
           border: none;
           background: var(--main-border);
           padding-left: 54px;
-        }
-        ::placeholder {
-          color: var(--text-secondary);
+          &::placeholder {
+            color: var(--text-secondary);
+          }
         }
         button {
           position: absolute;

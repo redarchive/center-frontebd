@@ -1,7 +1,7 @@
 import React from 'react'
 import * as style from './style.module.scss'
 
-const ItemTextbox = (): JSX.Element => {
+const Textbox = (): JSX.Element => {
   return (
     <div className={style.item__textbox}>
       <div className={style.title}>설명</div>
@@ -22,4 +22,4 @@ const ItemTextbox = (): JSX.Element => {
   )
 }
 
-export default ItemTextbox
+export default Textbox

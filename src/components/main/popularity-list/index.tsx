@@ -11,13 +11,9 @@ import 'swiper/css/navigation'
 
 // import required modules
 import { Navigation, History } from 'swiper'
+import { Link } from 'gatsby'
 
-interface Props {
-  item: boolean
-  setItem: (v: boolean) => any
-}
-
-const Popularity = ({ item, setItem }: Props): JSX.Element => {
+const Popularity = (): JSX.Element => {
   return (
     <div className={style.popularity}>
         <div className={style.title}>TOP10</div>
@@ -50,9 +46,9 @@ const Popularity = ({ item, setItem }: Props): JSX.Element => {
         <SwiperSlide>
           <div className={style.card}>
             <div className={style.top}>
-              <div className={style.first}></div>
-              <div className={style.second}></div>
-              <div className={style.profile}>앙</div>
+              <Link to='/' className={style.first}></Link>
+              <Link to='/' className={style.second}></Link>
+              <Link to='/' className={style.profile}>앙</Link>
             </div>
             <div className={style.bottom}>
               <div className={style.name}>앙무일</div>
@@ -64,9 +60,9 @@ const Popularity = ({ item, setItem }: Props): JSX.Element => {
         <SwiperSlide>
           <div className={style.card}>
             <div className={style.top}>
-              <div className={style.first}></div>
-              <div className={style.second}></div>
-              <div className={style.profile}>박</div>
+              <Link to='/' className={style.first}></Link>
+              <Link to='/' className={style.second}></Link>
+              <Link to='/' className={style.profile}>박</Link>
             </div>
             <div className={style.bottom}>
               <div className={style.name}>박민혁</div>
@@ -78,9 +74,9 @@ const Popularity = ({ item, setItem }: Props): JSX.Element => {
         <SwiperSlide>
           <div className={style.card}>
             <div className={style.top}>
-              <div className={style.first}></div>
-              <div className={style.second}></div>
-              <div className={style.profile}>윤</div>
+              <Link to='/' className={style.first}></Link>
+              <Link to='/' className={style.second}></Link>
+              <Link to='/' className={style.profile}>윤</Link>
             </div>
             <div className={style.bottom}>
               <div className={style.name}>윤서준</div>
@@ -92,9 +88,9 @@ const Popularity = ({ item, setItem }: Props): JSX.Element => {
         <SwiperSlide>
           <div className={style.card}>
             <div className={style.top}>
-              <div className={style.first}></div>
-              <div className={style.second}></div>
-              <div className={style.profile}>김</div>
+              <Link to='/' className={style.first}></Link>
+              <Link to='/' className={style.second}></Link>
+              <Link to='/' className={style.profile}>김</Link>
             </div>
             <div className={style.bottom}>
               <div className={style.name}>짱무일</div>
@@ -106,9 +102,9 @@ const Popularity = ({ item, setItem }: Props): JSX.Element => {
         <SwiperSlide>
           <div className={style.card}>
             <div className={style.top}>
-              <div className={style.first}></div>
-              <div className={style.second}></div>
-              <div className={style.profile}>김</div>
+              <Link to='/' className={style.first}></Link>
+              <Link to='/' className={style.second}></Link>
+              <Link to='/' className={style.profile}>김</Link>
             </div>
             <div className={style.bottom}>
               <div className={style.name}>김무일</div>
@@ -120,9 +116,9 @@ const Popularity = ({ item, setItem }: Props): JSX.Element => {
         <SwiperSlide>
           <div className={style.card}>
             <div className={style.top}>
-              <div className={style.first}></div>
-              <div className={style.second}></div>
-              <div className={style.profile}>박</div>
+              <Link to='/' className={style.first}></Link>
+              <Link to='/' className={style.second}></Link>
+              <Link to='/' className={style.profile}>박</Link>
             </div>
             <div className={style.bottom}>
               <div className={style.name}>박민혁</div>
@@ -134,9 +130,9 @@ const Popularity = ({ item, setItem }: Props): JSX.Element => {
         <SwiperSlide>
           <div className={style.card}>
             <div className={style.top}>
-              <div className={style.first}></div>
-              <div className={style.second}></div>
-              <div className={style.profile}>윤</div>
+              <Link to='/' className={style.first}></Link>
+              <Link to='/' className={style.second}></Link>
+              <Link to='/' className={style.profile}>윤</Link>
             </div>
             <div className={style.bottom}>
               <div className={style.name}>윤서준</div>
@@ -148,9 +144,9 @@ const Popularity = ({ item, setItem }: Props): JSX.Element => {
         <SwiperSlide>
           <div className={style.card}>
             <div className={style.top}>
-              <div className={style.first}></div>
-              <div className={style.second}></div>
-              <div className={style.profile}>김</div>
+              <Link to='/' className={style.first}></Link>
+              <Link to='/' className={style.second}></Link>
+              <Link to='/' className={style.profile}>김</Link>
             </div>
             <div className={style.bottom}>
               <div className={style.name}>짱무일</div>
@@ -162,9 +158,9 @@ const Popularity = ({ item, setItem }: Props): JSX.Element => {
         <SwiperSlide>
           <div className={style.card}>
             <div className={style.top}>
-              <div className={style.first}></div>
-              <div className={style.second}></div>
-              <div className={style.profile}>김</div>
+              <Link to='/' className={style.first}></Link>
+              <Link to='/' className={style.second}></Link>
+              <Link to='/' className={style.profile}>김</Link>
             </div>
             <div className={style.bottom}>
               <div className={style.name}>김무일</div>
@@ -176,9 +172,9 @@ const Popularity = ({ item, setItem }: Props): JSX.Element => {
         <SwiperSlide>
           <div className={style.card}>
             <div className={style.top}>
-              <div className={style.first}></div>
-              <div className={style.second}></div>
-              <div className={style.profile}>박</div>
+              <Link to='/' className={style.first}></Link>
+              <Link to='/' className={style.second}></Link>
+              <Link to='/' className={style.profile}>박</Link>
             </div>
             <div className={style.bottom}>
               <div className={style.name}>박민혁</div>

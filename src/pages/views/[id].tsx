@@ -1,13 +1,13 @@
 import React from 'react'
-import { HeadFC, Link } from 'gatsby'
-import MainHeader from '../components/main/header'
-import MainSlide from '../components/main/slide'
-import MainPopularityList from '../components/main/popularity-list'
-import MainSchoolList from '../components/main/school-list'
-import MainUpdateList from '../components/main/update-list'
-import MainFooter from '../components/main/footer'
+import type { HeadFC } from 'gatsby'
+import MainHeader from '../../components/main/header'
+import MainSlide from '../../components/main/slide'
+import MainPopularityList from '../../components/main/popularity-list'
+import MainSchoolList from '../../components/main/school-list'
+import MainUpdateList from '../../components/main/update-list'
+import MainFooter from '../../components/main/footer'
+import MainItem from '../../components/main/item'
 import { useLocalStorage } from 'react-use'
-import MainProfile from '../components/main/profile'
 
 const IndexPage = (): JSX.Element => {
   const [mode, setMode] = useLocalStorage('light', false)
@@ -19,8 +19,8 @@ const IndexPage = (): JSX.Element => {
       <MainPopularityList />
       <MainSchoolList />
       <MainUpdateList />
-      <MainProfile />
       <MainFooter />
+      <MainItem />
     </main>
   )
 }
