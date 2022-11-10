@@ -9,13 +9,14 @@ import LoginLinks from '../components/login/links'
 import FadeIn from '../components/commons/fadeIn'
 import CriticalMessage from '../components/login/criticalMessage'
 import { useSearchParam } from 'react-use'
+import ConfirmForm from '../components/login/confirmForm'
 
 const LoginPage = (): JSX.Element => {
   const clientId = useSearchParam('client_id')
   const redirectUri = useSearchParam('redirect_uri')
   const scope = useSearchParam('scope')
   const responseType = useSearchParam('response_type')
-  const state = useSearchParam('state')
+  const nonce = useSearchParam('nonce')
 
   const [selectedType, setSelectedType] = useState(LoginSelectableTypes.CURRENT_STUDENT)
   const [disabled, setDisabled] = useState(true)
@@ -52,13 +53,13 @@ const LoginPage = (): JSX.Element => {
       return
     }
 
-    if (redirectUri === null) {
-      setCriticalMessage('CRITICAL ERROR:\n`redirect_uri` not provided.')
+    if (scope === null) {
+      setCriticalMessage('CRITICAL ERROR:\n`scope` not provided.')
       return
     }
 
-    if (scope === null) {
-      setCriticalMessage('CRITICAL ERROR:\n`scope` not provided.')
+    if (nonce === null) {
+      setCriticalMessage('CRITICAL ERROR:\n`nonce` not provided.')
       return
     }
 
@@ -67,8 +68,8 @@ const LoginPage = (): JSX.Element => {
       return
     }
 
-    if (responseType !== 'code') {
-      setCriticalMessage('CRITICAL ERROR:\n`response_type` only supports `code`')
+    if (responseType !== 'id_token') {
+      setCriticalMessage('CRITICAL ERROR:\n`response_type` only supports `id_token`')
       return
     }
 
@@ -162,7 +163,7 @@ const LoginPage = (): JSX.Element => {
       return
     }
 
-    void fetchMe()
+    window.location.reload()
   }
 
   useEffect(() => {
@@ -179,9 +180,10 @@ const LoginPage = (): JSX.Element => {
           <LoginLogoTitle />
 
           {!criticalMessage && <>
-            {!me && (
-              <LoginForm message={message} onSubmit={onSubmit} disabled={disabled}/>
-            )}
+            {!me
+              ? <LoginForm message={message} onSubmit={onSubmit} disabled={disabled}/>
+              : <ConfirmForm client={client} />}
+
             <LoginLinks />
           </>}
 

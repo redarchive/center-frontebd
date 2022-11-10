@@ -1,0 +1,31 @@
+.form {
+  background-color: white;
+  padding: 20px 45px;
+
+  .scope {
+    margin: 10px 0px;
+
+    h2 {
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+    
+    p {
+      background-color: #f5f5f5;
+      padding: 10px;
+    }
+  } 
+
+  button {
+    background-color: #2a9cd4;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    padding: 10px 30px;
+  }
+
+  a {
+    margin-left: 10px;
+  }
+}
