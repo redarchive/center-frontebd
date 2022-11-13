@@ -16,12 +16,10 @@ const config: GatsbyConfig = {
   ],
   developMiddleware: (app) => {
     app.use('/api', createProxyMiddleware({
-      target: 'http://127.0.0.1:3000',
-      pathRewrite: {
-        '/api': ''
-      }
+      target: 'http://127.0.0.1:3000'
     }))
-  }
+  },
+  trailingSlash: 'never'
 }
 
 export default config
