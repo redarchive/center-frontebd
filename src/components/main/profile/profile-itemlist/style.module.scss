@@ -47,6 +47,8 @@
       color: var(--accent);
       &::after {
         content: '8';
+        color: var(--main-bg);
+        background: var(--accent);
       }
     }
     .category {

@@ -5,9 +5,9 @@ import MainSlide from '../components/main/slide'
 import MainPopularityList from '../components/main/popularity-list'
 import MainSchoolList from '../components/main/school-list'
 import MainUpdateList from '../components/main/update-list'
+import MainProfile from '../components/main/profile'
 import MainFooter from '../components/main/footer'
 import { useLocalStorage } from 'react-use'
-import MainProfile from '../components/main/profile'
 
 const IndexPage = (): JSX.Element => {
   const [mode, setMode] = useLocalStorage('light', false)
