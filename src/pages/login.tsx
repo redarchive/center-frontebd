@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import type { HeadFC } from 'gatsby'
+import { HeadFC, navigate } from 'gatsby'
 import LoginHeader from '../components/login/header'
 import Container from '../components/commons/container'
 import LoginTypeSelector, { LoginSelectableTypes } from '../components/login/typeSelector'
@@ -16,13 +16,14 @@ const LoginPage = (): JSX.Element => {
   const redirectUri = useSearchParam('redirect_uri')
   const scope = useSearchParam('scope')
   const responseType = useSearchParam('response_type')
+  const internal = useSearchParam('internal')
   const nonce = useSearchParam('nonce')
 
   const [selectedType, setSelectedType] = useState(LoginSelectableTypes.CURRENT_STUDENT)
   const [disabled, setDisabled] = useState(true)
   const [message, setMessage] = useState<{ [key: string]: string } | undefined>()
   const [me, setMe] = useState(undefined)
-  const [client, setClient] = useState(undefined)
+  const [client, setClient] = useState<any>(undefined)
   const [criticalMessage, setCriticalMessage] = useState<string | undefined>(undefined)
 
   const fetchMe = async (): Promise<void> => {
@@ -34,10 +35,22 @@ const LoginPage = (): JSX.Element => {
       return
     }
 
+    if (internal === '✔') {
+      void navigate('/')
+      return
+    }
+
     setMe(result.data.me)
   }
 
   const fetchClient = async (): Promise<void> => {
+    if (internal === '✔') {
+      setClient({
+        name: '경소고 스토어'
+      })
+      return
+    }
+
     if (clientId === null) {
       setCriticalMessage('CRITICAL ERROR:\n`client_id` not provided.')
       return
@@ -160,6 +173,11 @@ const LoginPage = (): JSX.Element => {
       setTimeout(() => {
         setMessage(undefined)
       }, 3 * 1000)
+      return
+    }
+
+    if (internal === '✔') {
+      void navigate('/')
       return
     }
 
