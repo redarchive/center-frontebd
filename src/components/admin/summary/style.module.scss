@@ -1,0 +1,42 @@
+.summary {
+  background-color: white;
+  border-radius: 5px;
+  padding: 25px 40px;
+
+  li {
+    list-style: disc inside;
+  }
+
+  .right {
+    display: flex;
+    justify-content: end;
+    gap: 5px;
+
+    button {
+      cursor: pointer;
+      background-color: #2a9cd4;
+      color: #fff;
+      transition: all 0.1s ease-in;
+      border: none;
+      border-radius: 5px;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      
+      &.loading {
+        cursor: wait;
+        background-color: #ececed;
+        color: #000;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &.secondary {
+        background-color: #999;
+      }
+    }
+  }
+}
