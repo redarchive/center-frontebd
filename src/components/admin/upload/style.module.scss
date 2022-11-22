@@ -23,5 +23,9 @@
     &:hover {
       transform: scale(1.05);
     }
+
+    &.loading {
+      opacity: 0.5;
+    }
   }
 }
