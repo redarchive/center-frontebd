@@ -12,14 +12,13 @@ export interface ForgotPWFormData {
 }
 
 interface Props {
-  id?: string
   onSubmit: (data: ForgotPWFormData) => any
   disabled: boolean
   step?: number
   message?: { [key: string]: string }
 }
 
-const ForgotPWForm = ({ id, onSubmit, disabled, step = 0, message }: Props): JSX.Element => {
+const ForgotPWForm = ({ onSubmit, disabled, step = 0, message }: Props): JSX.Element => {
   const [phone, setPhone] = useState('')
   const [code, setCode] = useState('')
   const [password, setPassword] = useState('')
@@ -39,23 +38,13 @@ const ForgotPWForm = ({ id, onSubmit, disabled, step = 0, message }: Props): JSX
 
   return (
     <form onSubmit={onFormSubmit} className={style.forgotPWForm}>
-      {step > 0 && (
-        <div>
-          <label htmlFor="forgotPWForm-login">아이디</label>
-          <input
-            disabled value={id}
-            autoFocus id="forgotPWForm-login"
-            type="text" />
-        </div>
-      )}
-
       {step < 2 && (
         <>
           <div>
             <label htmlFor="forgotPWForm-phone">전화번호</label>
             <input
               disabled={disabled || step > 0}
-              value={phone} onChange={(e) => setPhone(e.target.value)}
+              value={phone} onChange={(e) => setPhone(e.target.value.replace(/[^\d]/g, ''))}
               id="forgotPWForm-phone" type="text"
               autoFocus
               autoComplete='off'
@@ -88,7 +77,7 @@ const ForgotPWForm = ({ id, onSubmit, disabled, step = 0, message }: Props): JSX
             <label htmlFor="forgotPWForm-code">인증코드</label>
             <input
               disabled={disabled}
-              value={code} onChange={(e) => setCode(e.target.value)}
+              value={code} onChange={(e) => setCode(e.target.value.toUpperCase())}
               id="forgotPWForm-code" type="text"
               autoFocus
               autoComplete='off'
