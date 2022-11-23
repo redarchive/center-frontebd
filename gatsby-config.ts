@@ -12,7 +12,20 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     'gatsby-plugin-sass',
-    'gatsby-plugin-pnpm'
+    'gatsby-plugin-pnpm',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: '경북소프트웨어고 포트폴리오',
+        short_name: '경소고 포트폴리오',
+        start_url: '/',
+        background_color: '#f5f5f5',
+        theme_color: '#2A9CD4',
+        display: 'standalone',
+        icon: 'src/favicon.svg',
+        cache_busting_mode: 'none'
+      }
+    }
   ],
   developMiddleware: (app) => {
     app.use('/api', createProxyMiddleware({

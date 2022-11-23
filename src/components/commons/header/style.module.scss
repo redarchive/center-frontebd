@@ -88,35 +88,35 @@ main {
       background: var(--main-bg);
       li {
         position: relative;
-        padding: 8px 14px;
         white-space: nowrap;
-        border-radius: 3px;
         transition: all .15s;
+        padding: 8px 0px;
+        border-radius: 3px;
         a {
+          padding: 8px 14px;
           color: var(--text-secondary);
           font-weight: 500;
         }
       }
-      :hover {
+      li:hover {
         background: var(--main-border);
         transition: all .15s;
-    
       }
       li.click {
         a {
           color: var(--accent);
-          &::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 3px;
-            display: block;
-            background: var(--accent);
-            border-radius: 30px;
-          }
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          bottom: 0;
+          transform: translateX(-50%);
+          width: 30px;
+          height: 3px;
+          display: block;
+          background: var(--accent);
+          border-radius: 30px;
         }
       }
     }

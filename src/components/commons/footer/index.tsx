@@ -11,7 +11,7 @@ const Footer = (): JSX.Element => {
       </div>
       <div className={style.right}>
         <div><span>174</span>개의 작품이 등록되어 있습니다. <img src={Logo} alt="logo" /></div>
-        <div>학교 홈페이지로 이동 : <a href="/">http://school.gyo6.net/gbsw</a></div>
+        <div>학교 홈페이지로 이동 : <a href="http://school.gyo6.net/gbswhs">http://school.gyo6.net/gbsw</a></div>
       </div>
     </div>
   )
