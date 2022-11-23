@@ -177,7 +177,7 @@ const LoginPage = (): JSX.Element => {
     }
 
     if (internal === '✔') {
-      void navigate('/')
+      void window.location.assign('/')
       return
     }
 
