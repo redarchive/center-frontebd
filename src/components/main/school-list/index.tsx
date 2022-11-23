@@ -13,7 +13,11 @@ import 'swiper/css/navigation'
 import { Link } from 'gatsby'
 import { Navigation, History } from 'swiper'
 
-const School = (): JSX.Element => {
+interface Props {
+  onView: (id: number) => any
+}
+
+const School = ({ onView }: Props): JSX.Element => {
   return (
     <div className={style.school}>
         <div className={style.title}>학교 프로젝트</div>
@@ -45,9 +49,9 @@ const School = (): JSX.Element => {
       >
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/1' className={style.main}>
+            <div onClick={() => onView(1)} className={style.main}>
               <div className={style.pc}></div>
-            </Link>
+            </div>
             <div className={style.sub}>
               <div className={style.profile}>
                 <div className={style.profile__img}>김</div>

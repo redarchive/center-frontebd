@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import * as style from './style.module.scss'
 import Logo from './assets/symbol-logo.svg'
 import { Link } from 'gatsby'
