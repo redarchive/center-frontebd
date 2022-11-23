@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import * as style from './style.module.scss'
 import Logo from './assets/symbol-logo.svg'
 import { Link } from 'gatsby'
+import { useLocation } from '@reach/router'
 
 interface Props {
   mode: boolean
@@ -9,6 +10,12 @@ interface Props {
 }
 
 const Header = ({ mode, setMode }: Props): JSX.Element => {
+  const location = useLocation()
+  const url = new URL(location.href)
+
+  const path = url.pathname
+  const type = url.searchParams.get('type')
+
   return (
     <>
       <div className={style.back}></div>
@@ -23,11 +30,12 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
             <h1>Store</h1>
           </Link>
           <ul className={style.nav}>
-            <li className={style.click}><Link to="/">홈</Link></li>
-            <li><Link to="/">카테고리</Link></li>
-            <li><Link to="/">앱</Link></li>
-            <li><Link to="/">게임</Link></li>
-            <li><Link to="/">학교 프로젝트</Link></li>
+            <li className={path === '/' && style.click}><Link to="/">홈</Link></li>
+            <li className={path === '/categories' && type === 'WEBSITE' && style.click}><Link to="/categories?type=WEBSITE">웹</Link></li>
+            <li className={path === '/categories' && type === 'MOBILE' && style.click}><Link to="/categories?type=MOBILE">앱</Link></li>
+            <li className={path === '/categories' && type === 'GAME' && style.click}><Link to="/categories?type=GAME">게임</Link></li>
+            <li className={path === '/categories' && type === 'DESKTOP' && style.click}><Link to="/categories?type=DESKTOP">데스크톱</Link></li>
+            <li className={path === '/categories' && type === 'PHYSICAL' && style.click}><Link to="/categories?type=PHYSICAL">IOT</Link></li>
           </ul>
         </div>
         <div className={style.right}>
@@ -41,8 +49,8 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
             <div className={style.search__back}></div>
           </div>
           <div className={style.links}>
-            <div className={style.login}><Link to="/">로그인</Link></div>
-            <div className={style.sign__up}><Link to="/">회원가입</Link></div>
+            <div className={style.login}><Link to="/login?internal=%E2%9C%94&scope=openid">로그인</Link></div>
+            <div className={style.sign__up}><Link to="/regist?internal=%E2%9C%94&scope=openid">회원가입</Link></div>
           </div>
         </div>
       </div>

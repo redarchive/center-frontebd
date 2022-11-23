@@ -1,0 +1,28 @@
+.download {
+  background-color: white;
+  padding: 40px 45px 20px 45px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  a {
+    width: 100%;
+    color: inherit;
+    padding: 20px 0px;
+    border: solid 2px #329b32;
+    border-radius: 5px;
+    background-color: #c8f3bb;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &.loading {
+      opacity: 0.5;
+    }
+  }
+}

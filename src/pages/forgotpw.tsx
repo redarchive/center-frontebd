@@ -58,7 +58,7 @@ const ForgotPWPage = (): JSX.Element => {
         return
       }
 
-      if (!res.data.login) {
+      if (!res.data.id) {
         setDisabled(false)
         setMessage({
           phone: '이 전화번호로 등록된 아이디가 없어요.'
@@ -70,7 +70,7 @@ const ForgotPWPage = (): JSX.Element => {
         return
       }
 
-      setId(res.data.login)
+      setId(res.data.id)
       setStep(1)
       setTimeout(() => {
         setStep((step) => step === 1 ? 0 : step)
@@ -198,7 +198,7 @@ const ForgotPWPage = (): JSX.Element => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          login: id,
+          id,
           phoneVerify,
           newPassword: data.password
         })
@@ -229,7 +229,7 @@ const ForgotPWPage = (): JSX.Element => {
           <ForgotPWHeader />
           <ForgotPWTypeSelector disabled={disabled} onSelect={setSelectedType} />
           <ForgotPWLogoTitle />
-          <ForgotPWForm message={message} id={id} step={step} onSubmit={onSubmit} disabled={disabled}/>
+          <ForgotPWForm message={message} step={step} onSubmit={onSubmit} disabled={disabled}/>
           <ForgotPWLinks />
         </FadeIn>
       </Container>

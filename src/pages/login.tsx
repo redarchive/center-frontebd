@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import type { HeadFC } from 'gatsby'
+import { HeadFC, navigate } from 'gatsby'
 import LoginHeader from '../components/login/header'
 import Container from '../components/commons/container'
 import LoginTypeSelector, { LoginSelectableTypes } from '../components/login/typeSelector'
@@ -9,19 +9,21 @@ import LoginLinks from '../components/login/links'
 import FadeIn from '../components/commons/fadeIn'
 import CriticalMessage from '../components/login/criticalMessage'
 import { useSearchParam } from 'react-use'
+import ConfirmForm from '../components/login/confirmForm'
 
 const LoginPage = (): JSX.Element => {
   const clientId = useSearchParam('client_id')
   const redirectUri = useSearchParam('redirect_uri')
   const scope = useSearchParam('scope')
   const responseType = useSearchParam('response_type')
-  const state = useSearchParam('state')
+  const internal = useSearchParam('internal')
+  const nonce = useSearchParam('nonce')
 
   const [selectedType, setSelectedType] = useState(LoginSelectableTypes.CURRENT_STUDENT)
   const [disabled, setDisabled] = useState(true)
   const [message, setMessage] = useState<{ [key: string]: string } | undefined>()
   const [me, setMe] = useState(undefined)
-  const [client, setClient] = useState(undefined)
+  const [client, setClient] = useState<any>(undefined)
   const [criticalMessage, setCriticalMessage] = useState<string | undefined>(undefined)
 
   const fetchMe = async (): Promise<void> => {
@@ -33,17 +35,24 @@ const LoginPage = (): JSX.Element => {
       return
     }
 
+    if (internal === '✔') {
+      void navigate('/')
+      return
+    }
+
     setMe(result.data.me)
   }
 
   const fetchClient = async (): Promise<void> => {
-    if (clientId === null) {
-      setCriticalMessage('CRITICAL ERROR:\n`client_id` not provided.')
+    if (internal === '✔') {
+      setClient({
+        name: '경소고 스토어'
+      })
       return
     }
 
-    if (redirectUri === null) {
-      setCriticalMessage('CRITICAL ERROR:\n`redirect_uri` not provided.')
+    if (clientId === null) {
+      setCriticalMessage('CRITICAL ERROR:\n`client_id` not provided.')
       return
     }
 
@@ -62,13 +71,18 @@ const LoginPage = (): JSX.Element => {
       return
     }
 
+    if (nonce === null) {
+      setCriticalMessage('CRITICAL ERROR:\n`nonce` not provided.')
+      return
+    }
+
     if (responseType === null) {
       setCriticalMessage('CRITICAL ERROR:\n`response_type` not provided.')
       return
     }
 
-    if (responseType !== 'code') {
-      setCriticalMessage('CRITICAL ERROR:\n`response_type` only supports `code`')
+    if (responseType !== 'id_token') {
+      setCriticalMessage('CRITICAL ERROR:\n`response_type` only supports `id_token`')
       return
     }
 
@@ -162,7 +176,12 @@ const LoginPage = (): JSX.Element => {
       return
     }
 
-    void fetchMe()
+    if (internal === '✔') {
+      void navigate('/')
+      return
+    }
+
+    window.location.reload()
   }
 
   useEffect(() => {
@@ -179,9 +198,10 @@ const LoginPage = (): JSX.Element => {
           <LoginLogoTitle />
 
           {!criticalMessage && <>
-            {!me && (
-              <LoginForm message={message} onSubmit={onSubmit} disabled={disabled}/>
-            )}
+            {!me
+              ? <LoginForm message={message} onSubmit={onSubmit} disabled={disabled}/>
+              : <ConfirmForm client={client} />}
+
             <LoginLinks />
           </>}
 
