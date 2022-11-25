@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as style from './style.module.scss'
 import Logo from './assets/symbol-logo.svg'
 import { Link } from 'gatsby'
@@ -15,6 +15,24 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
 
   const path = url.pathname
   const type = url.searchParams.get('type')
+
+  const [me, setMe] = useState<any>(undefined)
+
+  useEffect(() => {
+    void fetch('/api/users/@me')
+      .then(async (res) => await res.json())
+      .then((res) => {
+        setMe(res.data?.me)
+      })
+  }, [])
+
+  const onLogout = (): void => {
+    void fetch('/api/sessions/@this', {
+      method: 'DELETE'
+    }).then(() => {
+      window.location.reload()
+    })
+  }
 
   return (
     <>
@@ -49,8 +67,24 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
             <div className={style.search__back}></div>
           </div>
           <div className={style.links}>
-            <div className={style.login}><Link to="/login?internal=%E2%9C%94&scope=openid">로그인</Link></div>
-            <div className={style.sign__up}><Link to="/regist?internal=%E2%9C%94&scope=openid">회원가입</Link></div>
+            {me === undefined && (
+              <>
+                <div className={style.login}><Link to="/login?internal=%E2%9C%94&scope=openid">로그인</Link></div>
+                <div className={style.sign__up}><Link to="/regist?internal=%E2%9C%94&scope=openid">회원가입</Link></div>
+              </>
+            )}
+
+            {me !== undefined && (
+              <>
+                <div className={style.login}><strong>
+                  <Link to={`/profile?id=${me.id as string}`}>
+                    {me.nickname ?? me.person.name}
+                  </Link></strong>님 안녕하세요.
+                </div>
+                <div className={style.login} onClick={onLogout}><Link to="#logout">로그아웃</Link></div>
+                <div className={style.sign__up}><Link to={`/profile?id=${me.id as string}&open_new_modal=✔`}>신규등록</Link></div>
+              </>
+            )}
           </div>
         </div>
       </div>
