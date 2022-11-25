@@ -1,13 +1,13 @@
 .popularity {
-  overflow: visible !important;
+  overflow: visible !important;&
   .swiper-button-next,
   .swiper-button-prev {
     color: #9E9EA7 !important;
-  }
-  ::after {
-    font-size: 18px !important;
-    font-weight: 900;
-    width: 14px !important;
+    &::after {
+      font-size: 18px !important;
+      font-weight: 900;
+      width: 14px !important;
+    }
   }
   .swiper-button-prev {
     left: auto !important;

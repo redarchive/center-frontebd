@@ -16,6 +16,9 @@ const Update = (): JSX.Element => {
         <div className={style.card}>
           <Link to='/' className={style.main}>
             <div className={style.mobile}></div>
+            <div className={style.title}>
+              <div>Title Text</div>
+            </div>
           </Link>
           <div className={style.sub}>
             <div className={style.profile}>
@@ -28,6 +31,9 @@ const Update = (): JSX.Element => {
         <div className={style.card}>
           <Link to='/' className={style.main}>
             <div className={style.mobile}></div>
+            <div className={style.title}>
+              <div>Title Text</div>
+            </div>
           </Link>
           <div className={style.sub}>
             <div className={style.profile}>
@@ -40,6 +46,9 @@ const Update = (): JSX.Element => {
         <div className={style.card}>
           <Link to='/' className={style.main}>
             <div className={style.mobile}></div>
+            <div className={style.title}>
+              <div>Title Text</div>
+            </div>
           </Link>
           <div className={style.sub}>
             <div className={style.profile}>
@@ -52,7 +61,9 @@ const Update = (): JSX.Element => {
         <div className={style.card}>
           <Link to='/' className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+
+ <div className={style.title}>
+  <div>Title Text</div></div>         </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>
@@ -64,7 +75,9 @@ const Update = (): JSX.Element => {
         <div className={style.card}>
           <Link to='/' className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+
+ <div className={style.title}>
+  <div>Title Text</div></div>         </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>
@@ -76,6 +89,9 @@ const Update = (): JSX.Element => {
         <div className={style.card}>
           <Link to='/' className={style.main}>
             <div className={style.mobile}></div>
+            <div className={style.title}>
+              <div>Title Text</div>
+            </div>
           </Link>
           <div className={style.sub}>
             <div className={style.profile}>
@@ -88,7 +104,9 @@ const Update = (): JSX.Element => {
         <div className={style.card}>
           <Link to='/' className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+
+ <div className={style.title}>
+  <div>Title Text</div></div>         </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>
@@ -100,7 +118,9 @@ const Update = (): JSX.Element => {
         <div className={style.card}>
           <Link to='/' className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+
+ <div className={style.title}>
+  <div>Title Text</div></div>         </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>
@@ -112,7 +132,9 @@ const Update = (): JSX.Element => {
         <div className={style.card}>
           <Link to='/' className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+
+ <div className={style.title}>
+  <div>Title Text</div></div>         </Link>
           <div className={style.sub}>
             <div className={style.profile}>
               <div className={style.profile__img}>김</div>

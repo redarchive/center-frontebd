@@ -47,6 +47,9 @@ const School = (): JSX.Element => {
           <div className={style.card}>
             <Link to='/views/1' className={style.main}>
               <div className={style.pc}></div>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
             </Link>
             <div className={style.sub}>
               <div className={style.profile}>
@@ -61,6 +64,9 @@ const School = (): JSX.Element => {
           <div className={style.card}>
             <Link to='/views/2' className={style.main}>
               <div className={style.mobile}></div>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
             </Link>
             <div className={style.sub}>
               <div className={style.profile}>
@@ -75,6 +81,9 @@ const School = (): JSX.Element => {
           <div className={style.card}>
             <Link to='/views/3' className={style.main}>
               <div className={style.pc}></div>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
             </Link>
             <div className={style.sub}>
               <div className={style.profile}>
@@ -89,6 +98,9 @@ const School = (): JSX.Element => {
           <div className={style.card}>
             <Link to='/views/4' className={style.main}>
               <div className={style.pc}></div>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
             </Link>
             <div className={style.sub}>
               <div className={style.profile}>
@@ -103,6 +115,9 @@ const School = (): JSX.Element => {
           <div className={style.card}>
             <Link to='/views/5' className={style.main}>
               <div className={style.pc}></div>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
             </Link>
             <div className={style.sub}>
               <div className={style.profile}>
@@ -117,6 +132,9 @@ const School = (): JSX.Element => {
           <div className={style.card}>
             <Link to='/views/6' className={style.main}>
               <div className={style.mobile}></div>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
             </Link>
             <div className={style.sub}>
               <div className={style.profile}>
@@ -131,6 +149,9 @@ const School = (): JSX.Element => {
           <div className={style.card}>
             <Link to='/views/7' className={style.main}>
               <div className={style.pc}></div>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
             </Link>
             <div className={style.sub}>
               <div className={style.profile}>
@@ -145,6 +166,9 @@ const School = (): JSX.Element => {
           <div className={style.card}>
             <Link to='/views/8' className={style.main}>
               <div className={style.pc}></div>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
             </Link>
             <div className={style.sub}>
               <div className={style.profile}>
@@ -159,6 +183,9 @@ const School = (): JSX.Element => {
           <div className={style.card}>
             <Link to='/views/9' className={style.main}>
               <div className={style.pc}></div>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
             </Link>
             <div className={style.sub}>
               <div className={style.profile}>
@@ -173,6 +200,9 @@ const School = (): JSX.Element => {
           <div className={style.card}>
             <Link to='/views/10' className={style.main}>
               <div className={style.mobile}></div>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
             </Link>
             <div className={style.sub}>
               <div className={style.profile}>
@@ -187,6 +217,9 @@ const School = (): JSX.Element => {
           <div className={style.card}>
             <Link to='/views/11' className={style.main}>
               <div className={style.pc}></div>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
             </Link>
             <div className={style.sub}>
               <div className={style.profile}>
@@ -201,6 +234,9 @@ const School = (): JSX.Element => {
           <div className={style.card}>
             <Link to='/views/12' className={style.main}>
               <div className={style.pc}></div>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
             </Link>
             <div className={style.sub}>
               <div className={style.profile}>

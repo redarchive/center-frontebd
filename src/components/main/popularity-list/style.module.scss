@@ -2,6 +2,7 @@
   overflow: hidden;
   margin-top: 70px;
   padding: 0 120px;
+  padding-bottom: 40px;
   .title {
     color: var(--text-primary);
     font-size: 18px;
@@ -9,73 +10,84 @@
     margin-bottom: 14px;      
   }
   .card {
+    position: relative;
     display: flex;
-    flex-direction: column;
     height: 21em;
     border-radius: 5px;
-    padding: 8px;
     background: var(--main-bg);
     border: 1px solid var(--sub-border);
-    .top {
-      position: relative;
+    .main {
       width: 100%;
       display: flex;
-      justify-content: space-between;
-      .first,
-      .second {
-        width: calc((100% - 10px) / 2);
-        height: 8em;
+      align-items: center;
+      justify-content: center;
+      >div {
         border-radius: 5px;
         background: var(--sub-bg);
       }
-      .profile {
+      .pc {
+        width: calc(100% - 40px);
+        height: 14em;
+      }
+      .mobile {
+        width: 140px;
+        height: 240px;
+      }
+      &:hover {
+        .title {
+          opacity: 1;
+        }
+      }
+      .title {
         position: absolute;
-        left: 50%;
-        bottom: -24px;
-        transform: translateX(-50%);
-        width: 50px;
-        height: 50px;
-        color: #fff;
-        font-weight: 500;
-        background: red;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
-        border: 5px solid var(--main-bg);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 24px;
+        opacity: 0;
+        background: linear-gradient(180deg, transparent 62%, rgba(0,0,0,0.00345888) 63.94%, rgba(0,0,0,0.014204) 65.89%, rgba(0,0,0,0.0326639) 67.83%, rgba(0,0,0,0.0589645) 69.78%, rgba(0,0,0,0.0927099) 71.72%, rgba(0,0,0,0.132754) 73.67%, rgba(0,0,0,0.177076) 75.61%, rgba(0,0,0,0.222924) 77.56%, rgba(0,0,0,0.267246) 79.5%, rgba(0,0,0,0.30729) 81.44%, rgba(0,0,0,0.341035) 83.39%, rgba(0,0,0,0.367336) 85.33%, rgba(0,0,0,0.385796) 87.28%, rgba(0,0,0,0.396541) 89.22%, rgba(0,0,0,0.4) 91.17%);
+        &:hover {
+          opacity: 1;
+        }
+        >div {
+          position: absolute;
+          left: 24px;
+          bottom: 24px;
+          color: #fff;
+        }
       }
     }
-    .bottom {
-      margin-top: 26px;
+    .sub {
+      position: absolute;
+      bottom: -30px;
+      width: 100%;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      .name {
-        color: var(--text-primary);
-        margin-top: 6px;
-        font-size: 16px;
-      }
-      .job {
-        color: var(--text-secondary);
-        margin-top: 6px;
-      }
-      .button {
-        cursor: pointer;
-        border: none;
-        outline: none;
-        width: 74px;
-        height: 40px;
-        color: var(--text-primary);
-        border: 1px solid var(--sub-border);
-        background: none;
-        border-radius: 30px;
-        margin-top: 20px;
-        transition: all .35s;
-        &:hover {
-          color: var(--accent);
-          border-color: var(--accent);
-          transition: all .35s;
+      justify-content: space-between;
+      .profile {
+        display: flex;
+        align-items: center;
+        .profile__img {
+          color: #fff;
+          font-size: 11px;
+          font-weight: 500;
+          width: 24px;
+          height: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: red;
+          border-radius: 50%;
         }
+        .profile__name {
+          color: var(--text-primary);
+          margin-left: 6px;
+          font-weight: 500;
+        }
+      }
+      .day {
+        color: var(--text-secondary);
       }
     }
   }
