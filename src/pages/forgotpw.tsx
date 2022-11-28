@@ -223,7 +223,7 @@ const ForgotPWPage = (): JSX.Element => {
   }, [selectedType])
 
   return (
-    <main>
+    <>
       <Container size="sm">
         <FadeIn>
           <ForgotPWHeader />
@@ -233,7 +233,7 @@ const ForgotPWPage = (): JSX.Element => {
           <ForgotPWLinks />
         </FadeIn>
       </Container>
-    </main>
+    </>
   )
 }
 

@@ -1,16 +1,13 @@
 import React, { useEffect } from 'react'
 import { HeadFC, navigate } from 'gatsby'
-import Header from '../components/commons/header'
 import MainSlide from '../components/main/slide'
 import MainPopularityList from '../components/main/popularity-list'
 import MainSchoolList from '../components/main/school-list'
 import MainUpdateList from '../components/main/update-list'
 import Footer from '../components/commons/footer'
-import { useLocalStorage } from 'react-use'
 import { useLocation } from '@reach/router'
 
 const CategoryPage = (): JSX.Element => {
-  const [mode, setMode] = useLocalStorage('light', false)
   const location = useLocation()
   const type = new URL(location.href).searchParams.get('type')
 
@@ -32,14 +29,13 @@ const CategoryPage = (): JSX.Element => {
   }, [type])
 
   return (
-    <main data-theme={mode ? 'dark' : 'light'} className='main'>
-      <Header mode={mode ?? false} setMode={setMode} />
+    <>
       <MainSlide />
       <MainPopularityList />
-      <MainSchoolList />
+      <MainSchoolList onView={() => {}} />
       <MainUpdateList />
       <Footer />
-    </main>
+    </>
   )
 }
 

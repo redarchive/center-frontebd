@@ -315,7 +315,7 @@ const RegistPage = (): JSX.Element => {
   }, [selectedType])
 
   return (
-    <main>
+    <>
       <Container size="sm">
         <FadeIn>
           <RegistHeader />
@@ -325,7 +325,7 @@ const RegistPage = (): JSX.Element => {
           <RegistLinks />
         </FadeIn>
       </Container>
-    </main>
+    </>
   )
 }
 

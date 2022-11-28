@@ -16,7 +16,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
   const path = url.pathname
   const type = url.searchParams.get('type')
 
-  const [me, setMe] = useState<any>(undefined)
+  const [me, setMe] = useState<any>(null)
 
   useEffect(() => {
     void fetch('/api/users/@me')
@@ -33,6 +33,8 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
       window.location.reload()
     })
   }
+
+  if (['/login', '/regist'].includes(path) && url.searchParams.get('internal') !== '✔') return <></>
 
   return (
     <>
@@ -59,12 +61,14 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
         <div className={style.right}>
           <div className={style.search}>
             <input type="checkbox" id="search__btn" className={style.none}/>
-            <label htmlFor="search__btn" className={style.search__btn}></label>
+            {me !== null && (
+              <label htmlFor="search__btn" className={style.search__btn}></label>
+            )}
             <form action="/" className={style.search__box}>
               <input type="text" placeholder='검색어를 입력해주세요.' required />
               <button type='submit'></button>
             </form>
-            <div className={style.search__back}></div>
+              <div className={style.search__back}></div>
           </div>
           <div className={style.links}>
             {me === undefined && (
@@ -74,7 +78,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
               </>
             )}
 
-            {me !== undefined && (
+            {me !== null && me !== undefined && (
               <>
                 <div className={style.login}><strong>
                   <Link to={`/profile?id=${me.id as string}`}>

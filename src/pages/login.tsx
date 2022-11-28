@@ -190,7 +190,7 @@ const LoginPage = (): JSX.Element => {
   }, [])
 
   return (
-    <main>
+    <>
       <Container size="sm">
         <FadeIn>
           {client && <LoginHeader client={client} />}
@@ -210,7 +210,7 @@ const LoginPage = (): JSX.Element => {
           )}
         </FadeIn>
       </Container>
-    </main>
+    </>
   )
 }
 
