@@ -9,6 +9,7 @@ import Footer from '../components/commons/footer'
 import { useLocalStorage } from 'react-use'
 import { Modal } from 'react-responsive-modal'
 import Item from '../components/main/item'
+import Upload from '../components/main/upload'
 
 const IndexPage = (): JSX.Element => {
   const [mode, setMode] = useLocalStorage('light', false)
@@ -34,7 +35,8 @@ const IndexPage = (): JSX.Element => {
       <MainSchoolList onView={onView} />
       <MainUpdateList />
       <Footer />
-
+      <Upload />
+      {/* <Item /> */}
       <Modal open={modal} onClose={onClose} closeOnEsc closeOnOverlayClick center>
         <Item />
       </Modal>

@@ -29,7 +29,7 @@ const config: GatsbyConfig = {
   ],
   developMiddleware: (app) => {
     app.use('/api', createProxyMiddleware({
-      target: 'http://127.0.0.1:3000'
+      target: process.env.LOCAL_SERVER ? 'http://localhost:3000' : 'http://13.125.194.128:3000'
     }))
   },
   trailingSlash: 'never'
