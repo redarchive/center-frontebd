@@ -86,7 +86,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
                   </Link></strong>님 안녕하세요.
                 </div>
                 <div className={style.login} onClick={onLogout}><Link to="#logout">로그아웃</Link></div>
-                <div className={style.sign__up}><Link to={`/profile?id=${me.id as string}&open_new_modal=✔`}>신규등록</Link></div>
+                <div className={style.sign__up}><Link to={`/profile?id=${me.id as string}#new`}>신규등록</Link></div>
               </>
             )}
           </div>

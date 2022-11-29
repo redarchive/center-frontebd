@@ -18,6 +18,7 @@ specifiers:
   framer-motion: ^7.5.3
   gatsby: ^4.24.4
   gatsby-plugin-manifest: ^5.1.0
+  gatsby-plugin-nprogress: ^5.2.0
   gatsby-plugin-pnpm: ^1.2.10
   gatsby-plugin-sass: ^5.24.0
   http-proxy-middleware: ^2.0.6
@@ -42,6 +43,7 @@ dependencies:
   framer-motion: 7.5.3_biqbaboplfbrettd7655fr4n2y
   gatsby: 4.24.4_yalvw3r2waubxycyb7k7qsruca
   gatsby-plugin-manifest: 5.1.0_gatsby@4.24.4
+  gatsby-plugin-nprogress: 5.2.0_gatsby@4.24.4
   gatsby-plugin-pnpm: 1.2.10_gatsby@4.24.4
   gatsby-plugin-sass: 5.24.0_gatsby@4.24.4+sass@1.55.0
   http-proxy-middleware: 2.0.6
@@ -3075,6 +3077,10 @@ packages:
     dependencies:
       mime-types: 2.1.35
       negotiator: 0.6.3
+    dev: false
+
+  /accessible-nprogress/2.1.2:
+    resolution: {integrity: sha512-reIwMbbt+ZGOmQLWPXGcPf5X1F4fzsZAekY9alCxpekxizRhQMAd/QInaA8k7WtwTcGMzD9hnYswGLcaJDRY/A==}
     dev: false
 
   /acorn-import-assertions/1.8.0_acorn@8.8.0:
@@ -6128,6 +6134,17 @@ packages:
       sharp: 0.30.7
     transitivePeerDependencies:
       - graphql
+    dev: false
+
+  /gatsby-plugin-nprogress/5.2.0_gatsby@4.24.4:
+    resolution: {integrity: sha512-vH9QNhSvAdfmbJMSvrPXaeqCN+4bJh/K7FHZhgH4bE592CCCmQrElEhFsmW5m4Vxrpr/fbBNxXEBBY4kYVEYKQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      gatsby: ^5.0.0-next
+    dependencies:
+      '@babel/runtime': 7.19.4
+      accessible-nprogress: 2.1.2
+      gatsby: 4.24.4_yalvw3r2waubxycyb7k7qsruca
     dev: false
 
   /gatsby-plugin-page-creator/4.24.1_fbibhz2hy2j7luvrxau5es57wq:

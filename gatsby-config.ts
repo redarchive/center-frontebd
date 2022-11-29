@@ -14,6 +14,13 @@ const config: GatsbyConfig = {
     'gatsby-plugin-sass',
     'gatsby-plugin-pnpm',
     {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        color: '#2A9CD4',
+        showSpinner: false
+      }
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: '경북소프트웨어고 포트폴리오',

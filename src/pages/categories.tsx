@@ -32,7 +32,7 @@ const CategoryPage = (): JSX.Element => {
     <>
       <MainSlide />
       <MainPopularityList />
-      <MainSchoolList onView={() => {}} />
+      <MainSchoolList />
       <MainUpdateList />
       <Footer />
     </>

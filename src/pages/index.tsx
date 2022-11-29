@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { HeadFC } from 'gatsby'
 import MainSlide from '../components/main/slide'
 import MainPopularityList from '../components/main/popularity-list'
@@ -7,33 +7,24 @@ import MainUpdateList from '../components/main/update-list'
 import Footer from '../components/commons/footer'
 import { Modal } from 'react-responsive-modal'
 import Item from '../components/main/item'
-import Upload from '../components/main/upload'
+import { useLocation } from '@reach/router'
 
 const IndexPage = (): JSX.Element => {
-  const [modal, setModal] = useState(false)
+  const location = useLocation()
+  const hash = new URL(location.href).hash.replace('#', '')
 
   useEffect(() => {
     document.title = '경북소프트웨어고 포트폴리오'
   }, [])
 
-  const onView = (): void => {
-    setModal(true)
-  }
-
-  const onClose = (): void => {
-    setModal(false)
-  }
-
   return (
     <>
       <MainSlide />
       <MainPopularityList />
-      <MainSchoolList onView={onView} />
+      <MainSchoolList />
       <MainUpdateList />
       <Footer />
-      <Upload />
-      {/* <Item /> */}
-      <Modal open={modal} onClose={onClose} closeOnEsc closeOnOverlayClick center>
+      <Modal key={hash} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
         <Item />
       </Modal>
     </>

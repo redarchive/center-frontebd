@@ -22,6 +22,7 @@
     "framer-motion": "^7.5.3",
     "gatsby": "^4.24.4",
     "gatsby-plugin-manifest": "^5.1.0",
+    "gatsby-plugin-nprogress": "^5.2.0",
     "gatsby-plugin-pnpm": "^1.2.10",
     "gatsby-plugin-sass": "^5.24.0",
     "http-proxy-middleware": "^2.0.6",

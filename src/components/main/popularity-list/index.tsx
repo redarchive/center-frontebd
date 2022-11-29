@@ -45,7 +45,7 @@ const Popularity = (): JSX.Element => {
       >
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/1' className={style.main}>
+            <Link to='/#1' className={style.main}>
               <div className={style.pc}></div>
               <div className={style.title}>
                 <div>Title Text</div>
@@ -62,7 +62,7 @@ const Popularity = (): JSX.Element => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/2' className={style.main}>
+            <Link to='/#2' className={style.main}>
               <div className={style.mobile}></div>
               <div className={style.title}>
                 <div>Title Text</div>
@@ -79,7 +79,7 @@ const Popularity = (): JSX.Element => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/3' className={style.main}>
+            <Link to='/#3' className={style.main}>
               <div className={style.pc}></div>
               <div className={style.title}>
                 <div>Title Text</div>
@@ -96,7 +96,7 @@ const Popularity = (): JSX.Element => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/4' className={style.main}>
+            <Link to='/#4' className={style.main}>
               <div className={style.pc}></div>
               <div className={style.title}>
                 <div>Title Text</div>
@@ -113,7 +113,7 @@ const Popularity = (): JSX.Element => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/5' className={style.main}>
+            <Link to='/#5' className={style.main}>
               <div className={style.pc}></div>
               <div className={style.title}>
                 <div>Title Text</div>
@@ -130,7 +130,7 @@ const Popularity = (): JSX.Element => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/6' className={style.main}>
+            <Link to='/#6' className={style.main}>
               <div className={style.mobile}></div>
               <div className={style.title}>
                 <div>Title Text</div>
@@ -147,7 +147,7 @@ const Popularity = (): JSX.Element => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/7' className={style.main}>
+            <Link to='/#7' className={style.main}>
               <div className={style.pc}></div>
               <div className={style.title}>
                 <div>Title Text</div>
@@ -164,7 +164,7 @@ const Popularity = (): JSX.Element => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/8' className={style.main}>
+            <Link to='/#8' className={style.main}>
               <div className={style.pc}></div>
               <div className={style.title}>
                 <div>Title Text</div>
@@ -181,7 +181,7 @@ const Popularity = (): JSX.Element => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/9' className={style.main}>
+            <Link to='/#9' className={style.main}>
               <div className={style.pc}></div>
               <div className={style.title}>
                 <div>Title Text</div>
@@ -198,7 +198,7 @@ const Popularity = (): JSX.Element => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/10' className={style.main}>
+            <Link to='/#10' className={style.main}>
               <div className={style.mobile}></div>
               <div className={style.title}>
                 <div>Title Text</div>
@@ -215,7 +215,7 @@ const Popularity = (): JSX.Element => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/11' className={style.main}>
+            <Link to='/#11' className={style.main}>
               <div className={style.pc}></div>
               <div className={style.title}>
                 <div>Title Text</div>
@@ -232,7 +232,7 @@ const Popularity = (): JSX.Element => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={style.card}>
-            <Link to='/views/12' className={style.main}>
+            <Link to='/#12' className={style.main}>
               <div className={style.pc}></div>
               <div className={style.title}>
                 <div>Title Text</div>

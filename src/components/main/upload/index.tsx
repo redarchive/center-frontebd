@@ -1,11 +1,10 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import * as style from './style.module.scss'
 
 const Upload = (): JSX.Element => {
   return (
     <>
-      <Link to='/' className={style.item__back}></Link>
+      <a href='#' className={style.item__back}></a>
       <div className={style.item__container}>
           <form action="/">
             <div className={style.input__box}>
@@ -80,7 +79,7 @@ const Upload = (): JSX.Element => {
               <button type='submit' className={style.upload__btn}>등록하기</button>
             </div>
           </form>
-        <Link to='/' className={style.clear}>1</Link>
+        <a href="#" className={style.clear}>1</a>
       </div>
     </>
   )
