@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { HeadFC } from 'gatsby'
 import MainSlide from '../components/main/slide'
 import MainPopularityList from '../components/main/popularity-list'
@@ -11,6 +11,7 @@ import { useLocation } from '@reach/router'
 
 const IndexPage = (): JSX.Element => {
   const location = useLocation()
+  const ref = useRef(null)
   const hash = new URL(location.href).hash.replace('#', '')
 
   useEffect(() => {
@@ -24,7 +25,8 @@ const IndexPage = (): JSX.Element => {
       <MainSchoolList />
       <MainUpdateList />
       <Footer />
-      <Modal key={hash} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
+      <div ref={ref}/>
+      <Modal container={ref.current} key={hash} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
         <Item />
       </Modal>
     </>

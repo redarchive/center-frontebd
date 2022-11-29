@@ -1,6 +1,6 @@
 import { useLocation } from '@reach/router'
 import { navigate } from 'gatsby'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 import Modal from 'react-responsive-modal'
 import Footer from '../components/commons/footer'
@@ -18,6 +18,7 @@ const ProfilePage = (): JSX.Element => {
   const [isMe, setIsMe] = useState(false)
   const [filter, setFilter] = useState<ItemListFilter>(ItemListFilter.ALL)
   const [items, setItems] = useState<any[]>()
+  const ref = useRef(null)
 
   const fetchData = async (): Promise<void> => {
     if (userId === null) {
@@ -61,10 +62,11 @@ const ProfilePage = (): JSX.Element => {
       <ProfileItemList isMe={isMe} items={items} filter={filter} onFilterChange={(filter) => setFilter(filter)} />
       <Footer />
 
-      <Modal key={hash} open={hash === 'new'} onClose={() => {}}>
+      <div ref={ref}/>
+      <Modal container={ref.current} key={hash} open={hash === 'new'} onClose={() => {}}>
         <Upload />
       </Modal>
-      <Modal key={hash + '-'} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
+      <Modal container={ref.current} key={hash + '-'} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
         <Item />
       </Modal>
     </>

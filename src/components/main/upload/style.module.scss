@@ -16,7 +16,7 @@
   max-width: 920px;
   width: 100%;
   height: calc(100% - 40px);
-  background: var(--sub-bg);
+  background: var(--main-bg);
   margin: 0 auto;
   padding: 40px;
   border-radius: 10px;
@@ -38,19 +38,19 @@
         color: var(--text-primary);
         width: 100%;
         height: 50px;
-        background: var(--main-bg);
+        background: var(--sub-bg);
         outline: none;
         border: 1px solid var(--text-secondary);
         padding-left: 24px;
         border-radius: 5px; 
         &::placeholder {
-          color: var(--text-secondary);
+          color: var(--text-secondary); //원래 순식간에 털리는거야
         }
       }
     }
     .file__box {
       height: 500px;
-      background: var(--main-bg);
+      background: var(--sub-bg);
       border: 2px dashed var(--text-secondary);
       border-radius: 5px;
       display: flex;
@@ -78,7 +78,7 @@
         width: 100%;
         height: 240px;
         padding: 24px;
-        background: var(--main-bg);
+        background: var(--sub-bg);
         outline: none;
         border: 1px solid var(--text-secondary);
         border-radius: 5px;
@@ -110,7 +110,7 @@
         color: var(--text-primary);
         height: 50px;
         border-radius: 5px;
-        background: var(--main-bg);
+        background: var(--sub-bg);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -120,11 +120,12 @@
       display: flex;
       justify-content: flex-end;
       .upload__btn {
-        color: var(--text-primary);
+        color: var(--main-bg);
         font-weight: 500;
         padding: 14px 24px;
         border-radius: 50px;
         background: var(--accent);
+        border: none;
       }
     }
   }
@@ -153,7 +154,7 @@
   .item__back {
   }
   .item__container {
-    margin-top: 0;
+    top: 0;
     height: 100%;
     border-radius: 0;
   }
