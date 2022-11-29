@@ -1,59 +1,80 @@
 import React from 'react'
 import * as style from './style.module.scss'
-import { Link } from 'gatsby'
 
-const ItemList = (): JSX.Element => {
+export enum ItemListFilter {
+  ALL,
+  WEBSITE,
+  APPLICATION,
+  GAME,
+  DESKTOP,
+  PHYSICAL
+}
+
+interface Props {
+  filter?: ItemListFilter
+  items?: any[]
+  isMe: boolean
+  onFilterChange: (filter: ItemListFilter) => any
+}
+
+const ItemList = ({ isMe, filter = ItemListFilter.ALL, onFilterChange, items = [] }: Props): JSX.Element => {
   return (
     <div className={style.item__list}>
       <div className={style.categorys}>
-        <div className={style.click}>전체보기</div>
-        <div className={style.category}>반응형</div>
-        <div className={style.category}>pc</div>
-        <div className={style.category}>모바일</div>
-        <div className={style.category}>앱</div>
-        <div className={style.category}>인공지능</div>
-        <div className={style.category}>게임</div>
+        <div onClick={() => onFilterChange(ItemListFilter.ALL)} className={filter === ItemListFilter.ALL ? style.click : style.category}>전체보기 ({items.length})</div>
+        <div onClick={() => onFilterChange(ItemListFilter.WEBSITE)} className={filter === ItemListFilter.WEBSITE ? style.click : style.category}>웹사이트 ({items.filter((v) => v.type === 0).length})</div>
+        <div onClick={() => onFilterChange(ItemListFilter.APPLICATION)} className={filter === ItemListFilter.APPLICATION ? style.click : style.category}>어플 ({items.filter((v) => v.type === 1).length})</div>
+        <div onClick={() => onFilterChange(ItemListFilter.GAME)} className={filter === ItemListFilter.GAME ? style.click : style.category}>게임 ({items.filter((v) => v.type === 2).length})</div>
+        <div onClick={() => onFilterChange(ItemListFilter.DESKTOP)} className={filter === ItemListFilter.DESKTOP ? style.click : style.category}>데스크톱 ({items.filter((v) => v.type === 3).length})</div>
+        <div onClick={() => onFilterChange(ItemListFilter.PHYSICAL)} className={filter === ItemListFilter.PHYSICAL ? style.click : style.category}>IOT ({items.filter((v) => v.type === 4).length})</div>
       </div>
       <div className={style.card__box}>
+        {isMe && (
+          <div className={style.card}>
+            <a href='#new' className={style.main}>
+              등록하기
+            </a>
+          </div>
+        )}
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          <a href="#1" className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          <a href="#1" className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          <a href="#1" className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          <a href="#1" className={style.main}>
             <div className={style.mobile}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          <a href="#1" className={style.main}>
             <div className={style.mobile}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          <a href="#1" className={style.main}>
             <div className={style.mobile}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          <a href="#1" className={style.main}>
             <div className={style.mobile}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          <a href="#1" className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+          </a>
         </div>
       </div>
     </div>

@@ -17,6 +17,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
   const type = url.searchParams.get('type')
 
   const [me, setMe] = useState<any>(null)
+  const [shadow, setShadow] = useState(false)
 
   useEffect(() => {
     void fetch('/api/users/@me')
@@ -24,6 +25,10 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
       .then((res) => {
         setMe(res.data?.me)
       })
+
+    document.addEventListener('scroll', () => {
+      setShadow(window.scrollY > 0)
+    })
   }, [])
 
   const onLogout = (): void => {
@@ -39,7 +44,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
   return (
     <>
       <div className={style.back}></div>
-      <div className={style.header}>
+      <div className={`${style.header as string} ${shadow ? (style.shadow as string) : ''}`}>
         <div onClick={() => setMode(!mode)} className={style.toggle}></div>
         <input type="checkbox" id="menu__btn" className={style.none}/>
         <label htmlFor="menu__btn" className={style.menu}></label>
@@ -51,8 +56,8 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
           </Link>
           <ul className={style.nav}>
             <li className={path === '/' && style.click}><Link to="/">홈</Link></li>
-            <li className={path === '/categories' && type === 'WEBSITE' && style.click}><Link to="/categories?type=WEBSITE">웹</Link></li>
-            <li className={path === '/categories' && type === 'MOBILE' && style.click}><Link to="/categories?type=MOBILE">앱</Link></li>
+            <li className={path === '/categories' && type === 'WEBSITE' && style.click}><Link to="/categories?type=WEBSITE">웹사이트</Link></li>
+            <li className={path === '/categories' && type === 'MOBILE' && style.click}><Link to="/categories?type=MOBILE">어플</Link></li>
             <li className={path === '/categories' && type === 'GAME' && style.click}><Link to="/categories?type=GAME">게임</Link></li>
             <li className={path === '/categories' && type === 'DESKTOP' && style.click}><Link to="/categories?type=DESKTOP">데스크톱</Link></li>
             <li className={path === '/categories' && type === 'PHYSICAL' && style.click}><Link to="/categories?type=PHYSICAL">IOT</Link></li>

@@ -2,19 +2,45 @@ import React from 'react'
 import * as style from './style.module.scss'
 import { Link } from 'gatsby'
 
-const Header = (): JSX.Element => {
+interface Props {
+  user: any
+  isMe: boolean
+}
+
+const Header = ({ user, isMe }: Props): JSX.Element => {
+  if (!user) {
+    return (
+      <div className={style.header}>
+        <div className={style.left}>
+          <div className={style.iamge}></div>
+          <div className={style.txt}>
+            <div className={style.name}>...</div>
+            <div className={style.sub}>...</div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className={style.header}>
       <div className={style.left}>
-        <div className={style.iamge}>김</div>
+        <div className={style.iamge}>{(user.nickname || user.login)[0]}</div>
         <div className={style.txt}>
-          <div className={style.name}>김무일</div>
-          <div className={style.sub}>front-end</div>
+          <div className={style.name}>{user.nickname || user.login}</div>
+          {user.person && <div className={style.sub}>
+            {user.person.grade ? String(user.person.grade) + '학년' : ''}
+            {user.person.grade ? String(user.person.classroom) + '반' : ''}
+
+            {user.person.name}
+          </div>}
         </div>
       </div>
-      <div className={style.right}>
-        <Link to='' className={style.btn}>프로필 수정</Link>
-      </div>
+      {isMe && (
+        <div className={style.right}>
+          <Link to='' className={style.btn}>프로필 수정</Link>
+        </div>
+      )}
     </div>
   )
 }

@@ -16,44 +16,44 @@ const ItemList = (): JSX.Element => {
       </div>
       <div className={style.card__box}>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          /#<a href="#1" className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          /#<a href="#1" className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          /#<a href="#1" className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          /#<a href="#1" className={style.main}>
             <div className={style.mobile}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          /#<a href="#1" className={style.main}>
             <div className={style.mobile}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          /#<a href="#1" className={style.main}>
             <div className={style.mobile}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          /#<a href="#1" className={style.main}>
             <div className={style.mobile}></div>
-          </Link>
+          </a>
         </div>
         <div className={style.card}>
-          <Link to='/' className={style.main}>
+          /#<a href="#1" className={style.main}>
             <div className={style.pc}></div>
-          </Link>
+          </a>
         </div>
       </div>
     </div>
