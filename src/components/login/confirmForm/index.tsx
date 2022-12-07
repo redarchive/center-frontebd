@@ -64,14 +64,16 @@ const ConfirmForm = ({ client }: Props): JSX.Element => {
       {client && (
         <>
           <p>아래의 정보들을 요청합니다.</p>
-          {client.scopes.map((v: any, i: number) => (
-            <div className={style.scope} key={i}>
-              <h2>{labelScope(v.type.toLowerCase())}</h2>
-              <p>{v.type === 'OPENID' ? '사용자를 식별하기 위한 기본 제공 정보입니다.' : v.reason}</p>
-            </div>
-          ))}
+          <div className={style.scopes}>
+            {client.scopes.map((v: any, i: number) => (
+              <div className={style.scope} key={i}>
+                <h2>{labelScope(v.type.toLowerCase())}</h2>
+                <p>{v.type === 'OPENID' ? '사용자를 식별하기 위한 기본 제공 정보입니다.' : v.reason}</p>
+              </div>
+            ))}
+          </div>
 
-          <button>확인</button>
+          <button>승인</button>
           <a href="#logout" onClick={onLogout}>다른 계정으로 계속...</a>
         </>
       )}

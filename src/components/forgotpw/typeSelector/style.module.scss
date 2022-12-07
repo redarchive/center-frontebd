@@ -17,8 +17,8 @@
     }
 
     label {
-      background-color: #fff;
-      color: #000;
+      background-color: var(--main-bg);
+      color: var(--text-secondary);
       font-weight: 700;
       font-size: 15px;
       cursor: pointer;

@@ -39,7 +39,13 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
     })
   }
 
-  if (['/login', '/regist'].includes(path) && url.searchParams.get('internal') !== '✔') return <></>
+  const isNavHidden =
+    ['/login', '/regist', '/forgotpw'].includes(path) &&
+    url.searchParams.get('internal') !== '✔'
+
+  if (isNavHidden) {
+    return <></>
+  }
 
   return (
     <>

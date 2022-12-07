@@ -47,7 +47,7 @@ const LoginForm = ({ message, onSubmit, disabled }: Props): JSX.Element => {
         <input
           disabled={disabled}
           value={id} onChange={(e) => setId(e.target.value)}
-          autoFocus id="loginForm-login"
+          autoFocus={!remember} id="loginForm-login"
           className={message?.id ? style.invalid : ''}
           autoComplete="off"
           type="text" placeholder="아이디를 입력해주세요." />
@@ -64,6 +64,7 @@ const LoginForm = ({ message, onSubmit, disabled }: Props): JSX.Element => {
           value={password} onChange={(e) => setPassword(e.target.value)}
           id="loginForm-pw" type="password"
           autoComplete="off"
+          autoFocus={remember}
           className={message?.password ? style.invalid : ''}
           placeholder="비밀번호를 입력해주세요."/>
 

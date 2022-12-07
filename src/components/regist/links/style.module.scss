@@ -1,5 +1,5 @@
 .login-links {
-  background-color: #fff;
+  background-color: var(--main-bg);
   padding: 30px 0px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -16,8 +16,10 @@
       list-style: none;
 
       a {
-        color: #aaaab2;
-        text-decoration: none;
+        color: var(--text-secondary);
+        > u {
+          text-decoration: underline;
+        }
       }
     }
   }

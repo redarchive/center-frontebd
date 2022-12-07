@@ -1,5 +1,6 @@
 .logo-title {
-  background-color: #fff;
+  background-color: var(--main-bg);
+  color: var(--text-primary);
   padding: 0px 40px;
   user-select: none;
   display: flex;
@@ -19,7 +20,7 @@
   }
 
   > h1 {
-    border-bottom: #e6e6e8 1px solid;
+    border-bottom: var(--sub-border) 1px solid;
     padding: 0px 0px 10px 0px;
     font-size: 17px;
   }
