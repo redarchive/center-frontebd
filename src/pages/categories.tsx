@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { HeadFC, navigate } from 'gatsby'
-import MainSlide from '../components/main/slide'
 import MainPopularityList from '../components/main/popularity-list'
 import MainSchoolList from '../components/main/school-list'
 import MainUpdateList from '../components/main/update-list'
@@ -30,7 +29,6 @@ const CategoryPage = (): JSX.Element => {
 
   return (
     <>
-      <MainSlide />
       <MainPopularityList />
       <MainSchoolList />
       <MainUpdateList />
