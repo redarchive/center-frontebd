@@ -16,6 +16,11 @@ const RegistPage = (): JSX.Element => {
   const [phoneVerify, setPhoneVerify] = useState('')
   const [message, setMessage] = useState<{ [key: string]: string } | undefined>()
 
+  const formatType = (selectedType: RegistSelectableTypes): string => ({
+    [RegistSelectableTypes.CURRENT_STUDENT]: '재학생',
+    [RegistSelectableTypes.TEACHER]: '교사'
+  })[selectedType]
+
   const onSubmit = async (data: RegistFormData): Promise<void> => {
     setDisabled(true)
     setMessage(undefined)
@@ -25,7 +30,7 @@ const RegistPage = (): JSX.Element => {
       if (!data.phone) {
         setDisabled(false)
         setMessage({
-          phone: '전화번호를 입력해주세요.'
+          phone: formatType(selectedType) + ' 전화번호를 입력해주세요.'
         })
 
         setTimeout(() => {
@@ -49,7 +54,7 @@ const RegistPage = (): JSX.Element => {
       if (!res.success) {
         setDisabled(false)
         setMessage({
-          phone: '등록되지 않은 전화번호에요.'
+          phone: '등록되지 않은 ' + formatType(selectedType) + ' 전화번호에요.'
         })
 
         setTimeout(() => {

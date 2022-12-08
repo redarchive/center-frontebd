@@ -17,6 +17,12 @@ const ForgotPWPage = (): JSX.Element => {
   const [message, setMessage] = useState<{ [key: string]: string } | undefined>()
   const [phoneVerify, setPhoneVerify] = useState('')
 
+  const formatType = (selectedType: ForgotPWSelectableTypes): string => ({
+    [ForgotPWSelectableTypes.CURRENT_STUDENT]: '재학생',
+    [ForgotPWSelectableTypes.GRADUATED_STUDENT]: '졸업생',
+    [ForgotPWSelectableTypes.TEACHER]: '교사'
+  })[selectedType]
+
   const onSubmit = async (data: ForgotPWFormData): Promise<void> => {
     setDisabled(true)
     if (disabled) return
@@ -49,7 +55,7 @@ const ForgotPWPage = (): JSX.Element => {
       if (!res.success) {
         setDisabled(false)
         setMessage({
-          phone: '등록되지 않은 전화번호에요.'
+          phone: '등록되지 않은 ' + formatType(selectedType) + ' 전화번호에요.'
         })
 
         setTimeout(() => {
@@ -61,7 +67,7 @@ const ForgotPWPage = (): JSX.Element => {
       if (!res.data.id) {
         setDisabled(false)
         setMessage({
-          phone: '이 전화번호로 등록된 아이디가 없어요.'
+          phone: '이 전화번호로 등록된 ' + formatType(selectedType) + ' 아이디가 없어요.'
         })
 
         setTimeout(() => {
