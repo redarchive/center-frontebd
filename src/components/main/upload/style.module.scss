@@ -34,6 +34,10 @@
       margin-bottom: 24px;
     }
     .input__box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
       input {
         color: var(--text-primary);
         width: 100%;
@@ -47,9 +51,154 @@
           color: var(--text-secondary); //원래 순식간에 털리는거야
         }
       }
+
+      label {
+        color: var(--text-primary);
+        font-size: 15px;
+      }
+
+      >p {
+        color: var(--text-secondary);
+        font-style: italic;
+        font-size: 13px;
+      }
+    }
+    .screenshot__box_top {
+      padding: 15px;
+      gap: 20px;
+      min-height: 300px;
+      overflow-x: scroll;
+      background: var(--sub-bg);
+      border: 2px dashed var(--text-secondary);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      &.single {
+        justify-content: center;
+      }
+      div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-secondary);
+        >p {
+          margin-bottom: 6px;
+          >label {
+            color: var(--accent);
+            cursor: pointer;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+        >input {
+          display: none;
+        }
+      }
+      button {
+        color: white;
+        background-color: #cc0000;
+        border: none;
+        align-self: flex-start;
+        transform: translate(-30px, 20px);
+        min-width: 25px;
+        cursor: pointer;
+        aspect-ratio: 1 / 1;
+        border-radius: 100px;
+      }
+      flex: 1;
+      img {
+        min-height: min-content;
+        max-height: 200px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px #22222233;
+      }
+    }
+    .screenshot__box_bottom {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      overflow-x: scroll;
+      background: var(--sub-bg);
+      border: 2px dashed var(--text-secondary);
+      border-top: none;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-radius: 5px;
+      align-items: center;
+      >label {
+        width: 100%;
+        cursor: pointer;
+        padding: 15px;
+      }
+      div {
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-secondary);
+        >p {
+          margin-bottom: 6px;
+          >label {
+            color: var(--accent);
+            cursor: pointer;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+        >input {
+          display: none;
+        }
+      }
+    }
+    .icon__box {
+      padding: 15px;
+      gap: 20px;
+      flex-wrap: wrap;
+      min-height: 300px;
+      background: var(--sub-bg);
+      border: 2px dashed var(--text-secondary);
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      >div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-secondary);
+        >p {
+          margin-bottom: 6px;
+          >label {
+            color: var(--accent);
+            cursor: pointer;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+        >input {
+          display: none;
+        }
+      }
+      img {
+        width: 100%;
+        max-width: 220px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 30px;
+        box-shadow: 0px 0px 5px #22222233;
+      }
     }
     .file__box {
       height: 500px;
+      padding: 0px 30px;
       background: var(--sub-bg);
       border: 2px dashed var(--text-secondary);
       border-radius: 5px;
@@ -64,12 +213,23 @@
         >p {
           margin-bottom: 6px;
           >label {
+            cursor: pointer;
             color: var(--accent);
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
         >input {
           display: none;
         }
+      }
+      img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px #22222233;
       }
     }
     .edit {

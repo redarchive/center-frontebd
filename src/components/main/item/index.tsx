@@ -10,7 +10,7 @@ const Item = (): JSX.Element => {
     <>
       <a href='#closed' className={style.item__back}></a>
       <div className={style.item__container}>
-        <a href='#closed' className={style.clear}>1</a>
+        <a href='#' className={style.clear}>1</a>
         <ItemHeader />
         <ItemSlide />
         <ItemTextbox />

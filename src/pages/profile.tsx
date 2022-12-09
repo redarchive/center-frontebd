@@ -32,6 +32,7 @@ const ProfilePage = (): JSX.Element => {
     if (!userRes.success) {
       toast.error('해당 유저를 찾을 수 없습니다.')
       void navigate('/')
+      return
     }
 
     const itemsRes = await fetch('/api/services/@by-userId?id=' + userId)
@@ -40,6 +41,7 @@ const ProfilePage = (): JSX.Element => {
     if (!itemsRes.success) {
       toast.error('해당 유저를 찾을 수 없습니다.')
       void navigate('/')
+      return
     }
 
     document.title = String(userRes.data.user.nickname || userRes.data.user.login) + '님의 정보 - 경소고 포트폴리오'
