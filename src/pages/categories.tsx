@@ -1,14 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { HeadFC, navigate } from 'gatsby'
 import MainPopularityList from '../components/main/popularity-list'
 import MainSchoolList from '../components/main/school-list'
 import MainUpdateList from '../components/main/update-list'
 import Footer from '../components/commons/footer'
 import { useLocation } from '@reach/router'
+import Modal from 'react-responsive-modal'
+import Item from '../components/main/item'
 
 const CategoryPage = (): JSX.Element => {
   const location = useLocation()
   const type = new URL(location.href).searchParams.get('type')
+  const ref = useRef(null)
+  const hash = new URL(location.href).hash.replace('#', '')
+  const [r, rerender] = useState(0)
 
   useEffect(() => {
     if (type === null) {
@@ -27,12 +32,20 @@ const CategoryPage = (): JSX.Element => {
     document.title = `${typeLabel[type]} - 경소고 포트폴리오`
   }, [type])
 
+  useEffect(() => {
+    rerender(1)
+  }, [])
+
   return (
     <>
+      <div ref={ref}/>
       <MainPopularityList />
       <MainSchoolList />
       <MainUpdateList />
       <Footer />
+      <Modal showCloseIcon={false} key={`${r}${hash}`} container={ref.current} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
+        <Item onClose={() => { window.location.hash = '#closed' }} key={hash} id={parseInt(hash)} />
+      </Modal>
     </>
   )
 }

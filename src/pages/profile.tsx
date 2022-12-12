@@ -14,11 +14,13 @@ const ProfilePage = (): JSX.Element => {
   const url = new URL(location.href)
   const hash = url.hash.replace('#', '')
   const userId = url.searchParams.get('id')
+  const [loading, setLoading] = useState(false)
   const [user, setUser] = useState()
   const [isMe, setIsMe] = useState(false)
   const [filter, setFilter] = useState<ItemListFilter>(ItemListFilter.ALL)
   const [items, setItems] = useState<any[]>()
   const ref = useRef(null)
+  const [r, rerender] = useState(0)
 
   const fetchData = async (): Promise<void> => {
     if (userId === null) {
@@ -51,25 +53,49 @@ const ProfilePage = (): JSX.Element => {
     setItems(itemsRes.data.services)
   }
 
+  const onSubmit = async (data: any): Promise<void> => {
+    setLoading(true)
+
+    const submitRes = await fetch('/api/services', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(async (res) => await res.json())
+
+    if (!submitRes.success) {
+      toast.error('처리중 에러가 발생하였습니다.')
+      setLoading(false)
+      return
+    }
+
+    void navigate('#')
+    setLoading(false)
+    void fetchData()
+  }
+
   useEffect(() => {
     document.title = '유저 정보 - 경소고 포트폴리오'
     void fetchData()
   }, [userId])
 
-  console.log(hash)
+  useEffect(() => {
+    rerender(1)
+  }, [])
 
   return (
     <>
+      <div ref={ref}/>
       <ProfileHeader isMe={isMe} user={user} />
       <ProfileItemList isMe={isMe} items={items} filter={filter} onFilterChange={(filter) => setFilter(filter)} />
       <Footer />
 
-      <div ref={ref}/>
-      <Modal container={ref.current} key={hash} open={hash === 'new'} onClose={() => {}}>
-        <Upload />
+      <Modal showCloseIcon={false} container={ref.current} key={hash} open={hash === 'new'} onClose={() => {}}>
+        <Upload loading={loading} onSubmit={onSubmit} />
       </Modal>
-      <Modal container={ref.current} key={hash + '-'} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
-        <Item />
+      <Modal showCloseIcon={false} container={ref.current} key={`${r}${hash}`} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
+        <Item id={parseInt(hash)} onClose={() => { window.location.href = 'closed' }} />
       </Modal>
     </>
   )
