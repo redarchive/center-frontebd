@@ -12,7 +12,7 @@ import 'swiper/css/navigation'
 // import required modules
 import { Navigation, History } from 'swiper'
 
-const Slide = (): JSX.Element => {
+const Slide = ({ data }: any): JSX.Element => {
   return (
     <div className={style.item__slide}>
       <Swiper
@@ -35,34 +35,20 @@ const Slide = (): JSX.Element => {
       >
         <SwiperSlide>
           <div className={style.card}>
-            <div className={style.pc}>1</div>
+            <div className={style.pc}>
+              <img src={data.promotionImageUrl}/>
+            </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <div className={style.pc}>2</div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <div className={style.pc}>3</div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <div className={style.mobile}>4</div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <div className={style.mobile}>5</div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <div className={style.mobile}>6</div>
-          </div>
-        </SwiperSlide>
+        {data.screenshots.map((v: any, i: number) => (
+          <SwiperSlide key={i}>
+            <div className={style.card}>
+              <div className={style.pc}>
+                <img src={v.url}/>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   )

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { HeadFC, navigate } from 'gatsby'
+import { HeadFC } from 'gatsby'
 import LoginHeader from '../components/login/header'
 import Container from '../components/commons/container'
 import LoginTypeSelector, { LoginSelectableTypes } from '../components/login/typeSelector'
@@ -36,7 +36,7 @@ const LoginPage = (): JSX.Element => {
     }
 
     if (internal === '✔') {
-      void navigate('/')
+      window.location.assign('/')
       return
     }
 

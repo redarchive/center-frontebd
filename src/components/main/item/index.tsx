@@ -13,6 +13,7 @@ interface Props {
 
 const Item = ({ id, onClose }: Props): JSX.Element => {
   const [data, setData] = useState<any>()
+  const [user, setUser] = useState<any>()
 
   const fetchData = async (): Promise<void> => {
     if (Number.isNaN(id)) {
@@ -30,7 +31,14 @@ const Item = ({ id, onClose }: Props): JSX.Element => {
       return
     }
 
-    setData(dataRes.data)
+    const userRes = await fetch(`/api/users/${dataRes.data.service.userId as number}`)
+      .then(async (res) => await res.json())
+
+    if (userRes.success) {
+      setUser(userRes.data)
+    }
+
+    setData(dataRes.data.service)
   }
 
   useEffect(() => {
@@ -46,10 +54,10 @@ const Item = ({ id, onClose }: Props): JSX.Element => {
         <a href='#closed' className={style.clear}>1</a>
         {data !== undefined && (
           <>
-            <ItemHeader />
-            <ItemSlide />
-            <ItemTextbox />
-            <ItemGraph />
+            <ItemHeader data={data} user={user} />
+            <ItemSlide data={data} />
+            <ItemTextbox data={data} />
+            <ItemGraph data={data} />
           </>
         )}
       </div>
