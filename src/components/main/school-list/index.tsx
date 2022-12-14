@@ -12,11 +12,12 @@ import 'swiper/css/navigation'
 // import required modules
 import { Link } from 'gatsby'
 import { Navigation, History } from 'swiper'
+import moment from 'moment'
 
-const School = (): JSX.Element => {
+const School = ({ data }: any): JSX.Element => {
   return (
     <div className={style.school}>
-        <div className={style.title}>학교 프로젝트</div>
+        <div className={style.title}>캡스톤 프로젝트</div>
         <Swiper
         slidesPerView={1}
         spaceBetween={40}
@@ -43,210 +44,25 @@ const School = (): JSX.Element => {
           }
         }}
       >
-        <SwiperSlide>
-          <div className={style.card}>
-            <Link to="/#1" className={style.main}>
-              <div className={style.pc}></div>
-              <div className={style.title}>
-                <div>Title Text</div>
+        {data?.capstones.map((v: any, i: number) => (
+          <SwiperSlide key={i}>
+            <div className={style.card}>
+              <Link to="/#1" className={style.main}>
+                <div className={style.pc}><img src={v.promotionImageUrl} width={300} /></div>
+                <div className={style.title}>
+                  <div>{v.name}</div>
+                </div>
+              </Link>
+              <div className={style.sub}>
+                <div className={style.profile}>
+                  <div className={style.profile__img}>{v.profileImage ? <img src={v.profileImage} /> : (v.user.nickname ?? v.user.person.name)[0]}</div>
+                  <div className={style.profile__name}>{v.user.nickname ?? v.user.person.name}</div>
+                </div>
+                <div className={style.day}>{moment(v.createdAt).format('YYYY.MM.DD')}</div>
               </div>
-            </Link>
-            <div className={style.sub}>
-              <div className={style.profile}>
-                <div className={style.profile__img}>김</div>
-                <div className={style.profile__name}>김무일</div>
-              </div>
-              <div className={style.day}>2022.01.10</div>
             </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <Link to='/#2' className={style.main}>
-              <div className={style.mobile}></div>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </Link>
-            <div className={style.sub}>
-              <div className={style.profile}>
-                <div className={style.profile__img}>박</div>
-                <div className={style.profile__name}>박민혁</div>
-              </div>
-              <div className={style.day}>2022.01.10</div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <Link to='/#3' className={style.main}>
-              <div className={style.pc}></div>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </Link>
-            <div className={style.sub}>
-              <div className={style.profile}>
-                <div className={style.profile__img}>윤</div>
-                <div className={style.profile__name}>윤서준</div>
-              </div>
-              <div className={style.day}>2022.01.10</div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <Link to='/#4' className={style.main}>
-              <div className={style.pc}></div>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </Link>
-            <div className={style.sub}>
-              <div className={style.profile}>
-                <div className={style.profile__img}>임</div>
-                <div className={style.profile__name}>임준형</div>
-              </div>
-              <div className={style.day}>2022.01.10</div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <Link to='/#5' className={style.main}>
-              <div className={style.pc}></div>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </Link>
-            <div className={style.sub}>
-              <div className={style.profile}>
-                <div className={style.profile__img}>김</div>
-                <div className={style.profile__name}>김무일</div>
-              </div>
-              <div className={style.day}>2022.01.10</div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <Link to='/#6' className={style.main}>
-              <div className={style.mobile}></div>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </Link>
-            <div className={style.sub}>
-              <div className={style.profile}>
-                <div className={style.profile__img}>박</div>
-                <div className={style.profile__name}>박민혁</div>
-              </div>
-              <div className={style.day}>2022.01.10</div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <Link to='/#7' className={style.main}>
-              <div className={style.pc}></div>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </Link>
-            <div className={style.sub}>
-              <div className={style.profile}>
-                <div className={style.profile__img}>윤</div>
-                <div className={style.profile__name}>윤서준</div>
-              </div>
-              <div className={style.day}>2022.01.10</div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <Link to='/#8' className={style.main}>
-              <div className={style.pc}></div>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </Link>
-            <div className={style.sub}>
-              <div className={style.profile}>
-                <div className={style.profile__img}>임</div>
-                <div className={style.profile__name}>임준형</div>
-              </div>
-              <div className={style.day}>2022.01.10</div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <Link to='/#9' className={style.main}>
-              <div className={style.pc}></div>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </Link>
-            <div className={style.sub}>
-              <div className={style.profile}>
-                <div className={style.profile__img}>김</div>
-                <div className={style.profile__name}>김무일</div>
-              </div>
-              <div className={style.day}>2022.01.10</div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <Link to='/#10' className={style.main}>
-              <div className={style.mobile}></div>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </Link>
-            <div className={style.sub}>
-              <div className={style.profile}>
-                <div className={style.profile__img}>박</div>
-                <div className={style.profile__name}>박민혁</div>
-              </div>
-              <div className={style.day}>2022.01.10</div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <Link to='/#11' className={style.main}>
-              <div className={style.pc}></div>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </Link>
-            <div className={style.sub}>
-              <div className={style.profile}>
-                <div className={style.profile__img}>윤</div>
-                <div className={style.profile__name}>윤서준</div>
-              </div>
-              <div className={style.day}>2022.01.10</div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={style.card}>
-            <Link to='/#12' className={style.main}>
-              <div className={style.pc}></div>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </Link>
-            <div className={style.sub}>
-              <div className={style.profile}>
-                <div className={style.profile__img}>임</div>
-                <div className={style.profile__name}>임준형</div>
-              </div>
-              <div className={style.day}>2022.01.10</div>
-            </div>
-          </div>
-        </SwiperSlide>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   )

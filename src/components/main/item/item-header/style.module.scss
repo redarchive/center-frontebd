@@ -23,6 +23,11 @@
       padding: 8px 14px;
       background: var(--accent);
       border-radius: 30px;
+      color: white;
+
+      &.deletes {
+        background-color: #cc0000;
+      }
     }
   }
 }

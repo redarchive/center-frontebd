@@ -40,78 +40,13 @@ const ItemList = ({ isMe, filter = ItemListFilter.ALL, onFilterChange, items = [
         {items.filter((v) => ItemListFilter[ItemListFilter[filter] as any] as any === 0 || v.type === ItemListFilter[ItemListFilter[filter] as any] as any - 1).map((v, i) => (
           <div className={style.card} key={i}>
             <a href={`#${v.id as number}`} className={style.main}>
-              <div className={style.pc}></div>
+              <div className={style.pc}><img src={v.promotionImageUrl} width={300} /></div>
+              <div className={style.title}>
+                <div>{v.name}</div>
+              </div>
             </a>
           </div>
         ))}
-        <div className={style.card}>
-          <a href="#1" className={style.main}>
-            <div className={style.pc}></div>
-            <div className={style.title}>
-              <div>Title Text</div>
-            </div>
-          </a>
-        </div>
-        <div className={style.card}>
-          <a href="#1" className={style.main}>
-            <div className={style.pc}></div>
-            <div className={style.title}>
-              <div>Title Text</div>
-            </div>
-          </a>
-        </div>
-        <div className={style.card}>
-          <a href="#1" className={style.main}>
-            <div className={style.pc}></div>
-            <div className={style.title}>
-              <div>Title Text</div>
-            </div>
-          </a>
-        </div>
-        <div className={style.card}>
-          <a href="#1" className={style.main}>
-            <div className={style.mobile}>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div className={style.card}>
-          <a href="#1" className={style.main}>
-            <div className={style.mobile}>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div className={style.card}>
-          <a href="#1" className={style.main}>
-            <div className={style.mobile}>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div className={style.card}>
-          <a href="#1" className={style.main}>
-            <div className={style.mobile}>
-              <div className={style.title}>
-                <div>Title Text</div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div className={style.card}>
-          <a href="#1" className={style.main}>
-            <div className={style.pc}></div>
-            <div className={style.title}>
-              <div>Title Text</div>
-            </div>
-          </a>
-        </div>
       </div>
     </div>
   )

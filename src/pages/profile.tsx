@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 import Modal from 'react-responsive-modal'
 import Footer from '../components/commons/footer'
+import Delete from '../components/main/delete'
 import Item from '../components/main/item'
 import Upload from '../components/main/upload'
 import ProfileHeader from '../components/profile/profile-header'
@@ -20,7 +21,10 @@ const ProfilePage = (): JSX.Element => {
   const [filter, setFilter] = useState<ItemListFilter>(ItemListFilter.ALL)
   const [items, setItems] = useState<any[]>()
   const ref = useRef(null)
+  const [editData, setEditData] = useState<any>()
   const [r, rerender] = useState(0)
+
+  const categoryEnum = ['WEBSITE', 'DESKTOP', 'MOBILE', 'GAME', 'PHYSICAL']
 
   const fetchData = async (): Promise<void> => {
     if (userId === null) {
@@ -46,6 +50,26 @@ const ProfilePage = (): JSX.Element => {
       return
     }
 
+    if (hash.startsWith('edit-')) {
+      const editRes = await fetch('/api/services/' + hash.replace('edit-', ''))
+        .then(async (res) => await res.json())
+
+      if (!editRes.success) {
+        toast.error('해당 항목을 찾을 수 없습니다.')
+        void navigate('/')
+        return
+      }
+
+      editRes.data.service.screenshots = editRes.data.service.screenshots.map((v: any) => v.url)
+
+      delete editRes.data.service.id
+      delete editRes.data.service.views
+      delete editRes.data.service.userId
+      delete editRes.data.service.createdAt
+
+      setEditData(editRes.data.service)
+    }
+
     document.title = String(userRes.data.user.nickname || userRes.data.user.login) + '님의 정보 - 경소고 학생 작품 전시관'
 
     setUser(userRes.data.user)
@@ -56,8 +80,18 @@ const ProfilePage = (): JSX.Element => {
   const onSubmit = async (data: any): Promise<void> => {
     setLoading(true)
 
-    const submitRes = await fetch('/api/services', {
-      method: 'POST',
+    if (hash.startsWith('edit-')) {
+      if (data.tags[0].label) {
+        data.tags = data.tags.map((v: any) => v.label)
+      }
+
+      if (typeof data.type !== 'string') {
+        data.type = categoryEnum[data.type]
+      }
+    }
+
+    const submitRes = await fetch('/api/services' + (hash.startsWith('edit-') ? '/' + hash.replace('edit-', '') : ''), {
+      method: hash.startsWith('edit-') ? 'PATCH' : 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -70,6 +104,7 @@ const ProfilePage = (): JSX.Element => {
       return
     }
 
+    window.location.hash = '#closed'
     void navigate('#')
     setLoading(false)
     void fetchData()
@@ -78,6 +113,10 @@ const ProfilePage = (): JSX.Element => {
   useEffect(() => {
     void fetchData()
   }, [userId])
+
+  useEffect(() => {
+    void fetchData()
+  }, [hash])
 
   useEffect(() => {
     rerender(1)
@@ -91,10 +130,16 @@ const ProfilePage = (): JSX.Element => {
       <Footer />
 
       <Modal showCloseIcon={false} container={ref.current} key={hash} open={hash === 'new'} onClose={() => {}}>
-        <Upload loading={loading} onSubmit={onSubmit} />
+        <Upload loading={loading} onSubmit={onSubmit}/>
+      </Modal>
+      <Modal showCloseIcon={false} container={ref.current} key={`e${hash}`} open={hash.startsWith('edit-')} onClose={() => {}}>
+        {editData && <Upload loading={loading} onSubmit={onSubmit} editData={editData}/>}
+      </Modal>
+      <Modal showCloseIcon={false} container={ref.current} key={`d${hash}`} open={hash.startsWith('delete-')} onClose={() => {}}>
+        <Delete id={parseInt(hash.replace('delete-', ''))} />
       </Modal>
       <Modal showCloseIcon={false} container={ref.current} key={`${r}${hash}`} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
-        <Item id={parseInt(hash)} onClose={() => { window.location.href = 'closed' }} />
+        <Item id={parseInt(hash)} onClose={() => { window.location.hash = 'closed' }} />
       </Modal>
     </>
   )

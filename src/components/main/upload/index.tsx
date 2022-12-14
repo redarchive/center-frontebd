@@ -8,6 +8,7 @@ import Select, { MultiValue, SingleValue } from 'react-select'
 interface Props {
   onSubmit: (data: CreateServiceDto) => any
   loading: boolean
+  editData?: Partial<CreateServiceDto>
 }
 
 interface CreateClientDto {
@@ -34,14 +35,14 @@ interface CreateServiceDto {
   type: string
 }
 
-const Upload = ({ onSubmit, loading }: Props): JSX.Element => {
-  const [data, setData] = useState<Partial<CreateServiceDto>>({})
+const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
+  const [data, setData] = useState<Partial<CreateServiceDto>>(editData ?? {})
   const [tags, setTags] = useState<Array<{ value: string, label: string }>>([])
   const [useLogin, setUseLogin] = useState(false)
 
   const categoryOptions = [
     { value: 'WEBSITE', label: '웹사이트' },
-    { value: 'MOBILE', label: '모바일' },
+    { value: 'MOBILE', label: '어플' },
     { value: 'GAME', label: '게임' },
     { value: 'DESKTOP', label: '데스크톱' },
     { value: 'PHYSICAL', label: 'IOT' }
@@ -200,6 +201,7 @@ const Upload = ({ onSubmit, loading }: Props): JSX.Element => {
       }
     }
 
+    setTags(tag as any)
     setData((data) => ({
       ...data,
       tags: tag.map((v) => v.label)
@@ -342,9 +344,9 @@ const Upload = ({ onSubmit, loading }: Props): JSX.Element => {
 
   return (
     <>
-      <a href='#' className={style.item__back}></a>
+      <a href='#closed' className={style.item__back}></a>
       <div className={style.item__container}>
-        <form action="/" onSubmit={onSubmitFn}>
+        <form onSubmit={onSubmitFn}>
           <div className={style.input__box}>
             <label htmlFor="name">서비스 명 *</label>
             <input disabled={loading} maxLength={30} value={data.name} id="name" onChange={(e) => setData({ ...data, name: e.target.value })} type="text" placeholder='서비스 명을 입력하세요.' />
@@ -409,18 +411,18 @@ const Upload = ({ onSubmit, loading }: Props): JSX.Element => {
           <div className={style.input__box}>
             <label>서비스 설명 (500자 이하) *</label>
             <div className={style.edit}>
-              <textarea disabled={loading} maxLength={500} onChange={(e) => setData({ ...data, description: e.target.value })} placeholder='500자 이하의 간단한 설명을 입력해주세요.'>{data.description}</textarea>
+              <textarea disabled={loading} maxLength={500} onChange={(e) => setData({ ...data, description: e.target.value })} placeholder='500자 이하의 간단한 설명을 입력해주세요.' value={data.description}></textarea>
             </div>
             <p>마크다운 문법 지원</p>
           </div>
           <div className={style.input__box}>
             <label>서비스 태그 *</label>
-            <Creatable isDisabled={loading} onChange={onTagChange} options={tags} isMulti classNamePrefix="selector" placeholder="태그를 선택해주세요" />
+            <Creatable value={tags} isDisabled={loading} onChange={onTagChange} options={tags} isMulti classNamePrefix="selector" placeholder="태그를 선택해주세요" />
             <p>입력 후 엔터로 새 태그 생성</p>
           </div>
           <div className={style.input__box}>
             <label>서비스 카테고리 *</label>
-            <Select isDisabled={loading} onChange={onCategoryChange} options={categoryOptions} isSearchable={false} classNamePrefix="selector"/>
+            <Select value={categoryOptions[data.type as any]} isDisabled={loading} onChange={onCategoryChange} options={categoryOptions} isSearchable={false} classNamePrefix="selector"/>
           </div>
           <div className={style.input__box}>
             <label>서비스 URL *</label>

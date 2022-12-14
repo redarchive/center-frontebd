@@ -128,9 +128,11 @@
     margin-top: 40px;
     display: flex;
     justify-content: center;
-    a {
+    button {
       color: var(--text-secondary);
       padding: 15px 86px;
+      border: none;
+      cursor: pointer;
       background: var(--sub-bg);
       border-radius: 5px;
     }
