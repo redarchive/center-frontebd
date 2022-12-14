@@ -39,41 +39,69 @@ const ItemList = ({ isMe, filter = ItemListFilter.ALL, onFilterChange, items = [
         <div className={style.card}>
           <a href="#1" className={style.main}>
             <div className={style.pc}></div>
+            <div className={style.title}>
+              <div>Title Text</div>
+            </div>
           </a>
         </div>
         <div className={style.card}>
           <a href="#1" className={style.main}>
             <div className={style.pc}></div>
+            <div className={style.title}>
+              <div>Title Text</div>
+            </div>
           </a>
         </div>
         <div className={style.card}>
           <a href="#1" className={style.main}>
             <div className={style.pc}></div>
+            <div className={style.title}>
+              <div>Title Text</div>
+            </div>
           </a>
         </div>
         <div className={style.card}>
           <a href="#1" className={style.main}>
-            <div className={style.mobile}></div>
+            <div className={style.mobile}>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
+            </div>
           </a>
         </div>
         <div className={style.card}>
           <a href="#1" className={style.main}>
-            <div className={style.mobile}></div>
+            <div className={style.mobile}>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
+            </div>
           </a>
         </div>
         <div className={style.card}>
           <a href="#1" className={style.main}>
-            <div className={style.mobile}></div>
+            <div className={style.mobile}>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
+            </div>
           </a>
         </div>
         <div className={style.card}>
           <a href="#1" className={style.main}>
-            <div className={style.mobile}></div>
+            <div className={style.mobile}>
+              <div className={style.title}>
+                <div>Title Text</div>
+              </div>
+            </div>
           </a>
         </div>
         <div className={style.card}>
           <a href="#1" className={style.main}>
             <div className={style.pc}></div>
+            <div className={style.title}>
+              <div>Title Text</div>
+            </div>
           </a>
         </div>
       </div>

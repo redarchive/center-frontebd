@@ -323,6 +323,7 @@ main {
         opacity: 0;
         visibility: hidden;
         transition: none;
+        flex-direction: column;
         .login {
           margin: 0;
           width: 100%;
