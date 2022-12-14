@@ -11,7 +11,7 @@ export const wrapPageElement = ({ element, props }: any): ReactNode => {
   return (
     <main data-theme={mode ? 'dark' : 'light'} className='main'>
       <Header mode={mode ?? false} setMode={setMode} />
-      <Toaster />
+      <Toaster containerClassName="toast" />
       {element}
     </main>
   )

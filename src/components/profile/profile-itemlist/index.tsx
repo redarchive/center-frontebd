@@ -36,6 +36,14 @@ const ItemList = ({ isMe, filter = ItemListFilter.ALL, onFilterChange, items = [
             </a>
           </div>
         )}
+
+        {items.filter((v) => ItemListFilter[ItemListFilter[filter] as any] as any === 0 || v.type === ItemListFilter[ItemListFilter[filter] as any] as any - 1).map((v, i) => (
+          <div className={style.card} key={i}>
+            <a href={`#${v.id as number}`} className={style.main}>
+              <div className={style.pc}></div>
+            </a>
+          </div>
+        ))}
         <div className={style.card}>
           <a href="#1" className={style.main}>
             <div className={style.pc}></div>

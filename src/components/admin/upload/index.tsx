@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaUpload } from 'react-icons/fa'
+import { FileUploader } from 'react-drag-drop-files'
 import * as style from './style.module.scss'
 
 interface Props {
@@ -21,18 +22,10 @@ const AdminUpload = ({ onUpload, isLoading }: Props): JSX.Element => {
   return (
     <div className={style.upload}>
       <form>
-        <input
-          onChange={(e) => { void onSubmit(e.target.files?.[0]) }}
-          disabled={isLoading}
-          accept="text/csv"
-          type="file" id="file" />
-
-        <label
-          className={isLoading && style.loading}
-          htmlFor="file">
+        <FileUploader className={isLoading && style.loading} disabled={isLoading} hoverTitle="이곳에 놓아서 업로드" types={['CSV']} handleChange={onSubmit}>
           <FaUpload size={25} />
           <p>유저 데이터 업로드</p>
-        </label>
+        </FileUploader>
       </form>
     </div>
   )

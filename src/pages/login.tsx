@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { HeadFC, navigate } from 'gatsby'
+import { HeadFC } from 'gatsby'
 import LoginHeader from '../components/login/header'
 import Container from '../components/commons/container'
 import LoginTypeSelector, { LoginSelectableTypes } from '../components/login/typeSelector'
@@ -36,7 +36,7 @@ const LoginPage = (): JSX.Element => {
     }
 
     if (internal === '✔') {
-      void navigate('/')
+      window.location.assign('/')
       return
     }
 
@@ -115,6 +115,12 @@ const LoginPage = (): JSX.Element => {
     setClient(result.data.client)
   }
 
+  const formatType = (selectedType: LoginSelectableTypes): string => ({
+    [LoginSelectableTypes.CURRENT_STUDENT]: '재학생',
+    [LoginSelectableTypes.GRADUATED_STUDENT]: '졸업생',
+    [LoginSelectableTypes.TEACHER]: '교사'
+  })[selectedType]
+
   const onSubmit = async (data: LoginFormData): Promise<void> => {
     setDisabled(true)
     setMessage(undefined)
@@ -122,7 +128,7 @@ const LoginPage = (): JSX.Element => {
     if (!data.id) {
       setDisabled(false)
       setMessage({
-        id: '아이디를 입력해주세요.'
+        id: formatType(selectedType) + ' 아이디를 입력해주세요.'
       })
 
       setTimeout(() => {
@@ -141,7 +147,7 @@ const LoginPage = (): JSX.Element => {
     if (!data.password) {
       setDisabled(false)
       setMessage({
-        password: '비밀번호를 입력해주세요.'
+        password: formatType(selectedType) + ' 비밀번호를 입력해주세요.'
       })
 
       setTimeout(() => {
@@ -166,8 +172,8 @@ const LoginPage = (): JSX.Element => {
     if (!res.success) {
       setDisabled(false)
       setMessage({
-        id: '아이디 혹은 비밀번호가 잘못되었어요.',
-        password: '아이디 혹은 비밀번호가 잘못되었어요.'
+        id: formatType(selectedType) + ' 아이디 혹은 비밀번호가 잘못되었어요.',
+        password: formatType(selectedType) + ' 아이디 혹은 비밀번호가 잘못되었어요.'
       })
 
       setTimeout(() => {
@@ -217,4 +223,4 @@ const LoginPage = (): JSX.Element => {
 export default LoginPage
 
 export const Head: HeadFC = () =>
-  <title>GBSW Center - 로그인</title>
+  <title>GBSW 통합로그인 - 로그인</title>

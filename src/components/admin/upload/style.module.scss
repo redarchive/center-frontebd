@@ -8,8 +8,9 @@
     display: none;
   }
 
-  label {
+  form > label {
     width: 100%;
+    text-align: center;
     padding: 30px 0px;
     border: dashed 2px #9b3232;
     border-radius: 5px;

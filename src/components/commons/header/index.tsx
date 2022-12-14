@@ -58,7 +58,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
         <div className={style.left}>
           <Link to='/' className={style.logo}>
             <img src={Logo} alt="logo" />
-            <h1>Store</h1>
+            <h1>전시관</h1>
           </Link>
           <ul className={style.nav}>
             <li className={path === '/' && style.click}><Link to="/">홈</Link></li>
@@ -94,8 +94,12 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
                 <div className={style.login}><strong>
                   <Link to={`/profile?id=${me.id as string}`}>
                     {me.nickname ?? me.person.name}
-                  </Link></strong>님 안녕하세요.
+                  </Link></strong>&nbsp;
+                  {me.person.type === 0 && '재학생'}
+                  {me.person.type === 1 && '졸업생'}
+                  {me.person.type === 2 && '교사'}
                 </div>
+                {me.person.type === 2 && <div className={style.login} onClick={onLogout}><Link to="/admin">관리</Link></div>}
                 <div className={style.login} onClick={onLogout}><Link to="#logout">로그아웃</Link></div>
                 <div className={style.sign__up}><Link to={`/profile?id=${me.id as string}#new`}>신규등록</Link></div>
               </>
