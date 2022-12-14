@@ -223,4 +223,4 @@ const LoginPage = (): JSX.Element => {
 export default LoginPage
 
 export const Head: HeadFC = () =>
-  <title>GBSW Center - 로그인</title>
+  <title>GBSW 통합로그인 - 로그인</title>

@@ -246,4 +246,4 @@ const ForgotPWPage = (): JSX.Element => {
 export default ForgotPWPage
 
 export const Head: HeadFC = () =>
-  <title>GBSW Center - 비밀번호 재설정</title>
+  <title>GBSW 통합로그인 - 비밀번호 재설정</title>

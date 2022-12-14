@@ -22,14 +22,14 @@ const CategoryPage = (): JSX.Element => {
     }
 
     const typeLabel: { [key: string]: string } = {
-      WEBSITE: '웹',
+      WEBSITE: '웹사이트',
       DESKTOP: '데스크톱',
-      MOBILE: '앱',
+      MOBILE: '어플',
       GAME: '게임',
       PHYSICAL: 'IOT'
     }
 
-    document.title = `${typeLabel[type]} - 경소고 포트폴리오`
+    document.title = `${typeLabel[type]} - 경소고 학생 작품 전시관`
   }, [type])
 
   useEffect(() => {
@@ -52,4 +52,4 @@ const CategoryPage = (): JSX.Element => {
 
 export default CategoryPage
 
-export const Head: HeadFC = () => <title>카테고리 - 경소고 포트폴리오</title>
+export const Head: HeadFC = () => <title>카테고리 - 경소고 학생 작품 전시관</title>

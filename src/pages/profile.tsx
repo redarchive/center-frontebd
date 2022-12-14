@@ -1,5 +1,5 @@
 import { useLocation } from '@reach/router'
-import { navigate } from 'gatsby'
+import { HeadFC, navigate } from 'gatsby'
 import React, { useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 import Modal from 'react-responsive-modal'
@@ -46,7 +46,7 @@ const ProfilePage = (): JSX.Element => {
       return
     }
 
-    document.title = String(userRes.data.user.nickname || userRes.data.user.login) + '님의 정보 - 경소고 포트폴리오'
+    document.title = String(userRes.data.user.nickname || userRes.data.user.login) + '님의 정보 - 경소고 학생 작품 전시관'
 
     setUser(userRes.data.user)
     setIsMe(userRes.data.me)
@@ -76,7 +76,6 @@ const ProfilePage = (): JSX.Element => {
   }
 
   useEffect(() => {
-    document.title = '유저 정보 - 경소고 포트폴리오'
     void fetchData()
   }, [userId])
 
@@ -102,3 +101,5 @@ const ProfilePage = (): JSX.Element => {
 }
 
 export default ProfilePage
+
+export const Head: HeadFC = () => <title>유저정보 - 경소고 학생 작품 전시관</title>

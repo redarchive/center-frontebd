@@ -11,4 +11,4 @@ const NotFoundPage = (): JSX.Element => {
 
 export default NotFoundPage
 
-export const Head: HeadFC = () => <title>404! - 경소고 포트폴리오</title>
+export const Head: HeadFC = () => <title>404! - 경소고 학생 작품 전시관</title>

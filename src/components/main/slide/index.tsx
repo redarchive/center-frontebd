@@ -12,7 +12,7 @@ import 'swiper/css/navigation'
 import { Autoplay, Pagination, Navigation } from 'swiper'
 import * as style from './style.module.scss'
 
-const Slide = (): JSX.Element => {
+const Slide = ({ data }: any): JSX.Element => {
   return (
     <div className={style.slide}>
       <Swiper
@@ -29,11 +29,12 @@ const Slide = (): JSX.Element => {
           delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true
         }}
       >
-        <SwiperSlide><div className={style.parts}>1</div></SwiperSlide>
-        <SwiperSlide><div className={style.parts}>2</div></SwiperSlide>
-        <SwiperSlide><div className={style.parts}>3</div></SwiperSlide>
-        <SwiperSlide><div className={style.parts}>4</div></SwiperSlide>
-        <SwiperSlide><div className={style.parts}>5</div></SwiperSlide>
+        {!data && <SwiperSlide><div className={style.parts}></div></SwiperSlide>}
+        {data?.banners.map((v: any, i: number) => (
+          <SwiperSlide key={i}>
+            <div className={style.parts}><img src={v.promotionImageUrl} />{v.name}</div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   )

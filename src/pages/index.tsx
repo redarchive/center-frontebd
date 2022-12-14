@@ -14,16 +14,21 @@ const IndexPage = (): JSX.Element => {
   const ref = useRef(null)
   const hash = new URL(location.href).hash.replace('#', '')
   const [r, rerender] = useState(0)
+  const [data, setData] = useState<any>()
 
   useEffect(() => {
-    document.title = '경북소프트웨어고 포트폴리오'
+    document.title = '경북소프트웨어고 학생 작품 전시관'
     rerender(1)
+
+    void fetch('/api/views/@index')
+      .then(async (res) => await res.json())
+      .then((res) => { setData(res.data) })
   }, [])
 
   return (
     <>
       <div ref={ref}/>
-      <MainSlide />
+      <MainSlide data={data} />
       <MainPopularityList />
       <MainSchoolList />
       <MainUpdateList />
@@ -37,4 +42,4 @@ const IndexPage = (): JSX.Element => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>경북소프트웨어고 포트폴리오</title>
+export const Head: HeadFC = () => <title>경북소프트웨어고 학생 작품 전시관</title>

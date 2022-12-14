@@ -101,4 +101,4 @@ const AdminPage = (): JSX.Element => {
 export default AdminPage
 
 export const Head: HeadFC = () =>
-  <title>GBSW Center - 관리자페이지</title>
+  <title>GBSW 통합로그인 - 관리자페이지</title>

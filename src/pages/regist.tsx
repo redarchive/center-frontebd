@@ -337,4 +337,4 @@ const RegistPage = (): JSX.Element => {
 export default RegistPage
 
 export const Head: HeadFC = () =>
-  <title>GBSW Center - 회원가입</title>
+  <title>GBSW 통합로그인 - 회원가입</title>
