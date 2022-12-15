@@ -37,7 +37,7 @@ interface CreateServiceDto {
 
 const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
   const [data, setData] = useState<Partial<CreateServiceDto>>(editData ?? {})
-  const [tags, setTags] = useState<Array<{ value: string, label: string }>>([])
+  const [tags, setTags] = useState<Array<{ label: string, value: string }>>([])
   const [useLogin, setUseLogin] = useState(false)
 
   const categoryOptions = [
@@ -72,8 +72,9 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
       return
     }
 
-    if (data.description === undefined || data.description.length === 0) {
-      toast.error('서비스 설명을 500자 이하로 입력해주세요.')
+    if (data.description === undefined || data.description.length < 30) {
+      toast.error('서비스 설명을 30자 이상 입력해주세요.')
+      return
     }
 
     if (data.tags === undefined || data.tags.length < 1) {
@@ -98,8 +99,8 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
     }
 
     for (const [clientIndex, client] of (data.clients ?? []).entries()) {
-      if (client.name === undefined || client.name.length === 0) {
-        toast.error(`클라이언트 #${clientIndex + 1} 이름을 입력해주세요`)
+      if (client.name === undefined || client.name.length < 2) {
+        toast.error(`클라이언트 #${clientIndex + 1} 이름을 2자 이상 입력해주세요`)
         return
       }
 
@@ -192,19 +193,18 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
     }))
   }
 
-  const onTagChange = (tag: MultiValue<{ value: string, label: string }>): void => {
+  const onTagChange = (tags: MultiValue<{ value: string, label: string }>): void => {
     if (loading) return
-    for (const value of tag) {
+    for (const value of tags) {
       if (value.label.length > 10) {
         toast.error('태그는 최대 10자리까지 가능합니다.')
         return
       }
     }
 
-    setTags(tag as any)
     setData((data) => ({
       ...data,
-      tags: tag.map((v) => v.label)
+      tags: tags.map((v) => v.label)
     }))
   }
 
@@ -290,7 +290,7 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
       return
     }
 
-    setTags(tagsRes.data.tags.map((v: any) => ({ label: v.label, value: v.label })))
+    setTags(tagsRes.data.tags.map((v: string) => ({ label: v, value: v })))
   }
 
   useEffect(() => {
@@ -333,7 +333,7 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
           </div>
 
           {!!scopeObj && (
-            <textarea disabled={loading} maxLength={50} onChange={onReasonChage} placeholder={`${scope} 데이터를 쓰는 이유 작성`}>{scopeObj?.reason}</textarea>
+            <textarea disabled={loading} maxLength={100} onChange={onReasonChage} placeholder={`${scope} 데이터를 쓰는 이유 작성`}>{scopeObj?.reason}</textarea>
           )}
         </div>
       ))
@@ -341,6 +341,8 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
 
     return <>{forms}</>
   }
+
+  console.log(tags, data.tags)
 
   return (
     <>
@@ -417,7 +419,7 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
           </div>
           <div className={style.input__box}>
             <label>서비스 태그 *</label>
-            <Creatable value={tags} isDisabled={loading} onChange={onTagChange} options={tags} isMulti classNamePrefix="selector" placeholder="태그를 선택해주세요" />
+            <Creatable value={data.tags?.map((v) => ({ label: v, value: v }))} isDisabled={loading} onChange={onTagChange} options={tags} isMulti classNamePrefix="selector" placeholder="태그를 선택해주세요" />
             <p>입력 후 엔터로 새 태그 생성</p>
           </div>
           <div className={style.input__box}>
@@ -426,11 +428,11 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
           </div>
           <div className={style.input__box}>
             <label>서비스 URL *</label>
-            <input disabled={loading} maxLength={100} value={data.serviceUrl} onChange={(e) => setData({ ...data, serviceUrl: e.target.value })} type="text" placeholder='URL을 입력해주세요.' />
+            <input disabled={loading} maxLength={100} value={data.serviceUrl} onChange={(e) => setData({ ...data, serviceUrl: e.target.value })} type="url" placeholder='URL을 입력해주세요.' />
           </div>
           <div className={style.input__box}>
             <label>서비스 소스코드 주소 (Github)</label>
-            <input disabled={loading} maxLength={100} value={data.sourceUrl} onChange={(e) => setData({ ...data, sourceUrl: e.target.value || undefined })} type="text" placeholder='소스코드 주소를 입력해주세요.' />
+            <input disabled={loading} maxLength={100} value={data.sourceUrl} onChange={(e) => setData({ ...data, sourceUrl: e.target.value || undefined })} type="url" placeholder='소스코드 주소를 입력해주세요.' />
           </div>
           <input type="checkbox" id='check' />
           <div className={style.check__box}>

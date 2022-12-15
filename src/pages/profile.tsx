@@ -24,7 +24,7 @@ const ProfilePage = (): JSX.Element => {
   const [editData, setEditData] = useState<any>()
   const [r, rerender] = useState(0)
 
-  const categoryEnum = ['WEBSITE', 'DESKTOP', 'MOBILE', 'GAME', 'PHYSICAL']
+  const categoryEnum = ['WEBSITE', 'MOBILE', 'GAME', 'DESKTOP', 'PHYSICAL']
 
   const fetchData = async (): Promise<void> => {
     if (userId === null) {
@@ -61,9 +61,11 @@ const ProfilePage = (): JSX.Element => {
       }
 
       editRes.data.service.screenshots = editRes.data.service.screenshots.map((v: any) => v.url)
+      editRes.data.service.tags = editRes.data.service.tags.map((v: any) => v.label)
 
       delete editRes.data.service.id
-      delete editRes.data.service.views
+      delete editRes.data.service.logins
+      delete editRes.data.service.stats
       delete editRes.data.service.userId
       delete editRes.data.service.createdAt
 
@@ -81,10 +83,6 @@ const ProfilePage = (): JSX.Element => {
     setLoading(true)
 
     if (hash.startsWith('edit-')) {
-      if (data.tags[0].label) {
-        data.tags = data.tags.map((v: any) => v.label)
-      }
-
       if (typeof data.type !== 'string') {
         data.type = categoryEnum[data.type]
       }
@@ -104,8 +102,8 @@ const ProfilePage = (): JSX.Element => {
       return
     }
 
-    window.location.hash = '#closed'
-    void navigate('#')
+    window.location.hash = hash.startsWith('edit-') ? hash.replace('edit-', '') : '#closed'
+
     setLoading(false)
     void fetchData()
   }

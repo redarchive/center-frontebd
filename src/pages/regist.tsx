@@ -300,6 +300,19 @@ const RegistPage = (): JSX.Element => {
         return
       }
 
+      if (result.message === 'VERIFY_INVALID') {
+        setStep(1)
+        setDisabled(false)
+
+        setMessage({
+          phoneCheck: '인증이 만료되었어요. 다시 인증해주세요.'
+        })
+
+        setTimeout(() => {
+          setMessage(undefined)
+        }, 3 * 1000)
+      }
+
       if (result.message === 'USER_ALREADY_ASSOCIATED') {
         setStep(0)
         setDisabled(false)
