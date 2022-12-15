@@ -57,7 +57,7 @@ const Item = ({ id, onClose }: Props): JSX.Element => {
             <ItemHeader data={data} user={user} />
             <ItemSlide data={data} />
             <ItemTextbox data={data} />
-            <ItemGraph />
+            <ItemGraph data={data} />
           </>
         )}
       </div>
