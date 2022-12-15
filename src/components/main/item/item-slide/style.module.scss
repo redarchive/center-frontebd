@@ -3,19 +3,17 @@
   white-space: nowrap;
   max-width: calc(920px - 80px);
   .card {
-    height: 224px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
     overflow: hidden;
+    aspect-ratio: 16/9;
     > div {
       display: flex;
       align-items: center;
       width: 100%;
       height: 100%;
       justify-content: center;
-      background: var(--sub-bg);
     }
     img {
       width: 100%;

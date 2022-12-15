@@ -9,7 +9,7 @@
     img {
       aspect-ratio: 1/1;
       max-width: 100px;
-      border-radius: 15px;
+      border-radius: 5px;
     }
     .text {
       .title {
@@ -19,6 +19,9 @@
       .sub {
         color: var(--text-secondary);
         margin-top: 6px;
+        a {
+          color: var(--accent);
+        }
       }
     }
   }
@@ -26,7 +29,7 @@
     display: flex;
     gap: 6px;
     a {
-      display: block;
+      display: flex;
       cursor: pointer;
       color: var(--main-bg);
       font-weight: 500;
@@ -34,6 +37,8 @@
       background: var(--accent);
       border-radius: 30px;
       color: white;
+      align-items: center;
+      justify-content: center;
 
       &.deletes {
         background-color: #cc0000;
@@ -46,8 +51,15 @@
   .header {
     display: block;
     .right {
+      display: block;
+      width: 100%;
       margin-top: 10px;
       display: inline-block;
+      a {
+        margin: 14px 0;
+        height: 60px;
+        border-radius: 5px;
+      }
     }
   }
 }

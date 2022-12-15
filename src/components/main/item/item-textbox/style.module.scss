@@ -7,11 +7,18 @@
     padding-bottom: 14px;
     border-bottom: 1px solid var(--main-border);
   }
+  .tags {
+    margin-top: 14px;
+    >span {
+      color: var(--accent);
+      margin-right: 6px;
+    }
+  }
   .text__content {
     color: var(--text-secondary);
     max-width: 540px;
     width: 100%;
-    margin-top: 14px;
+    margin-top: 4px;
   }
   .day {
     margin-top: 14px;
