@@ -47,7 +47,7 @@ const School = ({ data }: any): JSX.Element => {
         {data?.capstones.map((v: any, i: number) => (
           <SwiperSlide key={i}>
             <div className={style.card}>
-              <Link to="/#1" className={style.main}>
+              <Link to={`/#${v.id as string}`} className={style.main}>
                 <div className={style.pc}><img src={v.promotionImageUrl} width={300} /></div>
                 <div className={style.title}>
                   <div>{v.name}</div>

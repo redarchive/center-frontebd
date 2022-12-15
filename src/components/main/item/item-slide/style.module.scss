@@ -12,20 +12,14 @@
     > div {
       display: flex;
       align-items: center;
+      width: 100%;
+      height: 100%;
       justify-content: center;
       background: var(--sub-bg);
     }
-    .pc {
+    img {
       width: 100%;
-      height: 100%;
-      img {
-        object-fit: contain;
-      }
-    }
-    .mobile {
-      width: 140px;
-      height: 100%;
-      border-radius: 5px;
+      object-fit: cover;
     }
   }
 }

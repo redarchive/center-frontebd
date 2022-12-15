@@ -31,7 +31,7 @@ const ItemList = ({ isMe, filter = ItemListFilter.ALL, onFilterChange, items = [
       <div className={style.card__box}>
         {isMe && (
           <div className={style.card}>
-            <a href='#new' className={style.main}>
+            <a href='#new' className={style.create}>
               등록하기
             </a>
           </div>

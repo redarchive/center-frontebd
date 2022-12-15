@@ -29,7 +29,7 @@ const Update = ({ data, onNext, disabled }: any): JSX.Element => {
       <div className={style.card__box}>
         {data?.recents.filter((v: any) => ItemListFilter[ItemListFilter[filter] as any] as any === 0 || v.type === ItemListFilter[ItemListFilter[filter] as any] as any - 1).map((v: any, i: number) => (
             <div className={style.card} key={i}>
-            <Link to="/#1" className={style.main}>
+            <Link to={`/#${v.id as number}`} className={style.main}>
               <div className={style.pc}><img src={v.promotionImageUrl} width={300} /></div>
               <div className={style.title}>
                 <div>{v.name}</div>

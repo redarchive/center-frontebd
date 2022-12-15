@@ -1,10 +1,21 @@
 .slide {
   .parts {
     width: 100%;
-    height: 40em;
+    height: 54em;
     background: var(--sub-bg);
     display: flex;
     align-items: center;
     justify-content: center;
+    >img {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slide {
+    .parts {
+      height: auto;
+    }
   }
 }

@@ -32,7 +32,7 @@ const Slide = ({ data }: any): JSX.Element => {
         {!data && <SwiperSlide><div className={style.parts}></div></SwiperSlide>}
         {data?.banners.map((v: any, i: number) => (
           <SwiperSlide key={i}>
-            <div className={style.parts}><img src={v.promotionImageUrl} />{v.name}</div>
+            <div className={style.parts}><img src={v.promotionImageUrl} /></div>
           </SwiperSlide>
         ))}
       </Swiper>
