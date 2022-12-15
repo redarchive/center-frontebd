@@ -49,7 +49,7 @@ const IndexPage = (): JSX.Element => {
     <>
       <div ref={ref}/>
       <MainSlide data={data} />
-      <MainPopularityList />
+      <MainPopularityList data={data} />
       <MainSchoolList data={data}/>
       <MainUpdateList data={data} onNext={() => setPage(page + 1)} disabled={disabled} />
       <Footer />
