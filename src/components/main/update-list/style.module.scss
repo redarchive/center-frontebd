@@ -45,6 +45,7 @@
       display: flex;
       border-radius: 5px;
       margin-bottom: 30px;
+      aspect-ratio: 16/9;
       .main {
         width: 100%;
         display: flex;
@@ -53,7 +54,6 @@
         img {
           width: 100%;
           border-radius: 5px;
-          aspect-ratio: 16/9;
           object-fit: cover;
         }
         .title {

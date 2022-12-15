@@ -51,6 +51,7 @@
       display: flex;
       border-radius: 5px;
       margin-bottom: 30px;
+      aspect-ratio: 16/9;
       .create {
         width: 100%;
         border-radius: 5px;
@@ -70,6 +71,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        aspect-ratio: 16/9;
         img {
           width: 100%;
           border-radius: 5px;
