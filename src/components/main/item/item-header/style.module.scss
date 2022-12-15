@@ -3,13 +3,23 @@
   align-items: flex-end;
   justify-content: space-between;
   .left {
-    .title {
-      color: var(--text-primary);
-      font-size: 24px;   
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    img {
+      aspect-ratio: 1/1;
+      max-width: 100px;
+      border-radius: 15px;
     }
-    .sub {
-      color: var(--text-secondary);
-      margin-top: 6px;
+    .text {
+      .title {
+        color: var(--text-primary);
+        font-size: 24px;   
+      }
+      .sub {
+        color: var(--text-secondary);
+        margin-top: 6px;
+      }
     }
   }
   .right {

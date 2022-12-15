@@ -4,6 +4,7 @@ import MainPopularityList from '../components/main/popularity-list'
 import MainSchoolList from '../components/main/school-list'
 import MainUpdateList from '../components/main/update-list'
 import Footer from '../components/commons/footer'
+import MainSlide from '../components/main/slide'
 import { useLocation } from '@reach/router'
 import Modal from 'react-responsive-modal'
 import Item from '../components/main/item'
@@ -39,6 +40,7 @@ const CategoryPage = (): JSX.Element => {
   return (
     <>
       <div ref={ref}/>
+      <MainSlide />
       <MainPopularityList />
       <MainSchoolList />
       <MainUpdateList />

@@ -33,13 +33,6 @@ const Slide = ({ data }: any): JSX.Element => {
           }
         }}
       >
-        <SwiperSlide>
-          <div className={style.card}>
-            <div className={style.pc}>
-              <img src={data.promotionImageUrl}/>
-            </div>
-          </div>
-        </SwiperSlide>
         {data.screenshots.map((v: any, i: number) => (
           <SwiperSlide key={i}>
             <div className={style.card}>
