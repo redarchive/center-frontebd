@@ -11,10 +11,10 @@ import { toast } from 'react-hot-toast'
 
 const CategoryPage = (): JSX.Element => {
   const location = useLocation()
-  const type = new URL(location.href).searchParams.get('type')
+  const type = new URL(location.href ?? 'http://example.com').searchParams.get('type')
   const [disabled, setDisabled] = useState(false)
   const ref = useRef(null)
-  const hash = new URL(location.href).hash.replace('#', '')
+  const hash = new URL(location.href ?? 'http://example.com').hash.replace('#', '')
   const [r, rerender] = useState(0)
   const [page, setPage] = useState(0)
   const [data, setData] = useState<any>()

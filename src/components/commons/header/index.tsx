@@ -11,7 +11,7 @@ interface Props {
 
 const Header = ({ mode, setMode }: Props): JSX.Element => {
   const location = useLocation()
-  const url = new URL(location.href)
+  const url = new URL(location.href ?? 'http://example.com')
 
   const path = url.pathname
   const type = url.searchParams.get('type')
