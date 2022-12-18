@@ -12,7 +12,9 @@ export const wrapPageElement = ({ element, props }: any): ReactNode => {
     <main data-theme={mode ? 'dark' : 'light'} className='main'>
       <Header mode={mode ?? false} setMode={setMode} />
       <Toaster containerClassName="toast" />
-      {element}
+      <div className="container">
+        {element}
+      </div>
     </main>
   )
 }

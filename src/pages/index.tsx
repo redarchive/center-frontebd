@@ -13,7 +13,7 @@ import { toast } from 'react-hot-toast'
 const IndexPage = (): JSX.Element => {
   const location = useLocation()
   const ref = useRef(null)
-  const hash = new URL(location.href).hash.replace('#', '')
+  const hash = new URL(location.href ?? 'http://example.com').hash.replace('#', '')
   const [page, setPage] = useState(0)
   const [r, rerender] = useState(0)
   const [disabled, setDisabled] = useState(false)
@@ -49,7 +49,7 @@ const IndexPage = (): JSX.Element => {
     <>
       <div ref={ref}/>
       <MainSlide data={data} />
-      <MainPopularityList />
+      <MainPopularityList data={data} />
       <MainSchoolList data={data}/>
       <MainUpdateList data={data} onNext={() => setPage(page + 1)} disabled={disabled} />
       <Footer />

@@ -12,7 +12,7 @@ import ProfileItemList, { ItemListFilter } from '../components/profile/profile-i
 
 const ProfilePage = (): JSX.Element => {
   const location = useLocation()
-  const url = new URL(location.href)
+  const url = new URL(location.href ?? 'http://example.com')
   const hash = url.hash.replace('#', '')
   const userId = url.searchParams.get('id')
   const [loading, setLoading] = useState(false)
