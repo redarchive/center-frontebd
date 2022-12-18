@@ -33,7 +33,7 @@
       cursor: pointer;
       color: var(--main-bg);
       font-weight: 500;
-      padding: 8px 14px;
+      padding: 10px 18px;
       background: var(--accent);
       border-radius: 30px;
       color: white;
@@ -50,6 +50,23 @@
 @media screen and (max-width: 768px) {
   .header {
     display: block;
+    .left {
+      img {
+        width: 75px;
+      }
+      .text {
+        .title {
+          font-size: 18px;   
+        }
+        .sub {
+          color: var(--text-secondary);
+          margin-top: 6px;
+          a {
+            color: var(--accent);
+          }
+        }
+      }
+    }
     .right {
       display: block;
       width: 100%;
