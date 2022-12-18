@@ -76,7 +76,6 @@ const CategoryPage = (): JSX.Element => {
       <div ref={ref}/>
       <MainPopularityList data={data} />
       <MainSchoolList data={data} />
-      <MainUpdateList data={data} onNext={() => setPage(page + 1)} disabled={disabled} />
       <Footer />
       <Modal showCloseIcon={false} key={`${r}${hash}`} container={ref.current} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
         <Item onClose={() => { window.location.hash = '#closed' }} key={hash} id={parseInt(hash)} />
