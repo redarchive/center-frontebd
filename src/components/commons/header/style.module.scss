@@ -9,6 +9,7 @@
 .header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: 80px;
   padding: 0 48px;
@@ -29,13 +30,16 @@
   .toggle {
     position: fixed;
     right: 48px;
-    bottom: 48px;
+    bottom: 24px;
     cursor: pointer;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: red;
+    color: var(--main-bg);
+    background: var(--accent);
     box-shadow: 0 0 5px rgba($color: #000000, $alpha: .1);
   }
   .menu {
@@ -47,8 +51,10 @@
     width: 30px;
     height: 30px;
     border-radius: 3px;
-    background: red;
     display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
   }
   .menu_back {
     position: absolute;
@@ -66,12 +72,13 @@
     .logo {
       color: var(--text-primary);
       display: flex;
+      align-items: center;
       img {
         width: 30px;
         height: 30px;
       }
       h1 {
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 900;
         margin-left: 6px;
       }
@@ -124,13 +131,16 @@
         display: block;
         width: 30px;
         height: 30px;
-        background: red;
         border-radius: 3px;
         z-index: 100;
         transition: all .15s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-primary);
       }
       :checked + .search__btn {
-        background: red;
+        color: var(--accent);
         transition: all .15s;
       }
       :checked ~ .search__box {
@@ -172,8 +182,12 @@
           height: 24px;
           border: none;
           outline: none;
-          background: red;
           border-radius: 3px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--text-primary);
+          background: transparent;
         }
       }
       .search__back {
@@ -245,7 +259,7 @@
       right: 74px;
     }
     .menu {
-      display: block;
+      display: flex;
     }
     :checked ~ .menu_back {
       opacity: 1;
@@ -345,6 +359,10 @@
   .header {
     .toggle {
       right: 24px;
+    }
+    .links {
+      padding-left: 24px;
+      padding-right: 24px;
     }
   }
 }

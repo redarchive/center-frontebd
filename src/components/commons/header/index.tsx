@@ -3,6 +3,7 @@ import * as style from './style.module.scss'
 import Logo from './assets/symbol-logo.svg'
 import { Link } from 'gatsby'
 import { useLocation } from '@reach/router'
+import { FaBars, FaSearch, FaYarn } from 'react-icons/fa'
 
 interface Props {
   mode: boolean
@@ -49,16 +50,16 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
 
   return (
     <>
-      <div className={style.back}></div>
+      <label htmlFor='search__btn' className={style.back}></label>
       <div className={`${style.header as string} ${shadow ? (style.shadow as string) : ''}`}>
-        <div onClick={() => setMode(!mode)} className={style.toggle}></div>
+        <div onClick={() => setMode(!mode)} className={style.toggle}><FaYarn size={46} /></div>
         <input type="checkbox" id="menu__btn" className={style.none}/>
-        <label htmlFor="menu__btn" className={style.menu}></label>
-        <div className={style.menu_back}></div>
+        <label htmlFor="menu__btn" className={style.menu}><FaBars size={28} /></label>
+        <label htmlFor='menu__btn' className={style.menu_back}></label>
         <div className={style.left}>
           <Link to='/' className={style.logo}>
             <img src={Logo} alt="logo" />
-            <h1>전시관</h1>
+            <h1>HOW</h1>
           </Link>
           <ul className={style.nav}>
             <li className={path === '/' && style.click}><Link to="/">홈</Link></li>
@@ -73,13 +74,17 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
           <div className={style.search}>
             <input type="checkbox" id="search__btn" className={style.none}/>
             {me !== null && (
-              <label htmlFor="search__btn" className={style.search__btn}></label>
+              <label htmlFor="search__btn" className={style.search__btn}>
+                <FaSearch size={24} />
+              </label>
             )}
             <form action="/" className={style.search__box}>
               <input type="text" placeholder='검색어를 입력해주세요.' required />
-              <button type='submit'></button>
+              <button type='submit'>
+                <FaSearch size={20} />
+              </button>
             </form>
-              <div className={style.search__back}></div>
+              <label htmlFor='search__btn' className={style.search__back}></label>
           </div>
           <div className={style.links}>
             {me === undefined && (
