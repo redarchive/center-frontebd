@@ -15,6 +15,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
   const url = new URL(location.href ?? 'http://example.com')
 
   const path = url.pathname
+  const [width, setWidth] = useState(window.innerWidth ?? 1920)
   const type = url.searchParams.get('type')
 
   const [me, setMe] = useState<any>(null)
@@ -30,6 +31,10 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
     document.addEventListener('scroll', () => {
       setShadow(window.scrollY > 0)
     })
+
+    window.onresize = () => {
+      setWidth(window.innerWidth)
+    }
   }, [])
 
   const onLogout = (): void => {
@@ -96,16 +101,24 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
 
             {me !== null && me !== undefined && (
               <>
-                <div className={style.login}><strong>
-                  <Link to={`/profile?id=${me.id as string}`}>
-                    {me.nickname ?? me.person.name}
-                  </Link></strong>&nbsp;
-                  {me.person.type === 0 && '재학생'}
-                  {me.person.type === 1 && '졸업생'}
-                  {me.person.type === 2 && '교사'}
-                </div>
+                {width < 768
+                  ? <>
+                    {/* === onMobile === */}
+                    <div className={style.login}><strong>
+                      <Link to={`/profile?id=${me.id as string}`}>
+                        {me.nickname ?? me.person.name}
+                      </Link></strong>&nbsp;
+                      {me.person.type === 0 && '재학생'}
+                      {me.person.type === 1 && '졸업생'}
+                      {me.person.type === 2 && '교사'}
+                    </div>
+                    <div className={style.login} onClick={onLogout}><Link to="#logout">로그아웃</Link></div>
+                  </>
+                  : <>
+                    {/* === onDesktop === */}
+                    <p>PROFILE</p> {/* TODO */}
+                  </>}
                 {me.person.type === 2 && <div className={style.login} onClick={onLogout}><Link to="/admin">관리</Link></div>}
-                <div className={style.login} onClick={onLogout}><Link to="#logout">로그아웃</Link></div>
                 <div className={style.sign__up}><Link to={`/profile?id=${me.id as string}#new`}>신규등록</Link></div>
               </>
             )}

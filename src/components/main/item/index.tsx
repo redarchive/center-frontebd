@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ItemHeader from './item-header'
 import ItemSlide from './item-slide'
 import ItemTextbox from './item-textbox'
+import ItemClient from './item-client'
 import * as style from './style.module.scss'
 import ItemGraph from './item-graph/index'
 import { toast } from 'react-hot-toast'
@@ -58,6 +59,9 @@ const Item = ({ id, onClose }: Props): JSX.Element => {
             <ItemSlide data={data} />
             <ItemTextbox data={data} />
             <ItemGraph data={data} />
+            {user.me && (
+              <ItemClient data={data}/>
+            )}
           </>
         )}
       </div>
