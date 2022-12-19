@@ -130,7 +130,7 @@ main {
       border-bottom: none;
       border-top: none;
       margin: 0px;
-      color: white;
+      color: var(--text-primary);
 
       &:hover {
         background-color: var(--main-bg);

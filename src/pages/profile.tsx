@@ -25,6 +25,7 @@ const ProfilePage = (): JSX.Element => {
   const [r, rerender] = useState(0)
 
   const categoryEnum = ['WEBSITE', 'MOBILE', 'GAME', 'DESKTOP', 'PHYSICAL']
+  const scopeEnum = ['REAL_NAME', 'EMAIL', 'PHONE_NUMBER', 'GENDER', 'CLASS_INFO', 'DORMITORY']
 
   const fetchData = async (): Promise<void> => {
     if (userId === null) {
@@ -51,6 +52,8 @@ const ProfilePage = (): JSX.Element => {
     }
 
     if (hash.startsWith('edit-')) {
+      setEditData(undefined)
+
       const editRes = await fetch('/api/services/' + hash.replace('edit-', ''))
         .then(async (res) => await res.json())
 
@@ -62,6 +65,11 @@ const ProfilePage = (): JSX.Element => {
 
       editRes.data.service.screenshots = editRes.data.service.screenshots.map((v: any) => v.url)
       editRes.data.service.tags = editRes.data.service.tags.map((v: any) => v.label)
+      editRes.data.service.clients = editRes.data.service.clients.map((v: any) => ({
+        ...v,
+        redirectUris: v.redirectUris.map((v2: any) => v2.uri),
+        scopes: v.scopes.filter((v2: any) => v2.type !== 0).map((v2: any) => ({ ...v2, type: scopeEnum[v2.type - 1] }))
+      }))
 
       delete editRes.data.service.id
       delete editRes.data.service.logins
@@ -87,6 +95,11 @@ const ProfilePage = (): JSX.Element => {
         data.type = categoryEnum[data.type]
       }
     }
+
+    data.clients = data.clients.map((v: any) => ({
+      ...v,
+      scopes: v.scopes.filter((v2: any) => Number.isNaN(parseInt(v2.type)))
+    }))
 
     const submitRes = await fetch('/api/services' + (hash.startsWith('edit-') ? '/' + hash.replace('edit-', '') : ''), {
       method: hash.startsWith('edit-') ? 'PATCH' : 'POST',
@@ -119,6 +132,8 @@ const ProfilePage = (): JSX.Element => {
   useEffect(() => {
     rerender(1)
   }, [])
+
+  console.log(editData?.name)
 
   return (
     <>

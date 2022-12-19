@@ -38,7 +38,7 @@ interface CreateServiceDto {
 const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
   const [data, setData] = useState<Partial<CreateServiceDto>>(editData ?? {})
   const [tags, setTags] = useState<Array<{ label: string, value: string }>>([])
-  const [useLogin, setUseLogin] = useState(false)
+  const [useLogin, setUseLogin] = useState(!!editData.clients ?? false)
 
   const categoryOptions = [
     { value: 'WEBSITE', label: '웹사이트' },
@@ -320,9 +320,10 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
         setData({ ...data })
       }
 
-      const onReasonChage = (e: ChangeEvent<HTMLTextAreaElement>): void => {
+      const onReasonChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
         if (loading) return
         (data.clients?.[clientId].scopes?.[scopeObjIndex] ?? { reason: '' }).reason = e.target.value
+        setData({ ...data })
       }
 
       forms.push((
@@ -333,7 +334,7 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
           </div>
 
           {!!scopeObj && (
-            <textarea disabled={loading} maxLength={100} onChange={onReasonChage} placeholder={`${scope} 데이터를 쓰는 이유 작성`}>{scopeObj?.reason}</textarea>
+            <textarea disabled={loading} maxLength={100} onChange={onReasonChange} placeholder={`${scope} 데이터를 쓰는 이유 작성`}>{scopeObj?.reason}</textarea>
           )}
         </div>
       ))
@@ -341,8 +342,6 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
 
     return <>{forms}</>
   }
-
-  console.log(tags, data.tags)
 
   return (
     <>
@@ -472,6 +471,11 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
           {useLogin && (
             <div onClick={onClientAdd} className={style.plus__btn}>
               클라이언트 추가
+            </div>
+          )}
+          {editData.clients !== undefined && (
+            <div className={style.notice}>
+              주의: 편집시 클라이언트 ID가 재설정 됩니다!
             </div>
           )}
           <div className={style.btn}>

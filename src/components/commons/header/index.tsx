@@ -59,7 +59,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
         <div className={style.left}>
           <Link to='/' className={style.logo}>
             <img src={Logo} alt="logo" />
-            <h1>HOW</h1>
+            <h1>Archive</h1>
           </Link>
           <ul className={style.nav}>
             <li className={path === '/' && style.click}><Link to="/">홈</Link></li>
