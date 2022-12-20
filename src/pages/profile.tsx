@@ -7,6 +7,7 @@ import Footer from '../components/commons/footer'
 import Delete from '../components/main/delete'
 import Item from '../components/main/item'
 import Upload from '../components/main/upload'
+import EditProf, { UpdateUserDto } from '../components/main/editprof'
 import ProfileHeader from '../components/profile/profile-header'
 import ProfileItemList, { ItemListFilter } from '../components/profile/profile-itemlist'
 
@@ -16,7 +17,7 @@ const ProfilePage = (): JSX.Element => {
   const hash = url.hash.replace('#', '')
   const userId = url.searchParams.get('id')
   const [loading, setLoading] = useState(false)
-  const [user, setUser] = useState()
+  const [user, setUser] = useState<any>()
   const [isMe, setIsMe] = useState(false)
   const [filter, setFilter] = useState<ItemListFilter>(ItemListFilter.ALL)
   const [items, setItems] = useState<any[]>()
@@ -133,7 +134,14 @@ const ProfilePage = (): JSX.Element => {
     rerender(1)
   }, [])
 
-  console.log(editData?.name)
+  const userData: UpdateUserDto = {
+    id: user?.id ?? -1,
+    email: user?.email,
+    nickname: user?.nickname,
+    profileImage: user?.profileImage
+  }
+
+  console.log(userData)
 
   return (
     <>
@@ -144,6 +152,9 @@ const ProfilePage = (): JSX.Element => {
 
       <Modal showCloseIcon={false} container={ref.current} key={hash} open={hash === 'new'} onClose={() => {}}>
         <Upload loading={loading} onSubmit={onSubmit}/>
+      </Modal>
+      <Modal showCloseIcon={false} container={ref.current} key={`ep${hash}`} open={hash === 'editprof'} onClose={() => {}}>
+        {user && <EditProf loading={loading} onSubmit={onSubmit} userData={userData} />}
       </Modal>
       <Modal showCloseIcon={false} container={ref.current} key={`e${hash}`} open={hash.startsWith('edit-')} onClose={() => {}}>
         {editData && <Upload loading={loading} onSubmit={onSubmit} editData={editData}/>}

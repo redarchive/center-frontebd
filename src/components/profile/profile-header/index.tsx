@@ -1,6 +1,5 @@
 import React from 'react'
 import * as style from './style.module.scss'
-import { Link } from 'gatsby'
 
 interface Props {
   user: any
@@ -38,7 +37,7 @@ const Header = ({ user, isMe }: Props): JSX.Element => {
       </div>
       {isMe && (
         <div className={style.right}>
-          <Link to='' className={style.btn}>프로필 수정</Link>
+          <a href="#editprof" className={style.btn}>프로필 수정</a>
         </div>
       )}
     </div>

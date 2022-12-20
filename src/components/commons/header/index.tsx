@@ -78,11 +78,9 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
         <div className={style.right}>
           <div className={style.search}>
             <input type="checkbox" id="search__btn" className={style.none}/>
-            {me !== null && (
-              <label htmlFor="search__btn" className={style.search__btn}>
-                <FaSearch size={24} />
-              </label>
-            )}
+            <label htmlFor="search__btn" className={style.search__btn}>
+              <FaSearch size={24} />
+            </label>
             <form action="/" className={style.search__box}>
               <input type="text" placeholder='검색어를 입력해주세요.' required />
               <button type='submit'>
@@ -116,7 +114,21 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
                   </>
                   : <>
                     {/* === onDesktop === */}
-                    <p>PROFILE</p> {/* TODO */}
+                    <div className={style.search}>
+                      <input type="checkbox" id="profile__img" className={style.none}/>
+                      <label htmlFor="profile__img" className={style.search__btn}>
+                        <div className={style.profile__img}>
+                          {me.profileImage
+                            ? <img src={me.profileImage} />
+                            : (me.nickname ?? me.person.name)[0]}</div>
+                      </label>
+                      <div className={style.search__box}>
+                        <Link to={`/profile?id=${me.id as number}`}><button>프로필보기</button></Link>
+                        <Link to={`/profile?id=${me.id as number}#editprof`}><button>프로필수정</button></Link>
+                        <button onClick={onLogout}>로그아웃</button>
+                      </div>
+                      <label htmlFor='profile__img' className={style.search__back}></label>
+                    </div>
                   </>}
                 {me.person.type === 2 && <div className={style.login} onClick={onLogout}><Link to="/admin">관리</Link></div>}
                 <div className={style.sign__up}><Link to={`/profile?id=${me.id as string}#new`}>신규등록</Link></div>

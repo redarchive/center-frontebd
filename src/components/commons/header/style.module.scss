@@ -173,7 +173,7 @@
             color: var(--text-secondary);
           }
         }
-        button {
+        button[type="submit"] {
           position: absolute;
           left: 24px;
           top: 50%;
@@ -206,6 +206,18 @@
       display: flex;
       align-items: center;
       background: var(--main-bg);
+      .profile__img {
+        color: #fff;
+        font-size: 11px;
+        font-weight: 500;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: red;
+        border-radius: 50%;
+      }
       .login {
         margin-left: 24px;
         color: var(--text-primary);

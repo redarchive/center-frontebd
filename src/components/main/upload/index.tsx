@@ -348,6 +348,7 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
       <a href='#closed' className={style.item__back}></a>
       <div className={style.item__container}>
         <form onSubmit={onSubmitFn}>
+          <h1>{editData.name ? '서비스 수정' : '서비스 등록'}</h1>
           <div className={style.input__box}>
             <label htmlFor="name">서비스 명 *</label>
             <input disabled={loading} maxLength={30} value={data.name} id="name" onChange={(e) => setData({ ...data, name: e.target.value })} type="text" placeholder='서비스 명을 입력하세요.' />
