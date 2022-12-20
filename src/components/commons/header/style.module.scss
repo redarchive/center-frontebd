@@ -128,16 +128,15 @@
       display: flex;
       .search__btn {
         cursor: pointer;
-        display: block;
+        color: var(--text-primary);
         width: 30px;
         height: 30px;
         border-radius: 3px;
-        z-index: 100;
-        transition: all .15s;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--text-primary);
+        transition: all .15s;
+        z-index: 100;
       }
       :checked + .search__btn {
         color: var(--accent);
@@ -153,7 +152,7 @@
         opacity: 0;
         visibility: hidden;
         position: absolute;
-        bottom: -80px;
+        bottom: -92px;
         right: 0;
         width: 240px;
         height: 46px;
@@ -206,17 +205,47 @@
       display: flex;
       align-items: center;
       background: var(--main-bg);
-      .profile__img {
-        color: #fff;
-        font-size: 11px;
-        font-weight: 500;
-        width: 45px;
-        height: 45px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: red;
-        border-radius: 50%;
+      .profile {
+        margin-left: 24px;
+        position: relative;
+        .profile__btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 45px;
+          height: 45px;
+          background: red;
+          border-radius: 50%;
+        }
+        .profile__box {
+          opacity: 0;
+          visibility: hidden;
+          position: absolute;
+          bottom: -190px;
+          left: 0;
+          width: 200px;
+          border-radius: 30px;
+          box-shadow: 0 0 5px rgba($color: #000000, $alpha: .1);
+          display: flex;
+          flex-direction: column;
+          border-radius: 10px;
+          overflow: hidden;
+          button {
+            color: var(--text-primary);
+            background: var(--main-border);
+            width: 100%;
+            height: 50px;
+            outline: none;
+            border: none;
+            &:hover {
+              background: var(--accent);
+            }
+          }
+        }
+        :checked ~ .profile__box  {
+          opacity: 1;
+          visibility: inherit;
+        }
       }
       .login {
         margin-left: 24px;

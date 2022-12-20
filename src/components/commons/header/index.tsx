@@ -77,7 +77,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
         </div>
         <div className={style.right}>
           <div className={style.search}>
-            <input type="checkbox" id="search__btn" className={style.none}/>
+            <input type="radio" name='ck' id="search__btn" className={style.none}/>
             <label htmlFor="search__btn" className={style.search__btn}>
               <FaSearch size={24} />
             </label>
@@ -114,20 +114,19 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
                   </>
                   : <>
                     {/* === onDesktop === */}
-                    <div className={style.search}>
-                      <input type="checkbox" id="profile__img" className={style.none}/>
-                      <label htmlFor="profile__img" className={style.search__btn}>
+                    <div className={style.profile}>
+                      <input type="radio" name="ck" id="profile__img" className={style.none}/>
+                      <label htmlFor="profile__img" className={style.profile__btn}>
                         <div className={style.profile__img}>
                           {me.profileImage
                             ? <img src={me.profileImage} />
                             : (me.nickname ?? me.person.name)[0]}</div>
                       </label>
-                      <div className={style.search__box}>
+                      <div className={style.profile__box}>
                         <Link to={`/profile?id=${me.id as number}`}><button>프로필보기</button></Link>
                         <Link to={`/profile?id=${me.id as number}#editprof`}><button>프로필수정</button></Link>
                         <button onClick={onLogout}>로그아웃</button>
                       </div>
-                      <label htmlFor='profile__img' className={style.search__back}></label>
                     </div>
                   </>}
                 {me.person.type === 2 && <div className={style.login} onClick={onLogout}><Link to="/admin">관리</Link></div>}
