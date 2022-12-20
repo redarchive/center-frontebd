@@ -6,6 +6,7 @@ import ItemClient from './item-client'
 import * as style from './style.module.scss'
 import ItemGraph from './item-graph/index'
 import { toast } from 'react-hot-toast'
+import { FaPlus } from 'react-icons/fa'
 
 interface Props {
   id: number
@@ -52,7 +53,7 @@ const Item = ({ id, onClose }: Props): JSX.Element => {
     <>
       <a href='#closed' className={style.item__back}></a>
       <div className={style.item__container}>
-        <a href='#closed' className={style.clear}>1</a>
+        <a href='#closed' className={style.clear}><FaPlus/></a>
         {data !== undefined && (
           <>
             <ItemHeader data={data} user={user} />

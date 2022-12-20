@@ -91,8 +91,8 @@
         position: relative;
         white-space: nowrap;
         transition: all .15s;
-        padding: 8px 0px;
         border-radius: 3px;
+        padding: 8px 0;
         a {
           padding: 8px 14px;
           color: var(--text-secondary);
@@ -282,6 +282,12 @@
   }
 }
 
+@media screen and (max-width: 1024px) {
+  .header {
+    padding: 0 10px;
+  }
+}
+
 
 @media screen and (max-width: 768px) {
   .header {
@@ -334,10 +340,16 @@
         opacity: 0;
         visibility: hidden;
         transition: all .15s;
+        padding: 0 24px;
         li {
-          padding: 24px 14px;
-          margin: 0 24px;
-          text-align: center;
+          height: 68px;
+          padding: 0;
+          >a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+          }
         }
       }
     }
@@ -347,7 +359,7 @@
         position: static;
         .search__btn {
           position: absolute;
-          right: 78px;
+          right:64px;
           top: 50%;
           transform: translateY(-50%);
         }

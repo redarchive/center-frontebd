@@ -66,18 +66,20 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
             <img src={Logo} alt="logo" />
             <h1>Archive</h1>
           </Link>
-          <ul className={style.nav}>
-            <li className={path === '/' && style.click}><Link to="/">홈</Link></li>
-            <li className={path === '/categories' && type === 'WEBSITE' && style.click}><Link to="/categories?type=WEBSITE">웹사이트</Link></li>
-            <li className={path === '/categories' && type === 'MOBILE' && style.click}><Link to="/categories?type=MOBILE">어플</Link></li>
-            <li className={path === '/categories' && type === 'GAME' && style.click}><Link to="/categories?type=GAME">게임</Link></li>
-            <li className={path === '/categories' && type === 'DESKTOP' && style.click}><Link to="/categories?type=DESKTOP">데스크톱</Link></li>
-            <li className={path === '/categories' && type === 'PHYSICAL' && style.click}><Link to="/categories?type=PHYSICAL">IOT</Link></li>
-          </ul>
+          <label htmlFor='menu__btn'>
+            <ul className={style.nav}>
+              <li className={path === '/' && style.click}><Link to="/">홈</Link></li>
+              <li className={path === '/categories' && type === 'WEBSITE' && style.click}><Link to="/categories?type=WEBSITE">웹사이트</Link></li>
+              <li className={path === '/categories' && type === 'MOBILE' && style.click}><Link to="/categories?type=MOBILE">어플</Link></li>
+              <li className={path === '/categories' && type === 'GAME' && style.click}><Link to="/categories?type=GAME">게임</Link></li>
+              <li className={path === '/categories' && type === 'DESKTOP' && style.click}><Link to="/categories?type=DESKTOP">데스크톱</Link></li>
+              <li className={path === '/categories' && type === 'PHYSICAL' && style.click}><Link to="/categories?type=PHYSICAL">IOT</Link></li>
+            </ul>
+          </label>
         </div>
         <div className={style.right}>
           <div className={style.search}>
-            <input type="radio" name='ck' id="search__btn" className={style.none}/>
+            <input type="checkbox" id="search__btn" className={style.none}/>
             <label htmlFor="search__btn" className={style.search__btn}>
               <FaSearch size={24} />
             </label>
@@ -115,7 +117,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
                   : <>
                     {/* === onDesktop === */}
                     <div className={style.profile}>
-                      <input type="radio" name="ck" id="profile__img" className={style.none}/>
+                      <input type="checkbox" id="profile__img" className={style.none}/>
                       <label htmlFor="profile__img" className={style.profile__btn}>
                         <div className={style.profile__img}>
                           {me.profileImage

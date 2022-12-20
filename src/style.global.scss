@@ -38,7 +38,12 @@ main[data-theme='dark'] {
   text-decoration: none;
   box-sizing: border-box;
   font-family: 'Noto Sans KR', Arial, Helvetica, sans-serif;
-  transition: all .15s;
+  transition: all .35s;
+  -ms-overflow-style:none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar, &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track {
+    display: none;
+  }
 }
 
 html, body {
