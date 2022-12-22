@@ -12,20 +12,22 @@ export enum ItemListFilter {
   PHYSICAL
 }
 
-const Update = ({ data, onNext, disabled }: any): JSX.Element => {
+const Update = ({ hideFilter, data, onNext, disabled }: any): JSX.Element => {
   const [filter, setFilter] = useState<ItemListFilter>(ItemListFilter.ALL)
 
   return (
     <div className={style.update}>
       <div className={style.title}>업데이트</div>
-      <div className={style.categorys}>
-        <div onClick={() => setFilter(ItemListFilter.ALL)} className={filter === ItemListFilter.ALL ? style.click : style.category}>전체보기</div>
-        <div onClick={() => setFilter(ItemListFilter.WEBSITE)} className={filter === ItemListFilter.WEBSITE ? style.click : style.category}>웹사이트</div>
-        <div onClick={() => setFilter(ItemListFilter.APPLICATION)} className={filter === ItemListFilter.APPLICATION ? style.click : style.category}>어플</div>
-        <div onClick={() => setFilter(ItemListFilter.GAME)} className={filter === ItemListFilter.GAME ? style.click : style.category}>게임</div>
-        <div onClick={() => setFilter(ItemListFilter.DESKTOP)} className={filter === ItemListFilter.DESKTOP ? style.click : style.category}>데스크톱</div>
-        <div onClick={() => setFilter(ItemListFilter.PHYSICAL)} className={filter === ItemListFilter.PHYSICAL ? style.click : style.category}>IOT</div>
-      </div>
+      {!hideFilter && (
+        <div className={style.categorys}>
+          <div onClick={() => setFilter(ItemListFilter.ALL)} className={filter === ItemListFilter.ALL ? style.click : style.category}>전체보기</div>
+          <div onClick={() => setFilter(ItemListFilter.WEBSITE)} className={filter === ItemListFilter.WEBSITE ? style.click : style.category}>웹사이트</div>
+          <div onClick={() => setFilter(ItemListFilter.APPLICATION)} className={filter === ItemListFilter.APPLICATION ? style.click : style.category}>어플</div>
+          <div onClick={() => setFilter(ItemListFilter.GAME)} className={filter === ItemListFilter.GAME ? style.click : style.category}>게임</div>
+          <div onClick={() => setFilter(ItemListFilter.DESKTOP)} className={filter === ItemListFilter.DESKTOP ? style.click : style.category}>데스크톱</div>
+          <div onClick={() => setFilter(ItemListFilter.PHYSICAL)} className={filter === ItemListFilter.PHYSICAL ? style.click : style.category}>IOT</div>
+        </div>
+      )}
       <div className={style.card__box}>
         {data?.recents.filter((v: any) => ItemListFilter[ItemListFilter[filter] as any] as any === 0 || v.type === ItemListFilter[ItemListFilter[filter] as any] as any - 1).map((v: any, i: number) => (
             <div className={style.card} key={i}>
@@ -47,7 +49,7 @@ const Update = ({ data, onNext, disabled }: any): JSX.Element => {
       </div>
       {!disabled && (
         <div className={style.update__btn}>
-          <button onClick={onNext}>더 알아보기</button>
+          <button onClick={onNext}>다음 페이지</button>
         </div>
       )}
     </div>

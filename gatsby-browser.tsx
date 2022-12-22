@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { useLocalStorage } from 'react-use'
+import Footer from './src/components/commons/footer'
 import Header from './src/components/commons/header'
 
 import './src/style.global.scss'
@@ -13,7 +14,10 @@ export const wrapPageElement = ({ element, props }: any): ReactNode => {
       <Header mode={mode ?? false} setMode={setMode} />
       <Toaster containerClassName="toast" />
       <div className="container">
-        {element}
+        <div className="content">
+          {element}
+        </div>
+        <Footer />
       </div>
     </main>
   )

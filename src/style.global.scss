@@ -61,6 +61,10 @@ main {
   .container {
     max-width: 1920px;
     width: 100%;
+
+    .content {
+      min-height: 100vh;
+    }
   }
 
   .toast > div > div {

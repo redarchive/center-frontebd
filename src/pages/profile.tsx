@@ -3,7 +3,6 @@ import { HeadFC, navigate } from 'gatsby'
 import React, { useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 import Modal from 'react-responsive-modal'
-import Footer from '../components/commons/footer'
 import Delete from '../components/main/delete'
 import Item from '../components/main/item'
 import Upload from '../components/main/upload'
@@ -148,7 +147,6 @@ const ProfilePage = (): JSX.Element => {
       <div ref={ref}/>
       <ProfileHeader isMe={isMe} user={user} />
       <ProfileItemList isMe={isMe} items={items} filter={filter} onFilterChange={(filter) => setFilter(filter)} />
-      <Footer />
 
       <Modal showCloseIcon={false} container={ref.current} key={hash} open={hash === 'new'} onClose={() => {}}>
         <Upload loading={loading} onSubmit={onSubmit}/>
