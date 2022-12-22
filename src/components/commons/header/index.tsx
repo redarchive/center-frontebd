@@ -4,7 +4,7 @@ import Logo from './assets/symbol-logo.svg'
 import { Link, navigate } from 'gatsby'
 import { useLocation } from '@reach/router'
 import { FaBars, FaSearch, FaYarn } from 'react-icons/fa'
-import { Navigation } from 'swiper'
+import { toast } from 'react-hot-toast'
 
 interface Props {
   mode: boolean
@@ -40,8 +40,23 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
   }, [])
 
   const onSearch = (e: FormEvent): void => {
-    void navigate(`/search?query=${encodeURIComponent(query)}`)
     e.preventDefault()
+    
+    if (query.length === 0) {
+      toast.error('검색어를 입력해 주세요.', {
+        position: 'top-center'
+      })
+      return
+    }
+
+    if (query.length < 2) {
+      toast.error('검색어는 두 글자 이상 입력해 주세요.', {
+        position: 'top-center'
+      })
+      return
+    }
+
+    void navigate(`/search?query=${encodeURIComponent(query)}`)
   }
 
   const onLogout = (): void => {
@@ -91,7 +106,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
               <FaSearch size={24} />
             </label>
             <form onSubmit={onSearch} className={style.search__box}>
-              <input type="text" placeholder='검색어를 입력해주세요.' onChange={(e) => setQuery(e.target.value)} required />
+              <input type="text" placeholder='검색어를 입력해주세요.' onChange={(e) => setQuery(e.target.value)} />
               <button type='submit'>
                 <FaSearch size={20} />
               </button>
