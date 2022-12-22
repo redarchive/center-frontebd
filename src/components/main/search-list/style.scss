@@ -1,4 +1,4 @@
-.itemlist {
+.searchlist {
   overflow: visible !important;&
   .swiper-button-next,
   .swiper-button-prev {
@@ -21,7 +21,7 @@
 }
 
 @media screen and (max-width:576px) {
-  .itemlist {
+  .searchlist {
     .swiper-button-prev {
       display: none !important;
     }

@@ -14,9 +14,9 @@ import { Navigation, History } from 'swiper'
 import { Link } from 'gatsby'
 import moment from 'moment'
 
-const ItemList = ({ data }: any): JSX.Element => {
+const SearchList = ({ data, onNext, disabled, query }: any): JSX.Element => {
   return (
-    <div className={style.itemlist}>
+    <div className={style.searchlist}>
         <div className={style.title}>검색</div>
         <Swiper
         slidesPerView={1}
@@ -28,7 +28,7 @@ const ItemList = ({ data }: any): JSX.Element => {
         }}
         navigation={true}
         modules={[Navigation, History]}
-        className="itemlist"
+        className="searchlist"
         breakpoints={{
           768: {
             slidesPerView: 2,
@@ -44,10 +44,10 @@ const ItemList = ({ data }: any): JSX.Element => {
           }
         }}
       >
-        {data?.map((v: any, i: number) => (
+        {data?.result?.map((v: any, i: number) => (
           <SwiperSlide key={i}>
             <div className={style.card}>
-              <Link to={`/#${v.id as string}`} className={style.main}>
+              <Link to={`#${v.id as string}?query=${query ?? ''}`} className={style.main}>
                 <div className={style.pc}><img src={v.promotionImageUrl} width={300} /></div>
                 <div className={style.title}>
                   <div>{v.name}</div>
@@ -64,8 +64,13 @@ const ItemList = ({ data }: any): JSX.Element => {
           </SwiperSlide>
         ))}
       </Swiper>
+      {!disabled && (
+        <div className={style.update__btn}>
+          <button onClick={onNext}>더 알아보기</button>
+        </div>
+      )}
     </div>
   )
 }
 
-export default ItemList
+export default SearchList

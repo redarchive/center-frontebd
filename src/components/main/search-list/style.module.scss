@@ -1,4 +1,4 @@
-.itemlist {
+.searchlist {
   overflow: hidden;
   margin-top: 48px;
   padding: 0 120px;
@@ -9,6 +9,20 @@
     font-weight: bold;
     margin-bottom: 14px;      
   } 
+  .update__btn {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    button {
+      height: 50px;
+      color: var(--text-secondary);
+      padding: 15px 86px;
+      border: none;
+      cursor: pointer;
+      background: var(--sub-bg);
+      border-radius: 5px;
+    }
+  }
   .card {
     position: relative;
     display: flex;
@@ -83,7 +97,7 @@
 }
 
 @media screen and (max-width: 1456px) {
-  .itemlist {
+  .searchlist {
     padding-left: 48px;
     padding-right: 48px;
   }
@@ -97,14 +111,14 @@
 // }
 
 @media screen and (max-width: 768px) {
-  .itemlist {
+  .searchlist {
     padding-left: 74px;
     padding-right: 74px;
   }
 }
 
 @media screen and (max-width: 586px) {
-  .itemlist {
+  .searchlist {
     padding-left: 24px;
     padding-right: 24px;
   }
