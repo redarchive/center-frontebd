@@ -40,17 +40,19 @@ const SearchPage = (): JSX.Element => {
     document.title = '경북소프트웨어고 학생 작품 전시관'
     rerender(1)
     void fetchData()
-  }, [query])
+  }, [])
 
   useEffect(fetchData, [page])
 
+  useEffect(fetchData, [query])
   return (
     <>
       <div ref={ref}/>
       <MainSearchList data={data} onNext={() => setPage(page + 1)} disabled={disabled} query={query} />
       <Footer />
       <Modal showCloseIcon={false} key={`${r}${hash}`} container={ref.current} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
-        <Item onClose={() => { window.location.hash = 'closed' }} key={hash} id={parseInt(hash)} />
+        <Item onClose={() => { window.location.hash = '' }} key={hash} id={parseInt(hash)} /> 
+        {/* dkdkkdkdkdkd */}
       </Modal>
     </>
   )
