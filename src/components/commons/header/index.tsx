@@ -41,7 +41,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
 
   const onSearch = (e: FormEvent): void => {
     e.preventDefault()
-    
+
     if (query.length === 0) {
       toast.error('검색어를 입력해 주세요.', {
         position: 'top-center'
