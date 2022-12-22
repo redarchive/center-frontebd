@@ -230,6 +230,9 @@
           flex-direction: column;
           border-radius: 10px;
           overflow: hidden;
+          &:focus {
+            display: none;
+          }
           button {
             color: var(--text-primary);
             background: var(--main-border);
