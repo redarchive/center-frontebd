@@ -30,6 +30,10 @@ const IndexPage = (): JSX.Element => {
             setDisabled(true)
           }
 
+          if (res.data.recents.length < 10) {
+            setDisabled(true)
+          }
+
           res.data.recents = [...data.recents, ...res.data.recents]
         }
         setData(res.data)
@@ -50,7 +54,7 @@ const IndexPage = (): JSX.Element => {
       <MainSlide data={data} />
       <MainPopularityList data={data} />
       <MainSchoolList data={data}/>
-      <MainUpdateList data={data} onNext={() => setPage(page + 1)}disabled={disabled} />
+      <MainUpdateList data={data} onNext={() => setPage(page + 1)} disabled={disabled} />
       <Modal showCloseIcon={false} key={`${r}${hash}`} container={ref.current} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
         <Item onClose={() => { window.location.hash = 'closed' }} key={hash} id={parseInt(hash)} />
       </Modal>

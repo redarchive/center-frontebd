@@ -1,14 +1,118 @@
 .searchlist {
-  overflow: hidden;
   margin-top: 48px;
   padding: 0 120px;
-  padding-bottom: 40px;
-  .title {
+  >.title {
     color: var(--text-primary);
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 14px;      
-  } 
+    margin-bottom: 10px;      
+  }
+  .categorys {
+    display: flex;
+    margin-bottom: 14px;
+    overflow-x: auto;
+    > div {
+      cursor: pointer;
+      font-size: 1;
+      font-weight: 500;
+      white-space: nowrap;
+      padding: 8px 14px;
+      border-radius: 30px;
+      margin-left: 11px;
+    }
+    >div:nth-child(1) {
+      margin-left: 0;
+    }
+    .click {
+      color: var(--accent);
+      background: rgba($color: #2A9CD4, $alpha: .4);
+    }
+    .category {
+      color: var(--text-secondary);
+      background: var(--sub-bg);
+    }
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .card__box {
+    display: grid;
+    column-gap: 40px;
+    row-gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    .card {
+      position: relative;
+      display: flex;
+      border-radius: 5px;
+      margin-bottom: 30px;
+      aspect-ratio: 16/9;
+      .main {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 5px;
+        img {
+          width: 100%;
+          border-radius: 5px;
+          object-fit: cover;
+        }
+        .title {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          border-radius: 5px;
+          height: 100%;
+          font-size: 24px;
+          opacity: 0;
+          background: linear-gradient(180deg, transparent 62%, rgba(0,0,0,0.00345888) 63.94%, rgba(0,0,0,0.014204) 65.89%, rgba(0,0,0,0.0326639) 67.83%, rgba(0,0,0,0.0589645) 69.78%, rgba(0,0,0,0.0927099) 71.72%, rgba(0,0,0,0.132754) 73.67%, rgba(0,0,0,0.177076) 75.61%, rgba(0,0,0,0.222924) 77.56%, rgba(0,0,0,0.267246) 79.5%, rgba(0,0,0,0.30729) 81.44%, rgba(0,0,0,0.341035) 83.39%, rgba(0,0,0,0.367336) 85.33%, rgba(0,0,0,0.385796) 87.28%, rgba(0,0,0,0.396541) 89.22%, rgba(0,0,0,0.4) 91.17%);
+          &:hover {
+            opacity: 1;
+          }
+          >div {
+            position: absolute;
+            left: 14px;
+            bottom: 14px;
+            color: #fff;
+          }
+        }
+      }
+      .sub {
+        position: absolute;
+        bottom: -30px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .profile {
+          display: flex;
+          align-items: center;
+          .profile__img {
+            color: #fff;
+            font-size: 11px;
+            font-weight: 500;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: red;
+            border-radius: 50%;
+          }
+          .profile__name {
+            color: var(--text-primary);
+            margin-left: 6px;
+            font-weight: 500;
+          }
+        }
+        .day {
+          color: var(--text-secondary);
+        }
+      }
+    }
+  }
   .update__btn {
     margin-top: 40px;
     display: flex;
@@ -23,103 +127,49 @@
       border-radius: 5px;
     }
   }
-  .card {
-    position: relative;
-    display: flex;
-    border-radius: 5px;
-    aspect-ratio: 16/9;
-    .main {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-radius: 5px;
-      img {
-        width: 100%;
-        border-radius: 5px;
-        object-fit: cover;
-      }
-      .title {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        border-radius: 5px;
-        height: 100%;
-        font-size: 24px;
-        opacity: 0;
-        background: linear-gradient(180deg, transparent 62%, rgba(0,0,0,0.00345888) 63.94%, rgba(0,0,0,0.014204) 65.89%, rgba(0,0,0,0.0326639) 67.83%, rgba(0,0,0,0.0589645) 69.78%, rgba(0,0,0,0.0927099) 71.72%, rgba(0,0,0,0.132754) 73.67%, rgba(0,0,0,0.177076) 75.61%, rgba(0,0,0,0.222924) 77.56%, rgba(0,0,0,0.267246) 79.5%, rgba(0,0,0,0.30729) 81.44%, rgba(0,0,0,0.341035) 83.39%, rgba(0,0,0,0.367336) 85.33%, rgba(0,0,0,0.385796) 87.28%, rgba(0,0,0,0.396541) 89.22%, rgba(0,0,0,0.4) 91.17%);
-        &:hover {
-          opacity: 1;
-        }
-        >div {
-          position: absolute;
-          left: 14px;
-          bottom: 14px;
-          color: #fff;  
-        }
-      }
-    }
-    .sub {
-      position: absolute;
-      bottom: -30px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      .profile {
-        display: flex;
-        align-items: center;
-        .profile__img {
-          color: #fff;
-          font-size: 11px;
-          font-weight: 500;
-          width: 24px;
-          height: 24px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: red;
-          border-radius: 50%;
-        }
-        .profile__name {
-          color: var(--text-primary);
-          margin-left: 6px;
-          font-weight: 500;
-        }
-      }
-      .day {
-        color: var(--text-secondary);
-      }
-    }
-  }
 }
 
 @media screen and (max-width: 1456px) {
-  .searchlist {
+  .update {
     padding-left: 48px;
     padding-right: 48px;
+    .card__box {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }
 
-// @media screen and (max-width: 1024px) {
-//   .school {
-//     padding-left: 48px;
-//     padding-right: 48px;
-//   }
-// }
+@media screen and (max-width: 1023px) {
+  .update {
+    .card__box {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
 
 @media screen and (max-width: 768px) {
-  .searchlist {
+  .update {
     padding-left: 74px;
     padding-right: 74px;
+    .card__box {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }
 
 @media screen and (max-width: 586px) {
-  .searchlist {
+  .update {
     padding-left: 24px;
     padding-right: 24px;
+    .update__btn {
+      button {
+        color: var(--text-secondary);
+        width: 100%;
+        padding: 15px 0;
+        background: var(--sub-bg);
+        text-align: center;
+        border-radius: 5px;
+      }
+    }
   }
 }

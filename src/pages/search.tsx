@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { HeadFC } from 'gatsby'
 import MainSearchList from '../components/main/search-list'
-import Footer from '../components/commons/footer'
 import { useLocation } from '@reach/router'
 import { toast } from 'react-hot-toast'
 import { Modal } from 'react-responsive-modal'
@@ -30,6 +29,11 @@ const SearchPage = (): JSX.Element => {
             setDisabled(true)
           }
 
+          if (res.data.result.length < 10) {
+            setDisabled(true)
+            return
+          }
+
           res.data.result = [...data.result, ...res.data.result]
         }
         setData(res.data)
@@ -49,10 +53,8 @@ const SearchPage = (): JSX.Element => {
     <>
       <div ref={ref}/>
       <MainSearchList data={data} onNext={() => setPage(page + 1)} disabled={disabled} query={query} />
-      <Footer />
       <Modal showCloseIcon={false} key={`${r}${hash}`} container={ref.current} open={!Number.isNaN(parseInt(hash))} onClose={() => {}}>
-        <Item onClose={() => { window.location.hash = '' }} key={hash} id={parseInt(hash)} /> 
-        {/* dkdkkdkdkdkd */}
+        <Item onClose={() => { window.location.hash = 'closed' }} key={hash} id={parseInt(hash)} />
       </Modal>
     </>
   )
