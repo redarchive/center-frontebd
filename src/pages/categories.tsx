@@ -67,7 +67,6 @@ const CategoryPage = (): JSX.Element => {
 
         if (res.data.recents.length < 10) {
           setDisabled(true)
-          return
         }
 
         res.data.recents = [...data?.recents || [], ...res.data.recents]
