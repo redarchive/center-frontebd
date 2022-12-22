@@ -14,7 +14,8 @@ const SearchList = ({ data, onNext, disabled, query }: any): JSX.Element => {
     <div className={style.searchlist}>
         <div className={style.title}>&quot;{query}&quot; 검색결과</div>
         <div className={style.card__box}>
-          {data?.result?.map((v: any, i: number) => (
+          {(data?.result?.length ?? 0) > 0
+            ? data?.result?.map((v: any, i: number) => (
               <div className={style.card} key={i}>
                 <a href={`#${v.id as string}`} className={style.main}>
                   <div className={style.pc}><img src={v.promotionImageUrl} width={300} /></div>
@@ -30,7 +31,8 @@ const SearchList = ({ data, onNext, disabled, query }: any): JSX.Element => {
                   <div className={style.day}>{moment(v.createdAt).format('YYYY.MM.DD')}</div>
                 </div>
               </div>
-          ))}
+            ))
+            : <div>검색 결과가 없습니다.</div>}
         </div>
       {!disabled && (
         <div className={style.update__btn}>

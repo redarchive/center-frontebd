@@ -22,7 +22,7 @@ const SearchPage = (): JSX.Element => {
       .then(async (res) => await res.json())
       .then((res) => {
         if (data?.result) {
-          if (res.data.result.length < 1) {
+          if (res.data.result.length < 1 && page !== 0) {
             toast.error('다음 페이지가 없습니다', {
               position: 'bottom-center'
             })
@@ -47,8 +47,12 @@ const SearchPage = (): JSX.Element => {
   }, [])
 
   useEffect(fetchData, [page])
+  useEffect(() => {
+    setData({})
+    setPage(0)
+    void fetchData()
+  }, [query])
 
-  useEffect(fetchData, [query])
   return (
     <>
       <div ref={ref}/>
