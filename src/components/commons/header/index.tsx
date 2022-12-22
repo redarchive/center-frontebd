@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import * as style from './style.module.scss'
 import Logo from './assets/symbol-logo.svg'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import { useLocation } from '@reach/router'
 import { FaBars, FaSearch, FaYarn } from 'react-icons/fa'
+import { Navigation } from 'swiper'
 
 interface Props {
   mode: boolean
@@ -20,6 +21,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
 
   const [me, setMe] = useState<any>(null)
   const [shadow, setShadow] = useState(false)
+  const [query, setQuery] = useState('')
 
   useEffect(() => {
     void fetch('/api/users/@me')
@@ -36,6 +38,11 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
       setWidth(window.innerWidth)
     }
   }, [])
+
+  const onSearch = (e: FormEvent): void => {
+    void navigate(`/search?query=${encodeURIComponent(query)}`)
+    e.preventDefault()
+  }
 
   const onLogout = (): void => {
     void fetch('/api/sessions/@this', {
@@ -83,8 +90,8 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
             <label htmlFor="search__btn" className={style.search__btn}>
               <FaSearch size={24} />
             </label>
-            <form action="/" className={style.search__box}>
-              <input type="text" placeholder='검색어를 입력해주세요.' required />
+            <form onSubmit={onSearch} className={style.search__box}>
+              <input type="text" placeholder='검색어를 입력해주세요.' onChange={(e) => setQuery(e.target.value)} required />
               <button type='submit'>
                 <FaSearch size={20} />
               </button>
