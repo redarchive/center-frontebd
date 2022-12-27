@@ -201,7 +201,7 @@ const LoginPage = (): JSX.Element => {
         <FadeIn>
           {client && <LoginHeader client={client} />}
           <LoginTypeSelector disabled={disabled} onSelect={(v) => setSelectedType(v)} />
-          <LoginLogoTitle />
+          <LoginLogoTitle me={me} />
 
           {!criticalMessage && <>
             {!me

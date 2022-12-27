@@ -82,7 +82,7 @@ const ForgotPWPage = (): JSX.Element => {
       setStep(1)
       setTimeout(() => {
         setStep((step) => step === 1 ? 0 : step)
-      }, 5 * 60 * 1000)
+      }, 10 * 60 * 1000)
       setDisabled(false)
     }
 
@@ -211,6 +211,19 @@ const ForgotPWPage = (): JSX.Element => {
           newPassword: data.password
         })
       }).then(async (res) => await res.json())
+
+      if (result.message === 'VERIFY_INVALID') {
+        setStep(0)
+        setDisabled(false)
+
+        setMessage({
+          phone: '인증이 만료되었어요. 다시 인증해주세요.'
+        })
+
+        setTimeout(() => {
+          setMessage(undefined)
+        }, 3 * 1000)
+      }
 
       if (result.success) {
         toast.success('비밀번호 재설정 완료!', {

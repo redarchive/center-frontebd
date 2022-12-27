@@ -21,7 +21,7 @@ const LoginHeader = ({ client }: Props): JSX.Element => {
 
   return (
     <header className={headerStyle}>
-      <h1>{client.name}로 로그인할게요.</h1>
+      <h1>{client.name}(으)로 로그인할게요.</h1>
       <h2>요청한 정보: {scope.split(' ').map(labelScope).join(', ')}</h2>
     </header>
   )
