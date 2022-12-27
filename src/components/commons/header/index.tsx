@@ -138,11 +138,10 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
                     {/* === onDesktop === */}
                     <div className={style.profile}>
                       <input type="checkbox" id="profile__img" className={style.none}/>
-                      <label htmlFor="profile__img" className={style.profile__btn}>
+                      <label htmlFor="profile__img" className={style.profile__btn} style={{ backgroundImage: me.profileImage ? `url(${me.profileImage as string})` : 'unset' }}>
                         <div className={style.profile__img}>
-                          {me.profileImage
-                            ? <img src={me.profileImage} />
-                            : (me.nickname ?? me.person.name)[0]}</div>
+                          {!me.profileImage && (me.nickname ?? me.person.name)[0]}
+                        </div>
                       </label>
                       <div className={style.profile__box}>
                         <Link to={`/profile?id=${me.id as number}`}><button>프로필보기</button></Link>

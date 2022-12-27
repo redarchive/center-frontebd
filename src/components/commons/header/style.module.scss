@@ -213,8 +213,10 @@
           align-items: center;
           justify-content: center;
           width: 45px;
+          background-color: var(--sub-bg);
+          background-size: cover;
+          background-position: center;
           height: 45px;
-          background: red;
           border-radius: 50%;
         }
         .profile__box {

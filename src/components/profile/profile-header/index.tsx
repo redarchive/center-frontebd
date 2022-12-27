@@ -24,7 +24,9 @@ const Header = ({ user, isMe }: Props): JSX.Element => {
   return (
     <div className={style.header}>
       <div className={style.left}>
-        <div className={style.iamge}>{(user.nickname || user.login)[0]}</div>
+        <div className={style.iamge} style={{ backgroundImage: user.profileImage ? `url(${user.profileImage as string})` : 'unset' }}>
+        {!user.profileImage && (user.nickname ?? user.person.name)[0]}
+        </div>
         <div className={style.txt}>
           <div className={style.name}>{user.nickname || user.login}</div>
           {user.person && <div className={style.sub}>
