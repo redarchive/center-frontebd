@@ -150,7 +150,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
                       </div>
                     </div>
                   </>}
-                {me.person.type === 2 && <div className={style.login} onClick={onLogout}><Link to="/admin">관리</Link></div>}
+                {me.person.type === 2 && <div className={style.login}><Link to="/admin">관리</Link></div>}
                 <div className={style.sign__up}><Link to={`/profile?id=${me.id as string}#new`}>신규등록</Link></div>
               </>
             )}
