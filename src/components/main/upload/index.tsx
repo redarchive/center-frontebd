@@ -4,6 +4,7 @@ import Creatable from 'react-select/creatable'
 import { FileUploader } from 'react-drag-drop-files'
 import * as style from './style.module.scss'
 import Select, { MultiValue, SingleValue } from 'react-select'
+import { FaPlus } from 'react-icons/fa'
 
 interface Props {
   onSubmit: (data: CreateServiceDto) => any
@@ -348,7 +349,7 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
       <a href='#closed' className={style.item__back}></a>
       <div className={style.item__container}>
         <form onSubmit={onSubmitFn}>
-          <h1>{editData.name ? '서비스 수정' : '서비스 등록'}</h1>
+          <h1 className={style.title}>{editData.name ? '서비스 수정' : '서비스 등록'}</h1>
           <div className={style.input__box}>
             <label htmlFor="name">서비스 명 *</label>
             <input disabled={loading} maxLength={30} value={data.name} id="name" onChange={(e) => setData({ ...data, name: e.target.value })} type="text" placeholder='서비스 명을 입력하세요.' />
@@ -391,7 +392,7 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
                 {data.screenshots?.map((v, i) =>
                   <>
                     <img key={i} src={v}></img>
-                    <button type="button" key={`${i}-del`} onClick={onScreenshotDelete(i)}></button>
+                    <button type="button" key={`${i}-del`} onClick={onScreenshotDelete(i)}><FaPlus/></button>
                   </>)}
                 {(data.screenshots?.length ?? 0) < 1 && (
                   <div>
@@ -485,7 +486,7 @@ const Upload = ({ onSubmit, loading, editData = {} }: Props): JSX.Element => {
             </button>
           </div>
         </form>
-        <a href="#" className={style.clear}>1</a>
+        <a href="#" className={style.clear}><FaPlus/></a>
       </div>
     </>
   )

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FileUploader } from 'react-drag-drop-files'
 import * as style from './style.module.scss'
+import { FaPlus } from 'react-icons/fa'
 
 interface Props {
   onSubmit: (data: UpdateUserDto) => any
@@ -56,7 +57,7 @@ const EditProf = ({ userData, onSubmit, loading }: Props): JSX.Element => {
             <p>정사각형 비율. 1024x1024 픽셀 추천</p>
           </div>
         </form>
-        <a href="#" className={style.clear}>1</a>
+        <a href="#" className={style.clear}><FaPlus/></a>
       </div>
     </>
   )

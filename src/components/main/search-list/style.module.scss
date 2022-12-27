@@ -3,7 +3,7 @@
   padding: 0 120px;
   >.title {
     color: var(--text-primary);
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;      
   }
@@ -57,6 +57,7 @@
           width: 100%;
           border-radius: 5px;
           object-fit: cover;
+          aspect-ratio: 16/9;
         }
         .title {
           position: absolute;
@@ -130,7 +131,7 @@
 }
 
 @media screen and (max-width: 1456px) {
-  .update {
+  .searchlist {
     padding-left: 48px;
     padding-right: 48px;
     .card__box {
@@ -140,7 +141,7 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .update {
+  .searchlist {
     .card__box {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -148,7 +149,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .update {
+  .searchlist {
     padding-left: 74px;
     padding-right: 74px;
     .card__box {
@@ -158,7 +159,7 @@
 }
 
 @media screen and (max-width: 586px) {
-  .update {
+  .searchlist {
     padding-left: 24px;
     padding-right: 24px;
     .update__btn {
