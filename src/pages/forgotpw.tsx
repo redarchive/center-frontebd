@@ -250,7 +250,7 @@ const ForgotPWPage = (): JSX.Element => {
           <ForgotPWHeader />
           <ForgotPWTypeSelector disabled={disabled} onSelect={setSelectedType} />
           <ForgotPWLogoTitle />
-          <ForgotPWForm login={login} message={message} step={step} onSubmit={onSubmit} disabled={disabled}/>
+          <ForgotPWForm type={formatType(selectedType)} login={login} message={message} step={step} onSubmit={onSubmit} disabled={disabled}/>
           <ForgotPWLinks />
         </FadeIn>
       </Container>

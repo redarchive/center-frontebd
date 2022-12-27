@@ -14,9 +14,10 @@ interface Props {
   onSubmit: (data: LoginFormData) => any
   disabled: boolean
   message?: { [key: string]: string }
+  type: string
 }
 
-const LoginForm = ({ message, onSubmit, disabled }: Props): JSX.Element => {
+const LoginForm = ({ type, message, onSubmit, disabled }: Props): JSX.Element => {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState(false)
@@ -84,7 +85,7 @@ const LoginForm = ({ message, onSubmit, disabled }: Props): JSX.Element => {
       </div>
 
       <button disabled={disabled} type="submit">
-        {!disabled && '로그인'}
+        {!disabled && type + ' 로그인'}
         {disabled && (
           <>
             <HashLoader size={20} />

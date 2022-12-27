@@ -205,7 +205,7 @@ const LoginPage = (): JSX.Element => {
 
           {!criticalMessage && <>
             {!me
-              ? <LoginForm message={message} onSubmit={onSubmit} disabled={disabled}/>
+              ? <LoginForm type={formatType(selectedType)} message={message} onSubmit={onSubmit} disabled={disabled}/>
               : <ConfirmForm client={client} />}
 
             <LoginLinks />
