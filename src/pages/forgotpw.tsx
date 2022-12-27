@@ -14,6 +14,7 @@ const ForgotPWPage = (): JSX.Element => {
   const [disabled, setDisabled] = useState(false)
   const [step, setStep] = useState(0)
   const [id, setId] = useState('')
+  const [login, setLogin] = useState('')
   const [message, setMessage] = useState<{ [key: string]: string } | undefined>()
   const [phoneVerify, setPhoneVerify] = useState('')
 
@@ -77,6 +78,7 @@ const ForgotPWPage = (): JSX.Element => {
       }
 
       setId(res.data.id)
+      setLogin(res.data.login)
       setStep(1)
       setTimeout(() => {
         setStep((step) => step === 1 ? 0 : step)
@@ -235,7 +237,7 @@ const ForgotPWPage = (): JSX.Element => {
           <ForgotPWHeader />
           <ForgotPWTypeSelector disabled={disabled} onSelect={setSelectedType} />
           <ForgotPWLogoTitle />
-          <ForgotPWForm message={message} step={step} onSubmit={onSubmit} disabled={disabled}/>
+          <ForgotPWForm login={login} message={message} step={step} onSubmit={onSubmit} disabled={disabled}/>
           <ForgotPWLinks />
         </FadeIn>
       </Container>

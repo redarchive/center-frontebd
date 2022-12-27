@@ -16,11 +16,12 @@ interface Props {
   disabled: boolean
   step?: number
   message?: { [key: string]: string }
+  login: string
 }
 
-const ForgotPWForm = ({ onSubmit, disabled, step = 0, message }: Props): JSX.Element => {
-  const [phone, setPhone] = useState('')
+const ForgotPWForm = ({ login = '', onSubmit, disabled, step = 0, message }: Props): JSX.Element => {
   const [code, setCode] = useState('')
+  const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [passwordCheck, setPasswordCheck] = useState('')
 
@@ -103,6 +104,11 @@ const ForgotPWForm = ({ onSubmit, disabled, step = 0, message }: Props): JSX.Ele
 
       {step === 2 && (
         <>
+          <div>
+            <label htmlFor="forgotPWForm-id">아이디</label>
+            <input type="text" disabled value={login} />
+          </div>
+
           <div>
             <label htmlFor="forgotPWForm-pw">새 비밀번호</label>
             <input
