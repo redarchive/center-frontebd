@@ -14,6 +14,7 @@ const ForgotPWPage = (): JSX.Element => {
   const [disabled, setDisabled] = useState(false)
   const [step, setStep] = useState(0)
   const [id, setId] = useState('')
+  const [login, setLogin] = useState('')
   const [message, setMessage] = useState<{ [key: string]: string } | undefined>()
   const [phoneVerify, setPhoneVerify] = useState('')
 
@@ -77,10 +78,11 @@ const ForgotPWPage = (): JSX.Element => {
       }
 
       setId(res.data.id)
+      setLogin(res.data.login)
       setStep(1)
       setTimeout(() => {
         setStep((step) => step === 1 ? 0 : step)
-      }, 5 * 60 * 1000)
+      }, 10 * 60 * 1000)
       setDisabled(false)
     }
 
@@ -210,6 +212,19 @@ const ForgotPWPage = (): JSX.Element => {
         })
       }).then(async (res) => await res.json())
 
+      if (result.message === 'VERIFY_INVALID') {
+        setStep(0)
+        setDisabled(false)
+
+        setMessage({
+          phone: '인증이 만료되었어요. 다시 인증해주세요.'
+        })
+
+        setTimeout(() => {
+          setMessage(undefined)
+        }, 3 * 1000)
+      }
+
       if (result.success) {
         toast.success('비밀번호 재설정 완료!', {
           style: {
@@ -235,7 +250,7 @@ const ForgotPWPage = (): JSX.Element => {
           <ForgotPWHeader />
           <ForgotPWTypeSelector disabled={disabled} onSelect={setSelectedType} />
           <ForgotPWLogoTitle />
-          <ForgotPWForm message={message} step={step} onSubmit={onSubmit} disabled={disabled}/>
+          <ForgotPWForm type={formatType(selectedType)} login={login} message={message} step={step} onSubmit={onSubmit} disabled={disabled}/>
           <ForgotPWLinks />
         </FadeIn>
       </Container>

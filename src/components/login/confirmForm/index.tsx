@@ -11,6 +11,7 @@ const ConfirmForm = ({ client }: Props): JSX.Element => {
   const redirectUri = useSearchParam('redirect_uri') ?? ''
   const nonce = useSearchParam('nonce') ?? ''
   const state = useSearchParam('state') ?? ''
+  const scopes = useSearchParam('scope') ?? ''
 
   const labelScope = (scope: string): string => ({
     openid: '식별번호',
@@ -63,9 +64,9 @@ const ConfirmForm = ({ client }: Props): JSX.Element => {
     <form className={style.form} onSubmit={(e) => { void onSubmit(e) }}>
       {client && (
         <>
-          <p>아래의 정보들을 요청합니다.</p>
+          <p>{client.name}에서 아래의 정보들을 요청합니다.</p>
           <div className={style.scopes}>
-            {client.scopes.map((v: any, i: number) => (
+            {client.scopes.filter((v: any) => scopes.toUpperCase().split(' ').includes(v.type)).map((v: any, i: number) => (
               <div className={style.scope} key={i}>
                 <h2>{labelScope(v.type.toLowerCase())}</h2>
                 <p>{v.type === 'OPENID' ? '사용자를 식별하기 위한 기본 제공 정보입니다.' : v.reason}</p>

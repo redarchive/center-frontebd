@@ -14,13 +14,15 @@ export interface ForgotPWFormData {
 interface Props {
   onSubmit: (data: ForgotPWFormData) => any
   disabled: boolean
+  type: string
   step?: number
   message?: { [key: string]: string }
+  login: string
 }
 
-const ForgotPWForm = ({ onSubmit, disabled, step = 0, message }: Props): JSX.Element => {
-  const [phone, setPhone] = useState('')
+const ForgotPWForm = ({ type = '', login = '', onSubmit, disabled, step = 0, message }: Props): JSX.Element => {
   const [code, setCode] = useState('')
+  const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [passwordCheck, setPasswordCheck] = useState('')
 
@@ -61,7 +63,7 @@ const ForgotPWForm = ({ onSubmit, disabled, step = 0, message }: Props): JSX.Ele
 
       {step === 0 && (
         <button disabled={disabled || step > 0} type="submit">
-          {!(disabled || step > 0) && '인증번호 전송'}
+          {!(disabled || step > 0) && type + ' 인증번호 전송'}
           {(disabled || step > 0) && (
             <>
               <HashLoader size={20} />
@@ -103,6 +105,11 @@ const ForgotPWForm = ({ onSubmit, disabled, step = 0, message }: Props): JSX.Ele
 
       {step === 2 && (
         <>
+          <div>
+            <label htmlFor="forgotPWForm-id">아이디</label>
+            <input type="text" disabled value={login} />
+          </div>
+
           <div>
             <label htmlFor="forgotPWForm-pw">새 비밀번호</label>
             <input

@@ -121,6 +121,31 @@ const ProfilePage = (): JSX.Element => {
     void fetchData()
   }
 
+  const onEditSubmit = async (data: any): Promise<void> => {
+    setLoading(true)
+
+    const submitRes = await fetch('/api/users/@me', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(async (res) => await res.json())
+
+    if (!submitRes.success) {
+      toast.error('처리중 에러가 발생하였습니다. 기존 비밀번호를 다시 확인해 주세요.')
+      setLoading(false)
+      return
+    }
+
+    toast.success('프로필이 성공적으로 수정되었습니다.')
+
+    window.location.hash = '#closed'
+
+    setLoading(false)
+    void fetchData()
+  }
+
   useEffect(() => {
     void fetchData()
   }, [userId])
@@ -152,7 +177,7 @@ const ProfilePage = (): JSX.Element => {
         <Upload loading={loading} onSubmit={onSubmit}/>
       </Modal>
       <Modal showCloseIcon={false} container={ref.current} key={`ep${hash}`} open={hash === 'editprof'} onClose={() => {}}>
-        {user && <EditProf loading={loading} onSubmit={onSubmit} userData={userData} />}
+        {user && <EditProf loading={loading} onSubmit={onEditSubmit} userData={userData} />}
       </Modal>
       <Modal showCloseIcon={false} container={ref.current} key={`e${hash}`} open={hash.startsWith('edit-')} onClose={() => {}}>
         {editData && <Upload loading={loading} onSubmit={onSubmit} editData={editData}/>}

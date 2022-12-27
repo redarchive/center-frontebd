@@ -21,10 +21,11 @@ interface Props {
   onSubmit: (data: RegistFormData) => any
   disabled: boolean
   step: number
+  type: string
   message?: { [key: string]: string }
 }
 
-const RegistForm = ({ message, step, onSubmit, disabled }: Props): JSX.Element => {
+const RegistForm = ({ type, message, step, onSubmit, disabled }: Props): JSX.Element => {
   const [id, setId] = useState('')
   const [phone, setPhone] = useState('')
   const [phoneCheck, setPhoneCheck] = useState('')
@@ -75,7 +76,7 @@ const RegistForm = ({ message, step, onSubmit, disabled }: Props): JSX.Element =
 
       {step === 0 && (
         <button disabled={disabled} type="submit">
-          {!disabled && '인증번호 전송'}
+          {!disabled && type + ' 인증번호 전송'}
           {disabled && (
             <>
               <HashLoader size={20} />

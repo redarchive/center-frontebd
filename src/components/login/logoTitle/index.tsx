@@ -3,7 +3,7 @@ import Logo from './assets/symbol-logo.svg'
 import * as style from './style.module.scss'
 import { motion } from 'framer-motion'
 
-const LoginLogoTitle = (): JSX.Element => {
+const LoginLogoTitle = ({ me }: any): JSX.Element => {
   return (
     <div className={style.logoTitle}>
       <div className={style.logo}>
@@ -14,7 +14,7 @@ const LoginLogoTitle = (): JSX.Element => {
           src={Logo} />
       </div>
       <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        로그인
+        {me && `${(me.nickname ?? me.person.name) as string}님으로`} 로그인
       </motion.h1>
     </div>
   )

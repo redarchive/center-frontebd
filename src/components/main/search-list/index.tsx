@@ -25,7 +25,9 @@ const SearchList = ({ data, onNext, disabled, query }: any): JSX.Element => {
                 </a>
                 <div className={style.sub}>
                   <div className={style.profile}>
-                    <div className={style.profile__img}>{v.profileImage ? <img src={v.profileImage} /> : (v.user.nickname ?? v.user.person.name)[0]}</div>
+                    <div className={style.profile__img} style={{ backgroundImage: v.user.profileImage ? `url(${v.user.profileImage as string})` : 'unset' }}>
+                      {!v.user.profileImage && (v.user.nickname ?? v.user.person.name)[0]}
+                    </div>
                     <div className={style.profile__name}>{v.user.nickname ?? v.user.person.name}</div>
                   </div>
                   <div className={style.day}>{moment(v.createdAt).format('YYYY.MM.DD')}</div>

@@ -66,7 +66,7 @@ const RegistPage = (): JSX.Element => {
       setStep(1)
       setTimeout(() => {
         setStep((step) => step === 1 ? 0 : step)
-      }, 5 * 60 * 1000)
+      }, 10 * 60 * 1000)
       setDisabled(false)
     }
 
@@ -301,11 +301,11 @@ const RegistPage = (): JSX.Element => {
       }
 
       if (result.message === 'VERIFY_INVALID') {
-        setStep(1)
+        setStep(0)
         setDisabled(false)
 
         setMessage({
-          phoneCheck: '인증이 만료되었어요. 다시 인증해주세요.'
+          phone: '인증이 만료되었어요. 다시 인증해주세요.'
         })
 
         setTimeout(() => {
@@ -339,7 +339,7 @@ const RegistPage = (): JSX.Element => {
           <RegistHeader />
           <RegistTypeSelector disabled={disabled} onSelect={setSelectedType} />
           <RegistLogoTitle />
-          <RegistForm message={message} step={step} onSubmit={onSubmit} disabled={disabled}/>
+          <RegistForm type={formatType(selectedType)} message={message} step={step} onSubmit={onSubmit} disabled={disabled}/>
           <RegistLinks />
         </FadeIn>
       </Container>

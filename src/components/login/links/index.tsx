@@ -12,7 +12,7 @@ const LoginLinks = (): JSX.Element => {
   return (
     <div className={style.loginLinks}>
       <ul>
-        <li><Link to={'/forgotpw' + query}>비밀번호 분실했어요</Link></li>
+        <li><Link to={'/forgotpw' + query}>아이디/비밀번호 분실했어요</Link></li>
         <li><Link to={'/regist' + query}>회원가입</Link></li>
       </ul>
     </div>

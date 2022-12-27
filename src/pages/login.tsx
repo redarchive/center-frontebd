@@ -201,11 +201,11 @@ const LoginPage = (): JSX.Element => {
         <FadeIn>
           {client && <LoginHeader client={client} />}
           <LoginTypeSelector disabled={disabled} onSelect={(v) => setSelectedType(v)} />
-          <LoginLogoTitle />
+          <LoginLogoTitle me={me} />
 
           {!criticalMessage && <>
             {!me
-              ? <LoginForm message={message} onSubmit={onSubmit} disabled={disabled}/>
+              ? <LoginForm type={formatType(selectedType)} message={message} onSubmit={onSubmit} disabled={disabled}/>
               : <ConfirmForm client={client} />}
 
             <LoginLinks />
