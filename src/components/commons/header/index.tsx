@@ -1,6 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react'
 import * as style from './style.module.scss'
-import Logo from './assets/symbol-logo.svg'
 import { Link, navigate } from 'gatsby'
 import { useLocation } from '@reach/router'
 import { FaBars, FaSearch, FaYarn } from 'react-icons/fa'
@@ -63,7 +62,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
     void fetch('/api/sessions/@this', {
       method: 'DELETE'
     }).then(() => {
-      window.location.reload()
+      window.location.assign('/')
     })
   }
 
@@ -85,7 +84,6 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
         <label htmlFor='menu__btn' className={style.menu_back}></label>
         <div className={style.left}>
           <Link to='/' className={style.logo}>
-            <img src={Logo} alt="logo" />
             <h1>Archive</h1>
           </Link>
           <ul className={style.nav}>
@@ -150,8 +148,7 @@ const Header = ({ mode, setMode }: Props): JSX.Element => {
                       </div>
                     </div>
                   </>}
-                {me.person.type === 2 && <div className={style.login}><Link to="/admin">관리</Link></div>}
-                <div className={style.sign__up}><Link to={`/profile?id=${me.id as string}#new`}>신규등록</Link></div>
+                <div className={style.sign__up}><Link to={me.person.type !== 2 ? `/profile?id=${me.id as string}#new` : '/admin'}>{me.person.type !== 2 ? '신규등록' : '학생관리'}</Link></div>
               </>
             )}
           </div>
