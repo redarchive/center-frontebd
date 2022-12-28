@@ -3,6 +3,7 @@
 @import '@fontsource/noto-sans-kr/500.css';
 @import '@fontsource/noto-sans-kr/700.css';
 @import '@fontsource/noto-sans-kr/900.css';
+@import '@fontsource/dancing-script/400.css';
 
 main[data-theme='light'] {
   --main-bg: #fff;
@@ -47,7 +48,7 @@ main[data-theme='dark'] {
 }
 
 html, body {
-  background-color: var(--main-bg);
+  background-color: #2A2725;
   width: 100vw;
 }
 
