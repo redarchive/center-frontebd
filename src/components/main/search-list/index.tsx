@@ -34,7 +34,7 @@ const SearchList = ({ data, onNext, disabled, query }: any): JSX.Element => {
                 </div>
               </div>
             ))
-            : <div>검색 결과가 없습니다.</div>}
+            : <div className={style.n_text}>검색 결과가 없습니다.</div>}
         </div>
       {!disabled && (
         <div className={style.update__btn}>
