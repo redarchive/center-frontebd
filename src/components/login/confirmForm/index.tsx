@@ -33,7 +33,7 @@ const ConfirmForm = ({ client }: Props): JSX.Element => {
       },
       body: JSON.stringify({
         clientId: client.id,
-        scopes: client.scopes.map((v: any) => v.type),
+        scopes: scopes.toUpperCase().split(' '),
         nonce
       })
     }).then(async (res) => await res.json())
