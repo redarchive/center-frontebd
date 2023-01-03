@@ -13,7 +13,7 @@ const AdminSummary = ({ diff, onCancel, onConfirm, isLoading }: Props): JSX.Elem
   return (
     <div className={style.summary}>
       <h2>예상 업데이트 내용</h2>
-      <ul>
+      {/* <ul>
         <li>재학생 생성: {diff.newStudent.length}건</li>
         <li>졸업생 생성: {diff.newGraduated.length}건</li>
         <li>교사 생성: {diff.newTeacher.length}건</li>
@@ -32,7 +32,7 @@ const AdminSummary = ({ diff, onCancel, onConfirm, isLoading }: Props): JSX.Elem
         <li>교사 정보 수정: {diff.willModifyTeacher.length}건</li>
 
         <li>삭제: {diff.willDelete.length}건</li>
-      </ul>
+      </ul> */}
 
       <div className={style.right}>
         <button className={isLoading && style.loading} onClick={onConfirm}>

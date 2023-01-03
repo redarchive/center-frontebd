@@ -30,8 +30,8 @@ const Header = ({ user, isMe }: Props): JSX.Element => {
         <div className={style.txt}>
           <div className={style.name}>{user.nickname || user.login}</div>
           {user.person && <div className={style.sub}>
-            {user.person.grade ? String(user.person.grade) + '학년' : ''}
-            {user.person.grade ? String(user.person.classroom) + '반' : ''}
+            {user.person.grade ? String(user.person.grade) + '학년 ' : ''}
+            {user.person.grade ? String(user.person.classroom) + '반 ' : ''}
 
             {user.person.name}
           </div>}

@@ -1,7 +1,8 @@
 .summary {
-  background-color: white;
+  background-color: var(--main-bg);
   border-radius: 5px;
   padding: 25px 40px;
+  color: var(--text-primary);
 
   li {
     list-style: disc inside;
@@ -15,7 +16,6 @@
     button {
       cursor: pointer;
       background-color: #2a9cd4;
-      color: #fff;
       transition: all 0.1s ease-in;
       border: none;
       border-radius: 5px;

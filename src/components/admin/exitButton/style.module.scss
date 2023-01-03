@@ -6,10 +6,10 @@
   align-items: center;
   font-size: 17px;
   margin: 20px 10px;
-  color: #555;
+  color: var(--text-secondary);
 
   &:hover {
-    color: #000;
+    color: var(--text-primary);
   }
 
   &:hover ~ span {
