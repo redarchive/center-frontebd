@@ -192,7 +192,7 @@ const RegistPage = (): JSX.Element => {
         return
       }
 
-      if (!data.password.match(/[A-ZaZ]/g)) {
+      if (!data.password.match(/[a-zA-Z]/g)) {
         setMessage({
           pw: '비밀번호에 영문을 추가해주세요.'
         })
